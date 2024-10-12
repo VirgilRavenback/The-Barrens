@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c86874fgjy5df"]
+
+[sub_resource type="TileSet" id="TileSet_iodlr"]
+terrain_set_0/mode = 0
+
+[node name="TileMapLayer" type="TileMapLayer"]
+tile_set = SubResource("TileSet_iodlr")
