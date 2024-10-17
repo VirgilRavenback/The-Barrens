@@ -99,14 +99,16 @@ func _take_damage ( hurt_box : HurtBox ) -> void:
 	
 	update_health( -hurt_box.damage )
 	print("You took damage")
-	current_health -= hurt_box.damage
 	if current_health > 0:
 		player_damaged.emit( hurt_box )
 	else:
 		player_damaged.emit( hurt_box )
 		update_health( max_health )
+		print("You died!")
+		#die()
 		
 	print("Your health is", current_health)
+	pass
 
 func update_health( delta : int ) -> void:
 	current_health = clampi( current_health + delta, 0, max_health )

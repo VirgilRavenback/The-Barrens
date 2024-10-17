@@ -37,7 +37,7 @@ func _ready() -> void:
 		
 	pass
 
-func _on_process( _delta: float ) -> EnemyState:
+func process( _delta: float ) -> EnemyState:
 	var new_direction : Vector2 = enemy.global_position.direction_to( PlayerManager.player.global_position )
 	_direction = lerp( _direction, new_direction, turn_rate )
 	enemy.velocity = _direction * chase_speed
@@ -52,6 +52,7 @@ func _on_process( _delta: float ) -> EnemyState:
 		else:
 			_timer = state_aggro_duration
 	return null
+		
 
 func _on_physics_process( _delta: float ) -> EnemyState:
 	#if _can_see_player == true:

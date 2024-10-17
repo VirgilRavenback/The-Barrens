@@ -66,7 +66,7 @@ func set_direction( _new_direction : Vector2 ) -> bool:
 		sprite_2d.scale.x = 1
 	
 	direction_changed.emit( new_direction )
-	print( new_direction )
+	#print( new_direction )
 		
 	return true
 

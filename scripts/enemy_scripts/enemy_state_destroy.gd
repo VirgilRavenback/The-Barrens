@@ -8,6 +8,8 @@ extends EnemyState
 
 @export_category("AI")
 
+@onready var hurt_box: HurtBox = $"../../Sprite2D/HurtBox"
+
 var _direction : Vector2
 var _damage_position : Vector2
 #var _animation_finished : bool = false
@@ -18,6 +20,7 @@ func initialize() -> void:
 	pass
 
 func enter() -> void:
+	hurt_box.monitoring = false
 	enemy.invulnerable = true
 	_direction = enemy.global_position.direction_to( _damage_position )
 	

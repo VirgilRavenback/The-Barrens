@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 	#call the process function from the current state's state script and return
 	#either a state or null. If null, state will not change
 	change_state( current_state.process( delta ))
+	#print("player state is ", current_state)
 	pass
 
 
