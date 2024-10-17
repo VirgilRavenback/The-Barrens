@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dxsmf1boy48yc"]
+[gd_scene load_steps=33 format=3 uid="uid://dxsmf1boy48yc"]
 
 [ext_resource type="Script" path="res://scripts/player_scripts/player_2_0.gd" id="1_wbqjb"]
 [ext_resource type="Texture2D" uid="uid://dd2ssbdbhv7u5" path="res://assets/Sprites/DesertChar_Full_Animations.png" id="2_obm7c"]
@@ -6,9 +6,11 @@
 [ext_resource type="Script" path="res://scripts/player_scripts/player_state_idle.gd" id="4_vmvh3"]
 [ext_resource type="Script" path="res://scripts/player_scripts/player_state_walk.gd" id="5_18ixt"]
 [ext_resource type="Script" path="res://scripts/player_scripts/player_state_attack.gd" id="6_hmj8d"]
+[ext_resource type="Script" path="res://scripts/player_scripts/player_state_stun.gd" id="6_x0i4s"]
 [ext_resource type="Script" path="res://scripts/player_scripts/player_interactions_host.gd" id="7_8bws6"]
 [ext_resource type="PackedScene" uid="uid://dexnds1vnbeh7" path="res://scenes/hurt_box.tscn" id="7_use68"]
 [ext_resource type="PackedScene" uid="uid://b4mk5kg8yrmmk" path="res://scenes/hit_box.tscn" id="9_goudb"]
+[ext_resource type="Script" path="res://scripts/player_scripts/player_camera_script.gd" id="10_a36jx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pgw3e"]
 radius = 8.0
@@ -130,6 +132,57 @@ tracks/0/keys = {
 "values": [24, 24, 24]
 }
 
+[sub_resource type="Animation" id="Animation_7wqw4"]
+resource_name = "stun_down"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_03t1b"]
+resource_name = "stun_side"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [8, 8, 8]
+}
+
+[sub_resource type="Animation" id="Animation_0e5i3"]
+resource_name = "stun_up"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [24, 24, 24]
+}
+
 [sub_resource type="Animation" id="Animation_gkwol"]
 resource_name = "walk_down"
 length = 0.7
@@ -190,6 +243,9 @@ _data = {
 "idle_down": SubResource("Animation_fscdi"),
 "idle_side": SubResource("Animation_1bpbl"),
 "idle_up": SubResource("Animation_tj411"),
+"stun_down": SubResource("Animation_7wqw4"),
+"stun_side": SubResource("Animation_03t1b"),
+"stun_up": SubResource("Animation_0e5i3"),
 "walk_down": SubResource("Animation_gkwol"),
 "walk_side": SubResource("Animation_7bghm"),
 "walk_up": SubResource("Animation_g6763")
@@ -200,6 +256,58 @@ radius = 16.0
 height = 64.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_abk1t"]
+
+[sub_resource type="Animation" id="Animation_xeh3u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nlk5r"]
+resource_name = "damaged"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.0980392), Color(1, 1, 1, 1), Color(1, 1, 1, 0.196078), Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_12vkn"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ow0jd"]
+_data = {
+"RESET": SubResource("Animation_xeh3u"),
+"damaged": SubResource("Animation_nlk5r"),
+"default": SubResource("Animation_12vkn")
+}
 
 [node name="Player2_0" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
@@ -224,15 +332,18 @@ libraries = {
 [node name="PlayerStateMachine" type="Node" parent="."]
 script = ExtResource("3_auwaa")
 
+[node name="Attack" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("6_hmj8d")
+
 [node name="Idle" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("4_vmvh3")
+
+[node name="Stun" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("6_x0i4s")
 
 [node name="Walk" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("5_18ixt")
 movement_speed = 300.0
-
-[node name="Attack" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("6_hmj8d")
 
 [node name="PlayerInteractions" type="Node2D" parent="."]
 script = ExtResource("7_8bws6")
@@ -249,8 +360,18 @@ shape = SubResource("CapsuleShape2D_ex7wi")
 debug_color = Color(1, 0, 0.0931407, 0.42)
 
 [node name="hit_box" parent="." instance=ExtResource("9_goudb")]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
 position = Vector2(0, 16)
 shape = SubResource("CapsuleShape2D_abk1t")
 debug_color = Color(2.11775e-06, 0.630214, 0.474804, 0.42)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+editor_draw_limits = true
+script = ExtResource("10_a36jx")
+
+[node name="EffectAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ow0jd")
+}

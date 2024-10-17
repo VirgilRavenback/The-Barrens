@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c86874fgjy5df"]
+[gd_scene load_steps=3 format=3 uid="uid://c86874fgjy5df"]
+
+[ext_resource type="Script" path="res://scripts/environment_scripts/level_tilemap.gd" id="1_f23pq"]
 
 [sub_resource type="TileSet" id="TileSet_iodlr"]
 terrain_set_0/mode = 0
 
 [node name="TileMapLayer" type="TileMapLayer"]
 tile_set = SubResource("TileSet_iodlr")
+script = ExtResource("1_f23pq")

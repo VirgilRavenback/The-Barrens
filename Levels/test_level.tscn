@@ -163,9 +163,6 @@ z_index = 0
 position = Vector2(-16, -104)
 motion_mode = 1
 
-[node name="Camera2D" type="Camera2D" parent="Player2_0"]
-visible = false
-
 [node name="Terrain" type="Node2D" parent="."]
 
 [node name="TileMapLayer" parent="Terrain" instance=ExtResource("2_govi4")]
@@ -174,7 +171,7 @@ tile_map_data = PackedByteArray("AADq//X/AAAIAAgAAADq//b/AAAIAAgAAADq//f/AAAIAAg
 tile_set = SubResource("TileSet_fuucb")
 
 [node name="BallRobot_2" parent="." instance=ExtResource("4_7bvow")]
-position = Vector2(224, 48)
+position = Vector2(264, 40)
 
 [node name="Props" type="Node" parent="."]
 

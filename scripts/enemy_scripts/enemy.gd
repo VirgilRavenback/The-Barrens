@@ -7,7 +7,6 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hit_box: HitBox = $hit_box
 @onready var enemy_state_machine : EnemyStateMachine = $EnemyStateMachine
-@onready var chase_area_2d: Area2D = $ChaseArea2D
 
 
 @export var current_health : int = 3
@@ -20,15 +19,15 @@ var player : Player
 var invulnerable : bool = false
 
 signal direction_changed ( new_direction : Vector2 )
-signal enemy_damaged()
-signal enemy_destroyed()
+signal enemy_damaged( hurt_box : HurtBox )
+signal enemy_destroyed( hurt_box : HurtBox )
 #signal ready_to_attack()
 
 func _ready() -> void:
 	enemy_state_machine.initialize( self )
 	player = PlayerManager.player
 	hit_box.damaged.connect( _take_damage )
-	player = get_tree().get_nodes_in_group("Player")[0] as CharacterBody2D
+	#player = get_tree().get_nodes_in_group("Player")[0] as CharacterBody2D
 
 	pass 
 
@@ -59,7 +58,7 @@ func set_direction( _new_direction : Vector2 ) -> bool:
 		return false
 	
 	#if direction has changed, set the cardinal direction
-	cardinal_direction = _new_direction
+	cardinal_direction = new_direction
 	
 	if cardinal_direction == Vector2.LEFT:
 		sprite_2d.scale.x = -1
@@ -67,6 +66,7 @@ func set_direction( _new_direction : Vector2 ) -> bool:
 		sprite_2d.scale.x = 1
 	
 	direction_changed.emit( new_direction )
+	print( new_direction )
 		
 	return true
 
@@ -82,15 +82,16 @@ func animation_direction() -> String:
 	else:
 		return "side"
 		
-func _take_damage ( damage : int ) -> void:
-	print("You took damage")
+func _take_damage ( hurt_box : HurtBox ) -> void:
+	print("You took ", hurt_box.damage, "damage")
 	if invulnerable == true:
 		return
 		
-	current_health -= damage
+	current_health -= hurt_box.damage
+	
 	if current_health > 0:
-		enemy_damaged.emit()
+		enemy_damaged.emit( hurt_box )
 		print("Your health is", current_health)
 	else:
-		enemy_destroyed.emit()
+		enemy_destroyed.emit( hurt_box )
 	

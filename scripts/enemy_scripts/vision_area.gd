@@ -23,12 +23,12 @@ func _process( _delta: float ) -> void:
 
 func _on_body_entered( _body : Node2D ) -> void:
 	if _body is Player:
-		player_entered.emit()
+		player_entered.emit( _body )
 	pass
 
 func _on_body_exited( _body : Node2D ) -> void:
 	if _body is Player:
-		player_exited.emit()
+		player_exited.emit( _body )
 	pass
 
 func _on_direction_changed( new_direction : Vector2 ) -> void:

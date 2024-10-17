@@ -5,16 +5,22 @@ extends CharacterBody2D
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 var player_alive : bool = false
-var current_health : int = 5
-var max_health : int = 5
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var effect_animation_player : AnimationPlayer = $EffectAnimationPlayer
+@onready var hit_box : HitBox = $hit_box
+@onready var hurt_box : HurtBox = $PlayerInteractions/HurtBox
+@onready var player_state_machine : PlayerStateMachine = $PlayerStateMachine
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var player_state_machine: PlayerStateMachine = $PlayerStateMachine
-@onready var hit_box: HitBox = $hit_box
+
 
 signal direction_changed( new_direction : Vector2 )
+signal player_damaged( hurt_box : HurtBox )
 
+var invlunerable : bool = false
+var current_health : int = 5
+var max_health : int = 5
 
 func _ready() -> void:
 	#hide()
@@ -22,6 +28,9 @@ func _ready() -> void:
 	#setting this node equal to the player manager. Only works if the player is above enemies in the scene tree
 	PlayerManager.player = self
 	player_state_machine.initialize( self )
+	hit_box.damaged.connect( _take_damage )
+	current_health = max_health
+	print("you have ", current_health, "health")
 	pass
 	
 func spawn(pos):
@@ -31,7 +40,7 @@ func spawn(pos):
 	$CollisionShape2D.disabled = false
 	show()
 	print("You have 5 health")
-	hit_box.damaged.connect(_on_hit_box_damaged)
+	hit_box.damaged.connect(_take_damage)
 
 func _process(_delta: float) -> void:
 	direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -84,13 +93,38 @@ func animation_direction() -> String:
 	else:
 		return "side"
 		
-func _on_hit_box_damaged ( damage ) -> void:
+func _take_damage ( hurt_box : HurtBox ) -> void:
+	if invlunerable == true:
+		return
+	
+	update_health( -hurt_box.damage )
 	print("You took damage")
-	current_health -= damage
-	if current_health < 0: 
-		current_health = 0
+	current_health -= hurt_box.damage
+	if current_health > 0:
+		player_damaged.emit( hurt_box )
+	else:
+		player_damaged.emit( hurt_box )
+		update_health( max_health )
+		
 	print("Your health is", current_health)
+
+func update_health( delta : int ) -> void:
+	current_health = clampi( current_health + delta, 0, max_health )
+	
+	print("Your health is", current_health)
+	pass
+
+func make_invulnerable ( _duration : float = 1.5 ) -> void:
+	invlunerable = true
+	hit_box.monitoring = false
+	
+	await get_tree().create_timer( _duration ).timeout
+	
+	invlunerable = false
+	hit_box.monitoring = true
+	pass
 
 func die() -> void:
 	call_deferred("queue_free")
 	print("you died")
+	

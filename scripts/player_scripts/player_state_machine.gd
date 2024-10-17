@@ -38,12 +38,20 @@ func initialize( _player : Player ) ->void:
 		if child is PlayerState:
 			states.append(child)
 	
-	if states.size() > 0:
-		states[0].player = _player
-		change_state( states[0])
-		#inherit the process mode settings from the parent so if we disable parent 
-		#this will also be disabled
-		process_mode = Node.PROCESS_MODE_INHERIT
+	if states.size() == 0:
+		return
+	
+	states[0].player = _player
+	states[0].state_machine = self
+	
+	for state in states:
+		state.initialize()
+	
+		
+	change_state( states[0])
+	#inherit the process mode settings from the parent so if we disable parent 
+	#this will also be disabled
+	process_mode = Node.PROCESS_MODE_INHERIT
 
 
 func change_state( new_state : PlayerState ) -> void:
