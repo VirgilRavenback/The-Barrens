@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4acrcntvi6pc"
-path="res://.godot/imported/NPC_Tinkerer.png-99539af938cd31781f301cd0a9c36df7.ctex"
+uid="uid://tirs6d4g38ov"
+path="res://.godot/imported/GrayBoxSide.png-99dc2badde29cebfaf57b6d847101460.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/NPC_Tinkerer.png"
-dest_files=["res://.godot/imported/NPC_Tinkerer.png-99539af938cd31781f301cd0a9c36df7.ctex"]
+source_file="res://assets/Environment/GrayBoxSide.png"
+dest_files=["res://.godot/imported/GrayBoxSide.png-99dc2badde29cebfaf57b6d847101460.ctex"]
 
 [params]
 

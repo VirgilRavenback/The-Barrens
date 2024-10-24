@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by66bd6enbyt8"
-path="res://.godot/imported/NPC_Shopkeeper.png-aa04d8df1fbd71b570883e013f626c77.ctex"
+uid="uid://df86m8pd8u07l"
+path="res://.godot/imported/ShopBuilding2.png-516eb6a31b73b1b04076f2f031ea4078.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/NPC_Shopkeeper.png"
-dest_files=["res://.godot/imported/NPC_Shopkeeper.png-aa04d8df1fbd71b570883e013f626c77.ctex"]
+source_file="res://assets/Environment/ShopBuilding2.png"
+dest_files=["res://.godot/imported/ShopBuilding2.png-516eb6a31b73b1b04076f2f031ea4078.ctex"]
 
 [params]
 

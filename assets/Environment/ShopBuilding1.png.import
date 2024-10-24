@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nddwc8b2mcox"
-path="res://.godot/imported/Barrens_CanyonWallsTileset.png-97a6ba9f75dfd107bb397303e0abd920.ctex"
+uid="uid://ctarxvuijdkay"
+path="res://.godot/imported/ShopBuilding1.png-7ac78f5c8eb97ae8ec1e8e4e24b58681.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Barrens_CanyonWallsTileset.png"
-dest_files=["res://.godot/imported/Barrens_CanyonWallsTileset.png-97a6ba9f75dfd107bb397303e0abd920.ctex"]
+source_file="res://assets/Environment/ShopBuilding1.png"
+dest_files=["res://.godot/imported/ShopBuilding1.png-7ac78f5c8eb97ae8ec1e8e4e24b58681.ctex"]
 
 [params]
 

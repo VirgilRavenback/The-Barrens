@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://b3fbxvdpxqbg0"]
 
 [ext_resource type="Script" path="res://scripts/enemy_scripts/enemy.gd" id="1_y5576"]
-[ext_resource type="Texture2D" uid="uid://dudytjg0dwm6c" path="res://assets/Sprites/BallRobot_SpriteSheet.png" id="2_by5on"]
+[ext_resource type="Texture2D" uid="uid://dudytjg0dwm6c" path="res://assets/Enemies/BallRobot_SpriteSheet.png" id="2_by5on"]
 [ext_resource type="Script" path="res://scripts/enemy_scripts/enemy_state_machine.gd" id="3_ju1gv"]
 [ext_resource type="Script" path="res://scripts/enemy_scripts/enemy_state_idle.gd" id="4_jys7a"]
 [ext_resource type="Script" path="res://scripts/enemy_scripts/enemy_state_wander.gd" id="5_ir12i"]

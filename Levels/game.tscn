@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dxsmf1boy48yc" path="res://scenes/player.tscn" id="3_d0rfc"]
 [ext_resource type="PackedScene" uid="uid://c1t5edflcvg5" path="res://scenes/hud.tscn" id="4_2ky70"]
 [ext_resource type="PackedScene" uid="uid://b3fbxvdpxqbg0" path="res://scenes/ball_robot2.tscn" id="5_c2kg1"]
-[ext_resource type="Texture2D" uid="uid://nddwc8b2mcox" path="res://assets/Sprites/Barrens_CanyonWallsTileset.png" id="6_p461w"]
+[ext_resource type="Texture2D" uid="uid://nddwc8b2mcox" path="res://Tile Maps/Barrens_CanyonWallsTileset.png" id="6_p461w"]
 [ext_resource type="PackedScene" uid="uid://c04gioy8bjue8" path="res://scenes/grass.tscn" id="7_p82y7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_t852b"]

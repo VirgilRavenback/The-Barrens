@@ -329,11 +329,11 @@ libraries = {
 [node name="PlayerStateMachine" type="Node" parent="."]
 script = ExtResource("3_auwaa")
 
-[node name="Attack" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("6_hmj8d")
-
 [node name="Idle" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("4_vmvh3")
+
+[node name="Attack" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("6_hmj8d")
 
 [node name="Stun" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("6_x0i4s")

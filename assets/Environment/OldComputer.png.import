@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dudytjg0dwm6c"
-path="res://.godot/imported/BallRobot_SpriteSheet.png-7d2d6688ec1f2414b3b5fee9f5e33310.ctex"
+uid="uid://1g06vlgse3nm"
+path="res://.godot/imported/OldComputer.png-af173912c638b2968460ed70127c48b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/BallRobot_SpriteSheet.png"
-dest_files=["res://.godot/imported/BallRobot_SpriteSheet.png-7d2d6688ec1f2414b3b5fee9f5e33310.ctex"]
+source_file="res://assets/Environment/OldComputer.png"
+dest_files=["res://.godot/imported/OldComputer.png-af173912c638b2968460ed70127c48b9.ctex"]
 
 [params]
 
