@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://c65ru53phccxr"]
 
-[ext_resource type="PackedScene" uid="uid://dxsmf1boy48yc" path="res://scenes/player.tscn" id="1_i4sjl"]
+[ext_resource type="PackedScene" uid="uid://dxsmf1boy48yc" path="res://Player/player.tscn" id="1_i4sjl"]
 [ext_resource type="PackedScene" uid="uid://c86874fgjy5df" path="res://Tile Maps/Canyon.tscn" id="2_govi4"]
 [ext_resource type="Texture2D" uid="uid://nddwc8b2mcox" path="res://Tile Maps/Barrens_CanyonWallsTileset.png" id="3_inm0r"]
 [ext_resource type="PackedScene" uid="uid://b3fbxvdpxqbg0" path="res://scenes/ball_robot2.tscn" id="4_7bvow"]

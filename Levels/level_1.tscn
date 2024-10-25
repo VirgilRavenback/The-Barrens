@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=4 uid="uid://dcy044hvitups"]
 
-[ext_resource type="PackedScene" uid="uid://dxsmf1boy48yc" path="res://scenes/player.tscn" id="1_inouy"]
+[ext_resource type="PackedScene" uid="uid://dxsmf1boy48yc" path="res://Player/player.tscn" id="1_inouy"]
 [ext_resource type="PackedScene" uid="uid://c86874fgjy5df" path="res://Tile Maps/Canyon.tscn" id="2_q8dig"]
 [ext_resource type="Texture2D" uid="uid://ctarxvuijdkay" path="res://assets/Environment/ShopBuilding1.png" id="3_iqy35"]
 [ext_resource type="Texture2D" uid="uid://df86m8pd8u07l" path="res://assets/Environment/ShopBuilding2.png" id="4_lildb"]

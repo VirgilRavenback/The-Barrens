@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd2ssbdbhv7u5"
-path="res://.godot/imported/DesertChar_Full_Animations.png-8cfc324c44bfb6f87762e395b1fbc1de.ctex"
+uid="uid://cd7e8y0idoyf3"
+path="res://.godot/imported/icon.svg-2cb37327857c37cd2663f1bf0099cb9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/DesertChar_Full_Animations.png"
-dest_files=["res://.godot/imported/DesertChar_Full_Animations.png-8cfc324c44bfb6f87762e395b1fbc1de.ctex"]
+source_file="res://assets/Sprites/icon.svg"
+dest_files=["res://.godot/imported/icon.svg-2cb37327857c37cd2663f1bf0099cb9c.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
