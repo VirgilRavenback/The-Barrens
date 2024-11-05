@@ -30,6 +30,7 @@ func _ready() -> void:
 	player_state_machine.initialize( self )
 	hit_box.damaged.connect( _take_damage )
 	current_health = max_health
+	update_health( 0 )
 	print("you have ", current_health, "health")
 	pass
 	
@@ -112,7 +113,7 @@ func _take_damage ( hurt_box : HurtBox ) -> void:
 
 func update_health( delta : int ) -> void:
 	current_health = clampi( current_health + delta, 0, max_health )
-	
+	PlayerHud.update_health( current_health, max_health )
 	print("Your health is", current_health)
 	pass
 

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdu1nq4mm1bkl"]
+
+[ext_resource type="Texture2D" uid="uid://b0qo5ol72yooi" path="res://assets/Environment/SnakePlant.png" id="1_8wpfc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_huk2y"]
+radius = 8.0
+
+[node name="SnakePlant" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(37, 75)
+texture = ExtResource("1_8wpfc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_huk2y")

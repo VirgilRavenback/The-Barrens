@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://wrk8dscrynt5"]
+
+[ext_resource type="Texture2D" uid="uid://tirs6d4g38ov" path="res://assets/Environment/GrayBoxSide.png" id="1_b8vjc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mw4ii"]
+size = Vector2(32, 41.625)
+
+[node name="GrayStorageBoxLargeSide" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -136)
+texture = ExtResource("1_b8vjc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_mw4ii")

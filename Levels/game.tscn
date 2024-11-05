@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=4 uid="uid://daaobxp0hmkmp"]
 
-[ext_resource type="Script" path="res://scripts/level_scripts/game.gd" id="1_846fg"]
-[ext_resource type="PackedScene" uid="uid://b6y55ec1kixx8" path="res://scenes/ball_robot.tscn" id="2_gehdu"]
+[ext_resource type="Script" path="res://Levels/Scripts/game.gd" id="1_846fg"]
+[ext_resource type="PackedScene" uid="uid://b6y55ec1kixx8" path="res://Enemies/BallRobot/ball_robot.tscn" id="2_gehdu"]
 [ext_resource type="PackedScene" uid="uid://dxsmf1boy48yc" path="res://Player/player.tscn" id="3_d0rfc"]
-[ext_resource type="PackedScene" uid="uid://c1t5edflcvg5" path="res://scenes/hud.tscn" id="4_2ky70"]
-[ext_resource type="PackedScene" uid="uid://b3fbxvdpxqbg0" path="res://scenes/ball_robot2.tscn" id="5_c2kg1"]
+[ext_resource type="PackedScene" uid="uid://c1t5edflcvg5" path="res://GUI/hud.tscn" id="4_2ky70"]
+[ext_resource type="PackedScene" uid="uid://b3fbxvdpxqbg0" path="res://Enemies/BallRobot/ball_robot2.tscn" id="5_c2kg1"]
 [ext_resource type="Texture2D" uid="uid://nddwc8b2mcox" path="res://Tile Maps/Barrens_CanyonWallsTileset.png" id="6_p461w"]
-[ext_resource type="PackedScene" uid="uid://c04gioy8bjue8" path="res://scenes/grass.tscn" id="7_p82y7"]
+[ext_resource type="PackedScene" uid="uid://c04gioy8bjue8" path="res://Props/Plants/Bush/bush.tscn" id="7_p82y7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_t852b"]
 

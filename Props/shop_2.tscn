@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm7s1qj0mg8jj"]
+
+[ext_resource type="Texture2D" uid="uid://df86m8pd8u07l" path="res://assets/Environment/ShopBuilding2.png" id="1_7qmww"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rblpy"]
+size = Vector2(322, 234)
+
+[node name="Shop2" type="Node2D"]
+position = Vector2(-118, -462)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(5, 201)
+shape = SubResource("RectangleShape2D_rblpy")
+
+[node name="Shop_2" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(36, 21)
+texture = ExtResource("1_7qmww")

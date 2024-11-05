@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxpabwbxqgib8"]
 
-[ext_resource type="Texture2D" uid="uid://bimsyp4hexlbj" path="res://GUI/player_HUD/Player_Health.png" id="1_86365"]
+[ext_resource type="Texture2D" uid="uid://f1d4njco3fnd" path="res://GUI/player_HUD/Player_Health.png" id="1_86365"]
 [ext_resource type="Script" path="res://GUI/player_HUD/heart_gui.gd" id="1_uasey"]
 
 [node name="health_unit" type="Control"]
@@ -8,8 +8,9 @@ custom_minimum_size = Vector2(16, 16)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_uasey")
+metadata/_edit_vertical_guides_ = [-176.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_86365")
 centered = false
-vframes = 2
+hframes = 2

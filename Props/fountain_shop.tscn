@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkuaieimktmmx"]
+
+[ext_resource type="Texture2D" uid="uid://ctarxvuijdkay" path="res://assets/Environment/ShopBuilding1.png" id="1_burhk"]
+
+[node name="FountainShop" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Fountain_Shop" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-118, -462)
+texture = ExtResource("1_burhk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(48, -392, 224, -392, 224, -160, 176, -160, 176, -88, 96, -88, 96, -160, 48, -160)

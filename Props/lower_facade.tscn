@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh417kfj23ucw"]
+
+[ext_resource type="Texture2D" uid="uid://hi2xmyc0wtdp" path="res://assets/Environment/ShopBuildingBack.png" id="1_tfmw6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3a3q"]
+size = Vector2(480, 118)
+
+[node name="LowerFacade" type="Node2D"]
+
+[node name="Lower_Facade" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(176, 563)
+texture = ExtResource("1_tfmw6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(112, 280)
+shape = SubResource("RectangleShape2D_v3a3q")

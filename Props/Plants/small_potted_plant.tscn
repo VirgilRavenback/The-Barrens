@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctv8fiql5g1ct"]
+
+[ext_resource type="Texture2D" uid="uid://d1y6fn23kvow4" path="res://assets/Environment/SmallPlant.png" id="1_bmycr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mwo1y"]
+
+[node name="SmallPottedPlant" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bmycr")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_mwo1y")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c04gioy8bjue8"]
+
+[ext_resource type="Script" path="res://Props/Plants/Bush/bush.gd" id="1_2dsfk"]
+[ext_resource type="Texture2D" uid="uid://cl2hl3brb4v7q" path="res://assets/Environment/SmallShrub.png" id="2_5euy6"]
+[ext_resource type="PackedScene" uid="uid://b4mk5kg8yrmmk" path="res://GeneralNodes/hit_box.tscn" id="2_al2vu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7knk"]
+size = Vector2(35, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vuw7r"]
+size = Vector2(32, 16)
+
+[node name="Grass" type="Node2D"]
+position = Vector2(0, -8)
+script = ExtResource("1_2dsfk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, -23)
+texture = ExtResource("2_5euy6")
+
+[node name="hit_box" parent="." instance=ExtResource("2_al2vu")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
+position = Vector2(-0.5, 6)
+shape = SubResource("RectangleShape2D_g7knk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_vuw7r")
+debug_color = Color(0.627176, 0.530711, 0.036532, 0.42)

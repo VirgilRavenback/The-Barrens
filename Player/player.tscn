@@ -8,8 +8,8 @@
 [ext_resource type="Script" path="res://Player/player_scripts/player_state_attack.gd" id="6_hmj8d"]
 [ext_resource type="Script" path="res://Player/player_scripts/player_state_stun.gd" id="6_x0i4s"]
 [ext_resource type="Script" path="res://Player/player_scripts/player_interactions_host.gd" id="7_8bws6"]
-[ext_resource type="PackedScene" uid="uid://dexnds1vnbeh7" path="res://scenes/hurt_box.tscn" id="7_use68"]
-[ext_resource type="PackedScene" uid="uid://b4mk5kg8yrmmk" path="res://scenes/hit_box.tscn" id="9_goudb"]
+[ext_resource type="PackedScene" uid="uid://dexnds1vnbeh7" path="res://GeneralNodes/hurt_box.tscn" id="7_use68"]
+[ext_resource type="PackedScene" uid="uid://b4mk5kg8yrmmk" path="res://GeneralNodes/hit_box.tscn" id="9_goudb"]
 [ext_resource type="Script" path="res://Player/player_scripts/player_camera_script.gd" id="10_a36jx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pgw3e"]

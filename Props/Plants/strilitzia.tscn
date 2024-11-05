@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://7ik5ga4fj7by"]
+
+[ext_resource type="Texture2D" uid="uid://b0c705wxebm6w" path="res://assets/Environment/Strilitzia.png" id="1_e6u4i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_era45"]
+
+[node name="Strilitzia" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-24, -12)
+texture = ExtResource("1_e6u4i")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_era45")

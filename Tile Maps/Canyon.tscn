@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c86874fgjy5df"]
 
-[ext_resource type="Script" path="res://scripts/environment_scripts/level_tilemap.gd" id="1_f23pq"]
+[ext_resource type="Script" path="res://00_Globals/level_tilemap.gd" id="1_f23pq"]
 [ext_resource type="Texture2D" uid="uid://nddwc8b2mcox" path="res://Tile Maps/Barrens_CanyonWallsTileset.png" id="1_nxm0y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jm23g"]

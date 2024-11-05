@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://f1d4njco3fnd"
-path="res://.godot/imported/Player_Health.png-d54bce1f5cd1bf8802275c37309ee2b3.ctex"
+uid="uid://bkvm3f4o3dd0q"
+path="res://.godot/imported/NPC_Shopkeeper.png-aa04d8df1fbd71b570883e013f626c77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GUI/player_HUD/Player_Health.png"
-dest_files=["res://.godot/imported/Player_Health.png-d54bce1f5cd1bf8802275c37309ee2b3.ctex"]
+source_file="res://assets/Sprites/NPC_Shopkeeper.png"
+dest_files=["res://.godot/imported/NPC_Shopkeeper.png-aa04d8df1fbd71b570883e013f626c77.ctex"]
 
 [params]
 

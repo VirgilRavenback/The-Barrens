@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbkvqyy2q81mt"]
+
+[ext_resource type="Script" path="res://Levels/Scripts/player_spawn.gd" id="1_geh3u"]
+[ext_resource type="Texture2D" uid="uid://dd2ssbdbhv7u5" path="res://Player/DesertChar_Full_Animations.png" id="1_m6ckq"]
+
+[node name="PlayerSpawn" type="Node2D"]
+script = ExtResource("1_geh3u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.231373, 1, 0.721569, 0.823529)
+position = Vector2(0, -20)
+texture = ExtResource("1_m6ckq")
+hframes = 8
+vframes = 11
