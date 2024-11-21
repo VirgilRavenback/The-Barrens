@@ -7,9 +7,11 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hit_box: HitBox = $hit_box
 @onready var enemy_state_machine : EnemyStateMachine = $EnemyStateMachine
+@onready var audio: AudioStreamPlayer2D = $Audio/AudioStreamPlayer2D
 
 
 @export var current_health : int = 3
+@export var take_damage_sound : AudioStream
 
 const DIR_4 = [ Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP ]
 
@@ -83,12 +85,15 @@ func animation_direction() -> String:
 		return "side"
 		
 func _take_damage ( hurt_box : HurtBox ) -> void:
-	print("You took ", hurt_box.damage, "damage")
 	if invulnerable == true:
 		return
-		
-	current_health -= hurt_box.damage
 	
+	audio.stream = take_damage_sound
+	audio.pitch_scale = randf_range(1.1, 1.3)
+	audio.play()
+	
+	current_health -= hurt_box.damage
+	print("You dealt ", hurt_box.damage, "damage")
 	if current_health > 0:
 		enemy_damaged.emit( hurt_box )
 		print("Your health is", current_health)

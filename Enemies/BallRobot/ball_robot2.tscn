@@ -1,6 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://b3fbxvdpxqbg0"]
+[gd_scene load_steps=35 format=3 uid="uid://b3fbxvdpxqbg0"]
 
 [ext_resource type="Script" path="res://Enemies/BallRobot/enemy.gd" id="1_y5576"]
+[ext_resource type="AudioStream" uid="uid://cjjyawilh30ke" path="res://Enemies/BallRobot/audio/hit_01.wav" id="2_bwccr"]
 [ext_resource type="Texture2D" uid="uid://dudytjg0dwm6c" path="res://assets/Sprites/BallRobot_SpriteSheet.png" id="2_by5on"]
 [ext_resource type="Script" path="res://Enemies/BallRobot/enemy_state_machine.gd" id="3_ju1gv"]
 [ext_resource type="Script" path="res://Enemies/BallRobot/enemy_state_idle.gd" id="4_jys7a"]
@@ -332,6 +333,7 @@ collision_layer = 4
 collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_y5576")
+take_damage_sound = ExtResource("2_bwccr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_by5on")
@@ -405,5 +407,11 @@ position = Vector2(2.17596, 1.92697)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea"]
 position = Vector2(-2.17596, 6.07303)
 polygon = PackedVector2Array(-16, 0, 16, 0, 128, 128, -128, 128)
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio"]
+volume_db = -15.0
+max_polyphony = 4
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="EnemyStateMachine/Chase" method="_on_navigation_agent_2d_velocity_computed"]
