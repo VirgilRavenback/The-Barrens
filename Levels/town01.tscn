@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://dcy044hvitups"]
+[gd_scene load_steps=21 format=4 uid="uid://dcy044hvitups"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_cs2aw"]
 [ext_resource type="PackedScene" uid="uid://dbkvqyy2q81mt" path="res://Levels/player_spawn.tscn" id="2_4e4c6"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://c6b2e5wnfr723" path="res://Items/item_pickup/item_pickup.tscn" id="16_yah4e"]
 [ext_resource type="Resource" uid="uid://cmlvkngp7ceig" path="res://Items/credit.tres" id="17_v1syj"]
 [ext_resource type="Resource" uid="uid://cvraceougbisq" path="res://Items/potion.tres" id="18_p0upa"]
+[ext_resource type="Resource" uid="uid://dwskt4pelo4w8" path="res://Items/blue_potion.tres" id="19_17nlh"]
 [ext_resource type="Resource" uid="uid://x0nlar6t5dt8" path="res://Items/rock.tres" id="19_g60io"]
 
 [node name="level_1" type="Node2D"]
@@ -118,6 +119,11 @@ item_data = ExtResource("17_v1syj")
 [node name="ItemPickup2" parent="." instance=ExtResource("16_yah4e")]
 position = Vector2(-296, 64)
 item_data = ExtResource("18_p0upa")
+
+[node name="ItemPickup5" parent="." instance=ExtResource("16_yah4e")]
+modulate = Color(0, 0.91584, 0.92396, 1)
+position = Vector2(-576, -112)
+item_data = ExtResource("19_17nlh")
 
 [node name="ItemPickup3" parent="." instance=ExtResource("16_yah4e")]
 position = Vector2(-184, 72)

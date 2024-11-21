@@ -97,7 +97,6 @@ offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 10
-text = "A jar containing a magical liquid that will heal you if you drink it. Probably."
 autowrap_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Control"]
@@ -131,3 +130,7 @@ layout_mode = 2
 
 [node name="InventorySlot6" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_bbdig")]
 layout_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -30.0
+max_polyphony = 4
