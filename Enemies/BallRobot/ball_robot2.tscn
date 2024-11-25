@@ -1,17 +1,20 @@
-[gd_scene load_steps=35 format=3 uid="uid://b3fbxvdpxqbg0"]
+[gd_scene load_steps=40 format=3 uid="uid://b3fbxvdpxqbg0"]
 
-[ext_resource type="Script" path="res://Enemies/BallRobot/enemy.gd" id="1_y5576"]
+[ext_resource type="Script" path="res://Enemies/scripts/enemy.gd" id="1_y5576"]
 [ext_resource type="AudioStream" uid="uid://cjjyawilh30ke" path="res://Enemies/BallRobot/audio/hit_01.wav" id="2_bwccr"]
 [ext_resource type="Texture2D" uid="uid://dudytjg0dwm6c" path="res://assets/Sprites/BallRobot_SpriteSheet.png" id="2_by5on"]
-[ext_resource type="Script" path="res://Enemies/BallRobot/enemy_state_machine.gd" id="3_ju1gv"]
-[ext_resource type="Script" path="res://Enemies/BallRobot/enemy_state_idle.gd" id="4_jys7a"]
-[ext_resource type="Script" path="res://Enemies/BallRobot/enemy_state_wander.gd" id="5_ir12i"]
-[ext_resource type="Script" path="res://Enemies/BallRobot/enemy_state_chase.gd" id="5_vj6cv"]
-[ext_resource type="Script" path="res://Enemies/BallRobot/enemy_state_stun.gd" id="6_jvg5u"]
-[ext_resource type="Script" path="res://Enemies/BallRobot/enemy_state_destroy.gd" id="7_5y67f"]
+[ext_resource type="Script" path="res://Enemies/scripts/enemy_state_machine.gd" id="3_ju1gv"]
+[ext_resource type="Script" path="res://Enemies/scripts/enemy_state_idle.gd" id="4_jys7a"]
+[ext_resource type="Script" path="res://Enemies/scripts/enemy_state_wander.gd" id="5_ir12i"]
+[ext_resource type="Script" path="res://Enemies/scripts/enemy_state_chase.gd" id="5_vj6cv"]
+[ext_resource type="Script" path="res://Enemies/scripts/enemy_state_stun.gd" id="6_jvg5u"]
+[ext_resource type="Script" path="res://Enemies/scripts/enemy_state_destroy.gd" id="7_5y67f"]
 [ext_resource type="PackedScene" uid="uid://b4mk5kg8yrmmk" path="res://GeneralNodes/hit_box.tscn" id="9_31aho"]
 [ext_resource type="PackedScene" uid="uid://dexnds1vnbeh7" path="res://GeneralNodes/hurt_box.tscn" id="10_8qy6h"]
+[ext_resource type="Script" path="res://Enemies/scripts/drop_data.gd" id="11_0s5f7"]
 [ext_resource type="PackedScene" uid="uid://ug8vxtmts6ve" path="res://GeneralNodes/vision_area.tscn" id="11_5qnsi"]
+[ext_resource type="Resource" uid="uid://cmlvkngp7ceig" path="res://Items/credit.tres" id="12_u4w4h"]
+[ext_resource type="Resource" uid="uid://cvraceougbisq" path="res://Items/potion.tres" id="13_86tyh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wevjs"]
 
@@ -322,6 +325,20 @@ _data = {
 "walk_up": SubResource("Animation_m01fv")
 }
 
+[sub_resource type="Resource" id="Resource_hskwv"]
+script = ExtResource("11_0s5f7")
+item = ExtResource("12_u4w4h")
+probability = 100.0
+min_amount = 1
+max_amount = 4
+
+[sub_resource type="Resource" id="Resource_qfg5y"]
+script = ExtResource("11_0s5f7")
+item = ExtResource("13_86tyh")
+probability = 33.0
+min_amount = 1
+max_amount = 1
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_jpccm"]
 radius = 56.0
 
@@ -383,6 +400,7 @@ next_state = NodePath("../Chase")
 
 [node name="Destroy" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("7_5y67f")
+drops = Array[ExtResource("11_0s5f7")]([SubResource("Resource_hskwv"), SubResource("Resource_qfg5y")])
 
 [node name="AttackArea2D" type="Area2D" parent="."]
 visible = false
