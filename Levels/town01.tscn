@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dcy044hvitups"]
+[gd_scene load_steps=27 format=4 uid="uid://dcy044hvitups"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_cs2aw"]
 [ext_resource type="PackedScene" uid="uid://dbkvqyy2q81mt" path="res://Levels/player_spawn.tscn" id="2_4e4c6"]
@@ -20,6 +20,21 @@
 [ext_resource type="Resource" uid="uid://cvraceougbisq" path="res://Items/potion.tres" id="18_p0upa"]
 [ext_resource type="Resource" uid="uid://dwskt4pelo4w8" path="res://Items/blue_potion.tres" id="19_17nlh"]
 [ext_resource type="Resource" uid="uid://x0nlar6t5dt8" path="res://Items/rock.tres" id="19_g60io"]
+[ext_resource type="PackedScene" uid="uid://00hlbiqn6hi8" path="res://Chests/chest.tscn" id="21_dvqru"]
+[ext_resource type="Script" path="res://Items/item_effects/item_effect.gd" id="22_c3utn"]
+[ext_resource type="Script" path="res://Items/scripts/item_data.gd" id="23_5do3e"]
+[ext_resource type="Texture2D" uid="uid://buan6qjvkair8" path="res://Items/sprites/Items.png" id="24_lj75v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynndi"]
+atlas = ExtResource("24_lj75v")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="Resource" id="Resource_m1uxl"]
+script = ExtResource("23_5do3e")
+name = ""
+description = ""
+texture = SubResource("AtlasTexture_ynndi")
+effects = Array[ExtResource("22_c3utn")]([])
 
 [node name="level_1" type="Node2D"]
 y_sort_enabled = true
@@ -112,23 +127,28 @@ z_index = 2
 position = Vector2(438, -205)
 texture = ExtResource("14_u0o5c")
 
-[node name="ItemPickup" parent="." instance=ExtResource("16_yah4e")]
+[node name="Interactions" type="Node" parent="."]
+
+[node name="ItemPickup" parent="Interactions" instance=ExtResource("16_yah4e")]
 position = Vector2(-272, -48)
 item_data = ExtResource("17_v1syj")
 
-[node name="ItemPickup2" parent="." instance=ExtResource("16_yah4e")]
+[node name="ItemPickup2" parent="Interactions" instance=ExtResource("16_yah4e")]
 position = Vector2(-296, 64)
 item_data = ExtResource("18_p0upa")
 
-[node name="ItemPickup5" parent="." instance=ExtResource("16_yah4e")]
+[node name="ItemPickup5" parent="Interactions" instance=ExtResource("16_yah4e")]
 modulate = Color(0, 0.91584, 0.92396, 1)
 position = Vector2(-576, -112)
 item_data = ExtResource("19_17nlh")
 
-[node name="ItemPickup3" parent="." instance=ExtResource("16_yah4e")]
+[node name="ItemPickup3" parent="Interactions" instance=ExtResource("16_yah4e")]
 position = Vector2(-184, 72)
 item_data = ExtResource("19_g60io")
 
-[node name="ItemPickup4" parent="." instance=ExtResource("16_yah4e")]
+[node name="ItemPickup4" parent="Interactions" instance=ExtResource("16_yah4e")]
 position = Vector2(-128, -40)
 item_data = ExtResource("17_v1syj")
+
+[node name="Chest" parent="Interactions" instance=ExtResource("21_dvqru")]
+item_data = SubResource("Resource_m1uxl")
