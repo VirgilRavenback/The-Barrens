@@ -2,7 +2,6 @@ class_name InteractionArea extends Node2D
 
 @onready var interaction_area: Area2D = $"."
 
-signal interact
 
 func _ready() -> void:
 	interaction_area.area_entered.connect( _on_area_entered )
@@ -11,7 +10,7 @@ func _ready() -> void:
 
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _on_area_entered( b ) -> void:

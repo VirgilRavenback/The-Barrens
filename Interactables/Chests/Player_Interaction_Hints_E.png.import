@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da1k3ojxa0bu8"
-path="res://.godot/imported/AncientChest_Test.png-bcd3071a3105fbd5f10881687e842258.ctex"
+uid="uid://de7agj3cajcv4"
+path="res://.godot/imported/Player_Interaction_Hints_E.png-2bc485bafaaf49706fdbfba6ec7dff0e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Chests/Ancient_Chest/AncientChest_Test.png"
-dest_files=["res://.godot/imported/AncientChest_Test.png-bcd3071a3105fbd5f10881687e842258.ctex"]
+source_file="res://Interactables/Chests/Player_Interaction_Hints_E.png"
+dest_files=["res://.godot/imported/Player_Interaction_Hints_E.png-2bc485bafaaf49706fdbfba6ec7dff0e.ctex"]
 
 [params]
 

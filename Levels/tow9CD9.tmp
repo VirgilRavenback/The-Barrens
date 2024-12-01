@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dcy044hvitups"]
+[gd_scene load_steps=17 format=4 uid="uid://dcy044hvitups"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_cs2aw"]
 [ext_resource type="PackedScene" uid="uid://dbkvqyy2q81mt" path="res://Levels/player_spawn.tscn" id="2_4e4c6"]
@@ -15,8 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://bkvm3f4o3dd0q" path="res://assets/Sprites/NPC_Shopkeeper.png" id="13_tb818"]
 [ext_resource type="Texture2D" uid="uid://cw6req1vveig4" path="res://assets/Sprites/NPC_Tinkerer.png" id="14_u0o5c"]
 [ext_resource type="PackedScene" uid="uid://dwy4pip084wpt" path="res://Levels/level_transition.tscn" id="15_u5egu"]
-[ext_resource type="Resource" uid="uid://cmlvkngp7ceig" path="res://Items/credit.tres" id="17_v1syj"]
-[ext_resource type="Resource" uid="uid://x0nlar6t5dt8" path="res://Items/rock.tres" id="19_g60io"]
 [ext_resource type="PackedScene" uid="uid://00hlbiqn6hi8" path="res://Interactables/Chests/chest.tscn" id="21_dvqru"]
 
 [node name="level_1" type="Node2D"]
@@ -113,13 +111,12 @@ texture = ExtResource("14_u0o5c")
 [node name="Interactions" type="Node" parent="."]
 
 [node name="Chest" parent="Interactions" instance=ExtResource("21_dvqru")]
+quantity = 1
 
 [node name="Chest2" parent="Interactions" instance=ExtResource("21_dvqru")]
 position = Vector2(-156, 0)
-item_data = ExtResource("17_v1syj")
-quantity = 99
+quantity = 1
 
 [node name="Chest3" parent="Interactions" instance=ExtResource("21_dvqru")]
 position = Vector2(108, 2)
-item_data = ExtResource("19_g60io")
-quantity = 5
+quantity = 1
