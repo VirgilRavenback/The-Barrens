@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://da1i20y6m8k7j"]
+
+[ext_resource type="Script" path="res://NPC/npc.gd" id="1_abdsw"]
+[ext_resource type="Texture2D" uid="uid://sx16ieppt57n" path="res://NPC/Sprites/ShopKeeper_Animations.png" id="2_ds514"]
+[ext_resource type="PackedScene" uid="uid://dui5f7unvlmt5" path="res://NPC/npc_behavior_idle.tscn" id="3_o3a53"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_atmem"]
+height = 36.0
+
+[node name="Npc" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 3
+script = ExtResource("1_abdsw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ds514")
+hframes = 16
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 22)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_atmem")
+
+[node name="NpcBehaviorIdle" parent="." instance=ExtResource("3_o3a53")]

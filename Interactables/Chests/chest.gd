@@ -13,6 +13,7 @@ class_name Chest extends Node2D
 @onready var sprite_2d_interaction: Sprite2D = $Sprite2D_Interaction
 @onready var sprite_2d_item: Sprite2D = $Sprite2D_Item
 @onready var sprite_2d_shadow: Sprite2D = $Sprite2D_Shadow
+@onready var persistent_data_is_open: PersistentDataHandler = $PersistentData_IsOpen
 
 @export var item_data : ItemData : set = _set_item_data
 @export var quantity : int = 1 : set = _set_quantity
@@ -31,6 +32,16 @@ func _ready() -> void:
 	area_2d.area_entered.connect( _on_area_entered )
 	area_2d.area_exited.connect( _on_area_exited )
 	sprite_2d_interaction.visible = false
+	persistent_data_is_open.data_loaded.connect( set_chest_state )
+	set_chest_state()
+	pass
+
+func set_chest_state() -> void:
+	is_open = persistent_data_is_open.value
+	if is_open:
+		animation_player.play("opened")
+	else:
+		animation_player.play("closed")
 
 func _on_area_entered( _a : Area2D ) -> void:
 	sprite_2d_interaction.visible = true
@@ -50,6 +61,7 @@ func player_interact() -> void:
 	if is_open == true:
 		return
 	is_open = true
+	persistent_data_is_open.set_value()
 	animation_player.play("open_chest")
 	if item_data and quantity > 0:
 		PlayerManager.INVENTORY_DATA.add_item( item_data, quantity )

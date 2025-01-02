@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://00hlbiqn6hi8"]
+[gd_scene load_steps=17 format=3 uid="uid://00hlbiqn6hi8"]
 
 [ext_resource type="Script" path="res://Interactables/Chests/chest.gd" id="1_158b0"]
 [ext_resource type="Texture2D" uid="uid://x7enasblh4yr" path="res://Interactables/Chests/Ancient_Chest/AncientChest_Test_Shadow.png" id="2_kbknm"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://de7agj3cajcv4" path="res://Interactables/Chests/Player_Interaction_Hints_E.png" id="5_be0q0"]
 [ext_resource type="Texture2D" uid="uid://buan6qjvkair8" path="res://Items/sprites/Items.png" id="6_vfa12"]
 [ext_resource type="FontFile" uid="uid://cmf71bssig313" path="res://assets/Fonts/DisposableDroidBB.ttf" id="7_jrhdv"]
+[ext_resource type="PackedScene" uid="uid://dy8ghh387sbx8" path="res://GeneralNodes/PersistentDataHandler/persistent_data_handler.tscn" id="8_o2w02"]
 
 [sub_resource type="Animation" id="Animation_1t1j8"]
 length = 0.001
@@ -249,6 +250,7 @@ atlas = ExtResource("6_vfa12")
 region = Rect2(32, 0, 32, 32)
 
 [node name="Chest" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_158b0")
 
 [node name="Sprite2D_Shadow" type="Sprite2D" parent="."]
@@ -326,6 +328,6 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 12
-text = "Press E to 
-Open"
 horizontal_alignment = 1
+
+[node name="PersistentData_IsOpen" parent="." instance=ExtResource("8_o2w02")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dcy044hvitups"]
+[gd_scene load_steps=20 format=4 uid="uid://dcy044hvitups"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_cs2aw"]
 [ext_resource type="PackedScene" uid="uid://dbkvqyy2q81mt" path="res://Levels/player_spawn.tscn" id="2_4e4c6"]
@@ -12,9 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://dm7s1qj0mg8jj" path="res://Props/shop_2.tscn" id="10_kdagv"]
 [ext_resource type="PackedScene" uid="uid://bh417kfj23ucw" path="res://Props/lower_facade.tscn" id="11_eieg8"]
 [ext_resource type="PackedScene" uid="uid://dkuaieimktmmx" path="res://Props/fountain_shop.tscn" id="12_jfqej"]
-[ext_resource type="Texture2D" uid="uid://bkvm3f4o3dd0q" path="res://assets/Sprites/NPC_Shopkeeper.png" id="13_tb818"]
-[ext_resource type="Texture2D" uid="uid://cw6req1vveig4" path="res://assets/Sprites/NPC_Tinkerer.png" id="14_u0o5c"]
+[ext_resource type="Texture2D" uid="uid://cw6req1vveig4" path="res://NPC/Sprites/NPC_Tinkerer.png" id="14_u0o5c"]
 [ext_resource type="PackedScene" uid="uid://dwy4pip084wpt" path="res://Levels/level_transition.tscn" id="15_u5egu"]
+[ext_resource type="PackedScene" uid="uid://da1i20y6m8k7j" path="res://NPC/npc.tscn" id="15_uifbv"]
+[ext_resource type="Resource" uid="uid://cg3mgj021k25a" path="res://NPC/00_NPCs/npc01.tres" id="16_n02q5"]
 [ext_resource type="Resource" uid="uid://cmlvkngp7ceig" path="res://Items/credit.tres" id="17_v1syj"]
 [ext_resource type="Resource" uid="uid://x0nlar6t5dt8" path="res://Items/rock.tres" id="19_g60io"]
 [ext_resource type="PackedScene" uid="uid://00hlbiqn6hi8" path="res://Interactables/Chests/chest.tscn" id="21_dvqru"]
@@ -92,6 +93,7 @@ position = Vector2(400, -200)
 y_sort_enabled = true
 
 [node name="Shop2" parent="Buildings" instance=ExtResource("10_kdagv")]
+y_sort_enabled = true
 
 [node name="LowerFacade" parent="Buildings" instance=ExtResource("11_eieg8")]
 
@@ -100,26 +102,28 @@ y_sort_enabled = true
 [node name="NPCs" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Shopkeeper" type="Sprite2D" parent="NPCs"]
-z_index = 2
-position = Vector2(-148, -112)
-texture = ExtResource("13_tb818")
-
 [node name="Tinkerer" type="Sprite2D" parent="NPCs"]
 z_index = 2
 position = Vector2(438, -205)
 texture = ExtResource("14_u0o5c")
 
+[node name="Npc" parent="NPCs" instance=ExtResource("15_uifbv")]
+position = Vector2(-145, -114)
+npc_resource = ExtResource("16_n02q5")
+
 [node name="Interactions" type="Node" parent="."]
 
 [node name="Chest" parent="Interactions" instance=ExtResource("21_dvqru")]
+y_sort_enabled = true
 
 [node name="Chest2" parent="Interactions" instance=ExtResource("21_dvqru")]
+y_sort_enabled = true
 position = Vector2(-156, 0)
 item_data = ExtResource("17_v1syj")
 quantity = 99
 
 [node name="Chest3" parent="Interactions" instance=ExtResource("21_dvqru")]
+y_sort_enabled = true
 position = Vector2(108, 2)
 item_data = ExtResource("19_g60io")
 quantity = 5

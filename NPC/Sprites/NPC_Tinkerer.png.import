@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cw6req1vveig4"
-path="res://.godot/imported/NPC_Tinkerer.png-99539af938cd31781f301cd0a9c36df7.ctex"
+path="res://.godot/imported/NPC_Tinkerer.png-87f3ef223f6f5317417f38fd331fd147.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/NPC_Tinkerer.png"
-dest_files=["res://.godot/imported/NPC_Tinkerer.png-99539af938cd31781f301cd0a9c36df7.ctex"]
+source_file="res://NPC/Sprites/NPC_Tinkerer.png"
+dest_files=["res://.godot/imported/NPC_Tinkerer.png-87f3ef223f6f5317417f38fd331fd147.ctex"]
 
 [params]
 
