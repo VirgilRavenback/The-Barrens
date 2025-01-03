@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dxsmf1boy48yc"]
+[gd_scene load_steps=42 format=3 uid="uid://dxsmf1boy48yc"]
 
 [ext_resource type="Script" path="res://Player/player_scripts/player_2_0.gd" id="1_wbqjb"]
 [ext_resource type="Texture2D" uid="uid://dd2ssbdbhv7u5" path="res://Player/DesertChar_Full_Animations.png" id="2_obm7c"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Player/player_scripts/player_state_stun.gd" id="6_x0i4s"]
 [ext_resource type="Script" path="res://Player/player_scripts/player_interactions_host.gd" id="7_8bws6"]
 [ext_resource type="PackedScene" uid="uid://dexnds1vnbeh7" path="res://GeneralNodes/hurt_box.tscn" id="7_use68"]
+[ext_resource type="Script" path="res://Player/player_scripts/player_state_dash.gd" id="9_fmtq6"]
 [ext_resource type="PackedScene" uid="uid://b4mk5kg8yrmmk" path="res://GeneralNodes/hit_box.tscn" id="9_goudb"]
 [ext_resource type="Script" path="res://Player/player_scripts/player_camera_script.gd" id="10_a36jx"]
 
@@ -283,12 +284,66 @@ tracks/0/keys = {
 "values": [56, 57, 58, 59, 60, 61, 62, 63]
 }
 
+[sub_resource type="Animation" id="Animation_f4xlk"]
+resource_name = "dash_down"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [48]
+}
+
+[sub_resource type="Animation" id="Animation_gvdka"]
+resource_name = "dash_side"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [32]
+}
+
+[sub_resource type="Animation" id="Animation_quocq"]
+resource_name = "dash_up"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [56]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ggpjp"]
 _data = {
 "RESET": SubResource("Animation_yyl8p"),
 "attack_down": SubResource("Animation_8eeu6"),
 "attack_side": SubResource("Animation_mygj0"),
 "attack_up": SubResource("Animation_ulxtg"),
+"dash_down": SubResource("Animation_f4xlk"),
+"dash_side": SubResource("Animation_gvdka"),
+"dash_up": SubResource("Animation_quocq"),
 "idle_down": SubResource("Animation_fscdi"),
 "idle_side": SubResource("Animation_1bpbl"),
 "idle_up": SubResource("Animation_tj411"),
@@ -406,6 +461,9 @@ knockback_speed = 300.0
 [node name="Walk" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("5_18ixt")
 movement_speed = 300.0
+
+[node name="Dash" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("9_fmtq6")
 
 [node name="PlayerInteractions" type="Node2D" parent="."]
 script = ExtResource("7_8bws6")

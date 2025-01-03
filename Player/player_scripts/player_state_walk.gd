@@ -5,6 +5,7 @@ extends PlayerState
 @export var movement_speed : float
 @onready var idle: PlayerState = $"../Idle"
 @onready var attack: PlayerState = $"../Attack"
+@onready var dash: PlayerState = $"../Dash"
 
 
 func enter() -> void:
@@ -35,4 +36,6 @@ func handle_input( _event : InputEvent ) -> PlayerState:
 	if _event.is_action_pressed("interact"):
 		PlayerManager.interact_pressed.emit()
 		print("player is trying to interact")
+	if _event.is_action_pressed("dash"):
+		return dash
 	return null
