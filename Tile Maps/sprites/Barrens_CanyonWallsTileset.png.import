@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://nddwc8b2mcox"
-path="res://.godot/imported/Barrens_CanyonWallsTileset.png-0ee13e552e9ca5d992263c255da4e43b.ctex"
+path="res://.godot/imported/Barrens_CanyonWallsTileset.png-254900a439cc11a836610ea0a496262b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tile Maps/Barrens_CanyonWallsTileset.png"
-dest_files=["res://.godot/imported/Barrens_CanyonWallsTileset.png-0ee13e552e9ca5d992263c255da4e43b.ctex"]
+source_file="res://Tile Maps/sprites/Barrens_CanyonWallsTileset.png"
+dest_files=["res://.godot/imported/Barrens_CanyonWallsTileset.png-254900a439cc11a836610ea0a496262b.ctex"]
 
 [params]
 
