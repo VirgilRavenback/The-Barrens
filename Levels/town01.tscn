@@ -37,6 +37,7 @@ size = 6
 position = Vector2(-848, -264)
 scale = Vector2(1, 1.64)
 level = "res://Levels/Dungeon01/01.tscn"
+center_player = true
 size = 6
 side = 2
 

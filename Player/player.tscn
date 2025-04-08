@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dxsmf1boy48yc"]
+[gd_scene load_steps=44 format=3 uid="uid://dxsmf1boy48yc"]
 
 [ext_resource type="Script" path="res://Player/player_scripts/player_2_0.gd" id="1_wbqjb"]
 [ext_resource type="Texture2D" uid="uid://dd2ssbdbhv7u5" path="res://Player/DesertChar_Full_Animations.png" id="2_obm7c"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Player/player_scripts/player_state_dash.gd" id="9_fmtq6"]
 [ext_resource type="PackedScene" uid="uid://b4mk5kg8yrmmk" path="res://GeneralNodes/hit_box.tscn" id="9_goudb"]
 [ext_resource type="Script" path="res://Player/player_scripts/player_camera_script.gd" id="10_a36jx"]
+[ext_resource type="Script" path="res://Player/player_scripts/push_area.gd" id="12_dlkn0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pgw3e"]
 radius = 8.0
@@ -365,6 +366,9 @@ height = 64.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dmph0"]
 size = Vector2(22, 25.375)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hollu"]
+size = Vector2(18, 6.34375)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_abk1t"]
 
 [sub_resource type="Animation" id="Animation_xeh3u"]
@@ -435,7 +439,7 @@ vframes = 11
 show_behind_parent = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 20)
+position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_pgw3e")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -474,6 +478,7 @@ collision_mask = 4
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteractions/HurtBox"]
+visible = false
 position = Vector2(0.655099, 25.9917)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ex7wi")
@@ -485,14 +490,27 @@ collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteractions/InteractionArea"]
+visible = false
 position = Vector2(0, 9.3125)
 shape = SubResource("RectangleShape2D_dmph0")
 debug_color = Color(0.21623, 0.639404, 0, 0.42)
+
+[node name="PushArea" type="Area2D" parent="PlayerInteractions"]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+script = ExtResource("12_dlkn0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteractions/PushArea"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_hollu")
+debug_color = Color(0.613892, 0.358984, 1, 0.42)
 
 [node name="hit_box" parent="." instance=ExtResource("9_goudb")]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
+visible = false
 position = Vector2(0, 14)
 shape = SubResource("CapsuleShape2D_abk1t")
 debug_color = Color(2.11775e-06, 0.630214, 0.474804, 0.42)
