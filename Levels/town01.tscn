@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://dcy044hvitups"]
+[gd_scene load_steps=22 format=4 uid="uid://dcy044hvitups"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_cs2aw"]
 [ext_resource type="PackedScene" uid="uid://dbkvqyy2q81mt" path="res://Levels/player_spawn.tscn" id="2_4e4c6"]
@@ -14,15 +14,18 @@
 [ext_resource type="PackedScene" uid="uid://dkuaieimktmmx" path="res://Props/fountain_shop.tscn" id="12_jfqej"]
 [ext_resource type="Texture2D" uid="uid://cw6req1vveig4" path="res://NPC/Sprites/NPC_Tinkerer.png" id="14_u0o5c"]
 [ext_resource type="PackedScene" uid="uid://dwy4pip084wpt" path="res://Levels/level_transition.tscn" id="15_u5egu"]
-[ext_resource type="PackedScene" uid="uid://da1i20y6m8k7j" path="res://NPC/npc.tscn" id="15_uifbv"]
 [ext_resource type="Resource" uid="uid://cg3mgj021k25a" path="res://NPC/00_NPCs/npc01.tres" id="16_n02q5"]
 [ext_resource type="Resource" uid="uid://cmlvkngp7ceig" path="res://Items/credit.tres" id="17_v1syj"]
 [ext_resource type="Resource" uid="uid://x0nlar6t5dt8" path="res://Items/rock.tres" id="19_g60io"]
+[ext_resource type="PackedScene" uid="uid://d1gpe08vhsvj6" path="res://NPC/00_NPCs/shopkeeper.tscn" id="19_uhfs8"]
+[ext_resource type="AudioStream" uid="uid://brvjx0y8gjm2d" path="res://Levels/Music/example_music_02.ogg" id="20_nc5g8"]
 [ext_resource type="PackedScene" uid="uid://00hlbiqn6hi8" path="res://Interactables/Chests/chest.tscn" id="21_dvqru"]
+[ext_resource type="PackedScene" uid="uid://dui5f7unvlmt5" path="res://NPC/npc_behavior_idle.tscn" id="21_j8yfe"]
 
 [node name="level_1" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_cs2aw")
+music = ExtResource("20_nc5g8")
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("2_4e4c6")]
 position = Vector2(-392, -96)
@@ -30,7 +33,7 @@ position = Vector2(-392, -96)
 [node name="LevelTransition" parent="." instance=ExtResource("15_u5egu")]
 position = Vector2(-992, -192)
 scale = Vector2(1.60446, 1)
-level = "res://Levels/canyon01.tscn"
+level = "res://Levels/Canyon/canyon01.tscn"
 size = 6
 
 [node name="LevelTransition2" parent="." instance=ExtResource("15_u5egu")]
@@ -117,10 +120,6 @@ z_index = 2
 position = Vector2(438, -205)
 texture = ExtResource("14_u0o5c")
 
-[node name="Npc" parent="NPCs" instance=ExtResource("15_uifbv")]
-position = Vector2(-145, -114)
-npc_resource = ExtResource("16_n02q5")
-
 [node name="Interactions" type="Node" parent="."]
 
 [node name="Chest" parent="Interactions" instance=ExtResource("21_dvqru")]
@@ -137,3 +136,9 @@ y_sort_enabled = true
 position = Vector2(108, 2)
 item_data = ExtResource("19_g60io")
 quantity = 5
+
+[node name="Shopkeeper" parent="." instance=ExtResource("19_uhfs8")]
+position = Vector2(-136, -72)
+npc_resource = ExtResource("16_n02q5")
+
+[node name="NpcBehaviorIdle" parent="Shopkeeper" instance=ExtResource("21_j8yfe")]

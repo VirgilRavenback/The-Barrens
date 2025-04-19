@@ -2,9 +2,13 @@ class_name BarredDoor
 extends Node2D
 
 
+var is_open : bool = false
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var is_open_data: PersistentDataHandler = $PersistentDataHandler
 
 func _ready () -> void:
+	
 	pass
 
 

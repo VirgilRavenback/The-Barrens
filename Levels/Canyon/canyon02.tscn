@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=4 uid="uid://pn8nc4y3d6t"]
+[gd_scene load_steps=7 format=4 uid="uid://pn8nc4y3d6t"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_3tmmy"]
 [ext_resource type="PackedScene" uid="uid://c86874fgjy5df" path="res://Tile Maps/Canyon.tscn" id="1_sws3r"]
+[ext_resource type="AudioStream" uid="uid://dm5g8l8q5nhs4" path="res://Levels/Music/example_music_03.ogg" id="2_1l40x"]
 [ext_resource type="PackedScene" uid="uid://b3fbxvdpxqbg0" path="res://Enemies/BallRobot/ball_robot2.tscn" id="2_ukgwj"]
 [ext_resource type="PackedScene" uid="uid://31fhp31qwtg1" path="res://Props/Boxes/gray_storage_box_large.tscn" id="3_2x2td"]
 [ext_resource type="PackedScene" uid="uid://dwy4pip084wpt" path="res://Levels/level_transition.tscn" id="5_qsd2p"]
 
 [node name="Canyon02" type="Node2D"]
 script = ExtResource("1_3tmmy")
+music = ExtResource("2_1l40x")
 
 [node name="BallRobot_2" parent="." instance=ExtResource("2_ukgwj")]
 position = Vector2(-200, 64)
@@ -29,8 +31,8 @@ tile_map_data = PackedByteArray("AAD0//z/AAABAAUAAAD0//3/AAABAAUAAAD0//7/AAABAAU
 position = Vector2(-608, -536)
 
 [node name="LevelTransition" parent="." instance=ExtResource("5_qsd2p")]
-position = Vector2(64, -32)
-level = "res://Levels/canyon01.tscn"
+position = Vector2(48, -32)
+level = "res://Levels/Canyon/canyon01.tscn"
 target_transition_area = "LevelTransition2"
 size = 4
 side = 1

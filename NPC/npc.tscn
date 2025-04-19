@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://da1i20y6m8k7j"]
 
-[ext_resource type="Script" path="res://NPC/npc.gd" id="1_abdsw"]
+[ext_resource type="Script" path="res://NPC/Scripts/npc.gd" id="1_abdsw"]
 [ext_resource type="Texture2D" uid="uid://sx16ieppt57n" path="res://NPC/Sprites/ShopKeeper_Animations.png" id="2_ds514"]
 [ext_resource type="PackedScene" uid="uid://dui5f7unvlmt5" path="res://NPC/npc_behavior_idle.tscn" id="3_o3a53"]
 
