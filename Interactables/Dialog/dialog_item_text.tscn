@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://drcufdjgracfi"]
+
+[ext_resource type="Script" path="res://Interactables/Dialog/scripts/dialog_text.gd" id="1_wkclh"]
+
+[node name="DialogItemText" type="Node2D"]
+script = ExtResource("1_wkclh")

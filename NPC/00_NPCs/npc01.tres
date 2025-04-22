@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="NPCResource" load_steps=3 format=3 uid="uid://cg3mgj021k25a"]
+[gd_resource type="Resource" script_class="NPCResource" load_steps=4 format=3 uid="uid://cg3mgj021k25a"]
 
+[ext_resource type="Texture2D" uid="uid://c1y7yuav5faos" path="res://NPC/Sprites/portraits/npc_portrait_01.png" id="1_3piql"]
 [ext_resource type="Script" path="res://NPC/Scripts/npc_resource.gd" id="1_m708y"]
 [ext_resource type="Texture2D" uid="uid://sx16ieppt57n" path="res://NPC/Sprites/ShopKeeper_Animations.png" id="2_5pi36"]
 
@@ -7,4 +8,5 @@
 script = ExtResource("1_m708y")
 npc_name = "Shopkeeper"
 sprite = ExtResource("2_5pi36")
-dialog_audio_pitch = ""
+portrait = ExtResource("1_3piql")
+dialog_audio_pitch = 0.7

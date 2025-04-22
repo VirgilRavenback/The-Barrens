@@ -20,7 +20,8 @@ func clear_inventory() -> void:
 		c.queue_free()
 	pass
 
-func update_inventory( i : int = 0 ) -> void:
+func update_inventory( _i : int = 0 ) -> void:
+	clear_inventory()
 	for s in data.slots:
 		var new_slot = INVENTORY_SLOT.instantiate()
 		add_child( new_slot )

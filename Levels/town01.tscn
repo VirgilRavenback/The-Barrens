@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dcy044hvitups"]
+[gd_scene load_steps=25 format=4 uid="uid://dcy044hvitups"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_cs2aw"]
 [ext_resource type="PackedScene" uid="uid://dbkvqyy2q81mt" path="res://Levels/player_spawn.tscn" id="2_4e4c6"]
@@ -21,6 +21,9 @@
 [ext_resource type="AudioStream" uid="uid://brvjx0y8gjm2d" path="res://Levels/Music/example_music_02.ogg" id="20_nc5g8"]
 [ext_resource type="PackedScene" uid="uid://00hlbiqn6hi8" path="res://Interactables/Chests/chest.tscn" id="21_dvqru"]
 [ext_resource type="PackedScene" uid="uid://dui5f7unvlmt5" path="res://NPC/npc_behavior_idle.tscn" id="21_j8yfe"]
+[ext_resource type="PackedScene" uid="uid://vbogw2s0gv5v" path="res://Interactables/Dialog/dialog_interaction.tscn" id="22_sa3ua"]
+[ext_resource type="Script" path="res://Interactables/Dialog/scripts/dialog_text.gd" id="23_dqoyl"]
+[ext_resource type="Resource" uid="uid://do1ehn3dbklnx" path="res://NPC/00_NPCs/npc02.tres" id="24_fomi7"]
 
 [node name="level_1" type="Node2D"]
 y_sort_enabled = true
@@ -138,7 +141,24 @@ item_data = ExtResource("19_g60io")
 quantity = 5
 
 [node name="Shopkeeper" parent="." instance=ExtResource("19_uhfs8")]
-position = Vector2(-136, -72)
+position = Vector2(-144, -64)
 npc_resource = ExtResource("16_n02q5")
 
 [node name="NpcBehaviorIdle" parent="Shopkeeper" instance=ExtResource("21_j8yfe")]
+
+[node name="DialogInteraction" parent="Shopkeeper" instance=ExtResource("22_sa3ua")]
+
+[node name="DialogText" type="Node" parent="Shopkeeper/DialogInteraction"]
+script = ExtResource("23_dqoyl")
+text = "Who goes there?"
+npc_info = ExtResource("16_n02q5")
+
+[node name="DialogText2" type="Node" parent="Shopkeeper/DialogInteraction"]
+script = ExtResource("23_dqoyl")
+text = "Hi, look at my wares	"
+npc_info = ExtResource("16_n02q5")
+
+[node name="DialogText3" type="Node" parent="Shopkeeper/DialogInteraction"]
+script = ExtResource("23_dqoyl")
+text = "Look at what we have"
+npc_info = ExtResource("24_fomi7")

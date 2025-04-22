@@ -19,7 +19,7 @@ class_name Chest extends Node2D
 @export var quantity : int = 1 : set = _set_quantity
 
 var is_open : bool = false
-var _has_key : bool = false
+#var _has_key : bool = false
 
 signal chest_opened
 
