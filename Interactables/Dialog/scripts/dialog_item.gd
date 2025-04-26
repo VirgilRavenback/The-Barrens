@@ -6,12 +6,19 @@ class_name DialogItem extends Node
 
 @export var npc_info : NPCResource
 
+var editor_selection : EditorSelection
+var example_dialog : DialogSystemNode
+
+
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
+		editor_selection = EditorInterface.get_selection()
+		editor_selection.selection_changed.connect( _on_selection_changed )
 		return
 	check_npc_data()
 	pass
+
 	
 
 func check_npc_data()-> void:
@@ -27,3 +34,44 @@ func check_npc_data()-> void:
 			else:
 				_checking = false
 pass
+
+
+func _on_selection_changed() -> void:
+	if editor_selection == null:
+		return
+	
+	var selection = editor_selection.get_selected_nodes()
+	#clear our example dialog variable
+	
+	if example_dialog != null:
+		example_dialog.queue_free()
+	
+	#as long as the editor selection is not empty, instantiate a dialog_system_node
+	# and add it as a child of the selection
+	if not selection.is_empty():
+		if self == selection[ 0 ]:
+			example_dialog = load( "res://GUI/Dialog System/dialog_system.tscn" ).instantiate() as DialogSystemNode
+			if example_dialog == null:
+				return
+			self.add_child( example_dialog )
+			#move the dialog preview so it's next to the parent NPC
+			example_dialog.offset = get_parent_global_position() + Vector2( 32, -200 )
+			check_npc_data()
+			_set_editor_display()
+
+	pass
+
+
+func get_parent_global_position() -> Vector2:
+	var p = self
+	var _checking : bool = true
+	while _checking == true:
+		p = p.get_parent()
+		if p is Node2D:
+			return p.global_position
+		else:
+			_checking = false
+	return Vector2.ZERO
+
+func _set_editor_display() -> void:
+	pass

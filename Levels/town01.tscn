@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dcy044hvitups"]
+[gd_scene load_steps=31 format=4 uid="uid://dcy044hvitups"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_cs2aw"]
 [ext_resource type="PackedScene" uid="uid://dbkvqyy2q81mt" path="res://Levels/player_spawn.tscn" id="2_4e4c6"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://dm7s1qj0mg8jj" path="res://Props/shop_2.tscn" id="10_kdagv"]
 [ext_resource type="PackedScene" uid="uid://bh417kfj23ucw" path="res://Props/lower_facade.tscn" id="11_eieg8"]
 [ext_resource type="PackedScene" uid="uid://dkuaieimktmmx" path="res://Props/fountain_shop.tscn" id="12_jfqej"]
-[ext_resource type="Texture2D" uid="uid://cw6req1vveig4" path="res://NPC/Sprites/NPC_Tinkerer.png" id="14_u0o5c"]
 [ext_resource type="PackedScene" uid="uid://dwy4pip084wpt" path="res://Levels/level_transition.tscn" id="15_u5egu"]
 [ext_resource type="Resource" uid="uid://cg3mgj021k25a" path="res://NPC/00_NPCs/npc01.tres" id="16_n02q5"]
 [ext_resource type="Resource" uid="uid://cmlvkngp7ceig" path="res://Items/credit.tres" id="17_v1syj"]
@@ -24,6 +23,13 @@
 [ext_resource type="PackedScene" uid="uid://vbogw2s0gv5v" path="res://Interactables/Dialog/dialog_interaction.tscn" id="22_sa3ua"]
 [ext_resource type="Script" path="res://Interactables/Dialog/scripts/dialog_text.gd" id="23_dqoyl"]
 [ext_resource type="Resource" uid="uid://do1ehn3dbklnx" path="res://NPC/00_NPCs/npc02.tres" id="24_fomi7"]
+[ext_resource type="Script" path="res://Interactables/Dialog/scripts/dialog_choice.gd" id="25_xuk3m"]
+[ext_resource type="PackedScene" uid="uid://baq3yn2ix2l5" path="res://NPC/00_NPCs/tinkerer.tscn" id="26_6vj3e"]
+[ext_resource type="Script" path="res://Interactables/Dialog/scripts/dialog_branch.gd" id="26_t82q4"]
+[ext_resource type="PackedScene" uid="uid://drcufdjgracfi" path="res://Interactables/Dialog/dialog_item_text.tscn" id="27_ork4k"]
+[ext_resource type="PackedScene" uid="uid://dd6yxjidq3vxj" path="res://Interactables/Dialog/dialog_choice.tscn" id="28_1rw7u"]
+[ext_resource type="PackedScene" uid="uid://cmtimjhkl3uus" path="res://NPC/npc_behavior_patrol.tscn" id="29_lcq57"]
+[ext_resource type="PackedScene" uid="uid://c2ixk0r0dgcau" path="res://NPC/patrol_location.tscn" id="30_bfmhk"]
 
 [node name="level_1" type="Node2D"]
 y_sort_enabled = true
@@ -31,7 +37,7 @@ script = ExtResource("1_cs2aw")
 music = ExtResource("20_nc5g8")
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("2_4e4c6")]
-position = Vector2(-392, -96)
+position = Vector2(48, -48)
 
 [node name="LevelTransition" parent="." instance=ExtResource("15_u5egu")]
 position = Vector2(-992, -192)
@@ -115,14 +121,6 @@ y_sort_enabled = true
 
 [node name="FountainShop" parent="Buildings" instance=ExtResource("12_jfqej")]
 
-[node name="NPCs" type="Node2D" parent="."]
-y_sort_enabled = true
-
-[node name="Tinkerer" type="Sprite2D" parent="NPCs"]
-z_index = 2
-position = Vector2(438, -205)
-texture = ExtResource("14_u0o5c")
-
 [node name="Interactions" type="Node" parent="."]
 
 [node name="Chest" parent="Interactions" instance=ExtResource("21_dvqru")]
@@ -162,3 +160,75 @@ npc_info = ExtResource("16_n02q5")
 script = ExtResource("23_dqoyl")
 text = "Look at what we have"
 npc_info = ExtResource("24_fomi7")
+
+[node name="DialogChoice" type="Node" parent="Shopkeeper/DialogInteraction"]
+script = ExtResource("25_xuk3m")
+npc_info = ExtResource("16_n02q5")
+
+[node name="DialogBranch" type="Node" parent="Shopkeeper/DialogInteraction/DialogChoice"]
+script = ExtResource("26_t82q4")
+npc_info = ExtResource("16_n02q5")
+
+[node name="DialogBranch2" type="Node" parent="Shopkeeper/DialogInteraction/DialogChoice"]
+script = ExtResource("26_t82q4")
+text = "ok fine"
+npc_info = ExtResource("16_n02q5")
+
+[node name="Tinkerer" parent="." instance=ExtResource("26_6vj3e")]
+position = Vector2(432, -168)
+npc_resource = ExtResource("24_fomi7")
+
+[node name="DialogInteraction" parent="Tinkerer" instance=ExtResource("22_sa3ua")]
+
+[node name="DialogText" parent="Tinkerer/DialogInteraction" instance=ExtResource("27_ork4k")]
+text = "Hi! Will you help me find artifacts in the canyon?"
+npc_info = ExtResource("24_fomi7")
+
+[node name="DialogChoice" parent="Tinkerer/DialogInteraction" instance=ExtResource("28_1rw7u")]
+npc_info = ExtResource("24_fomi7")
+
+[node name="DialogBranch3" type="Node" parent="Tinkerer/DialogInteraction/DialogChoice"]
+script = ExtResource("26_t82q4")
+text = "Count on it!"
+npc_info = ExtResource("24_fomi7")
+
+[node name="DialogText" type="Node" parent="Tinkerer/DialogInteraction/DialogChoice/DialogBranch3"]
+script = ExtResource("23_dqoyl")
+text = "Thanks you rock!"
+npc_info = ExtResource("24_fomi7")
+
+[node name="DialogText2" type="Node" parent="Tinkerer/DialogInteraction/DialogChoice/DialogBranch3"]
+script = ExtResource("23_dqoyl")
+text = "Be careful, it's dangerous to go alone!"
+npc_info = ExtResource("24_fomi7")
+
+[node name="DialogBranch4" type="Node" parent="Tinkerer/DialogInteraction/DialogChoice"]
+script = ExtResource("26_t82q4")
+text = "Who are you?"
+npc_info = ExtResource("24_fomi7")
+
+[node name="DialogText" type="Node" parent="Tinkerer/DialogInteraction/DialogChoice/DialogBranch4"]
+script = ExtResource("23_dqoyl")
+text = "Just your friendly neighborhood tinkerer!"
+npc_info = ExtResource("24_fomi7")
+
+[node name="NpcBehaviorPatrol" parent="Tinkerer" instance=ExtResource("29_lcq57")]
+
+[node name="PatrolLocation" parent="Tinkerer/NpcBehaviorPatrol" instance=ExtResource("30_bfmhk")]
+modulate = Color(1, 0, 0, 1)
+
+[node name="PatrolLocation2" parent="Tinkerer/NpcBehaviorPatrol" instance=ExtResource("30_bfmhk")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(-136, 0)
+
+[node name="PatrolLocation3" parent="Tinkerer/NpcBehaviorPatrol" instance=ExtResource("30_bfmhk")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(-136, 64)
+
+[node name="PatrolLocation4" parent="Tinkerer/NpcBehaviorPatrol" instance=ExtResource("30_bfmhk")]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(-80, 104)
+
+[node name="PatrolLocation5" parent="Tinkerer/NpcBehaviorPatrol" instance=ExtResource("30_bfmhk")]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(0, 96)

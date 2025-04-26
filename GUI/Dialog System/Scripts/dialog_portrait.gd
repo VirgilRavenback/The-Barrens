@@ -26,12 +26,16 @@ func _check_mouth_open( letter : String) -> void:
 		audio.play()
 	elif '.,!?'.contains( letter ):
 		mouth_open_frames = 0
-	
+		audio.pitch_scale = randf_range( audio_pitch_base - 0.04 , audio_pitch_base - 0.1 )
+		audio.play()
 	if mouth_open_frames > 0:
 		mouth_open_frames -= 1
 	
 	if mouth_open_frames == 0:
-		open_mouth = false
+		if open_mouth == true:
+			open_mouth = false
+			audio.pitch_scale = randf_range( audio_pitch_base - 0.04 , audio_pitch_base + 0.02 )
+			audio.play()
 	pass
 
 func update_portrait() -> void:

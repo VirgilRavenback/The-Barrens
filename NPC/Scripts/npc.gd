@@ -13,15 +13,17 @@ class_name NPC extends CharacterBody2D
 var state : String = "idle"
 var direction : Vector2 = Vector2.DOWN
 var direction_name : String = "down"
+var do_behavior : bool = true
 
 
-signal behavior_enabled
+signal do_behavior_enabled
 
 
 func _ready() -> void:
 	setup_npc()
 	if Engine.is_editor_hint():
 		return
+	do_behavior_enabled.emit()
 	gather_interactables()
 	pass
 
@@ -39,14 +41,14 @@ func _on_player_interacted() -> void:
 	state = "idle"
 	velocity = Vector2.ZERO
 	update_animation()
-	#do_behavior = false
+	do_behavior = false
 	pass
 
 func _on_interaction_finished() -> void:
 	state = "idle"
 	update_animation()
-	##do_behavior = true
-	##do_behavior_enabled.emit()
+	do_behavior = true
+	do_behavior_enabled.emit()
 	pass
 
 func update_animation() -> void:

@@ -1,0 +1,65 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://ctb6ngc5t165r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2tqg"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0.45)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62k7l"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0.45)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbhwt"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0.7)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7pyl"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0.45)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jp317"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0.45)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[resource]
+Button/colors/font_color = Color(0.894118, 0.862745, 0.796078, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_s2tqg")
+Button/styles/focus = SubResource("StyleBoxFlat_62k7l")
+Button/styles/hover = SubResource("StyleBoxFlat_kbhwt")
+Button/styles/normal = SubResource("StyleBoxFlat_y7pyl")
+Button/styles/pressed = SubResource("StyleBoxFlat_jp317")
+VBoxContainer/constants/separation = 6

@@ -1,0 +1,149 @@
+[gd_scene load_steps=13 format=3 uid="uid://baq3yn2ix2l5"]
+
+[ext_resource type="Script" path="res://NPC/Scripts/npc.gd" id="1_3bxjw"]
+[ext_resource type="Texture2D" uid="uid://cw6req1vveig4" path="res://NPC/Sprites/NPC_Tinkerer.png" id="2_nisiw"]
+[ext_resource type="Texture2D" uid="uid://mfmux5gb3d0c" path="res://NPC/Sprites/Shadow.png" id="3_uf8ba"]
+
+[sub_resource type="Animation" id="Animation_t1gyn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_nisiw")]
+}
+
+[sub_resource type="Animation" id="Animation_r163b"]
+resource_name = "idle_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_nisiw")]
+}
+
+[sub_resource type="Animation" id="Animation_wxp8q"]
+resource_name = "idle_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_nisiw")]
+}
+
+[sub_resource type="Animation" id="Animation_yqheu"]
+resource_name = "idle_side"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_nisiw")]
+}
+
+[sub_resource type="Animation" id="Animation_butkq"]
+resource_name = "walk_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_nisiw")]
+}
+
+[sub_resource type="Animation" id="Animation_7f3f7"]
+resource_name = "walk_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_nisiw")]
+}
+
+[sub_resource type="Animation" id="Animation_gcvde"]
+resource_name = "walk_side"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_nisiw")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i82vp"]
+_data = {
+"RESET": SubResource("Animation_t1gyn"),
+"idle_down": SubResource("Animation_r163b"),
+"idle_side": SubResource("Animation_yqheu"),
+"idle_up": SubResource("Animation_wxp8q"),
+"walk_down": SubResource("Animation_butkq"),
+"walk_side": SubResource("Animation_gcvde"),
+"walk_up": SubResource("Animation_7f3f7")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t27rq"]
+radius = 6.0
+
+[node name="Tinkerer" type="CharacterBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_3bxjw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -23)
+texture = ExtResource("2_nisiw")
+
+[node name="ShadowSprite" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.618)
+show_behind_parent = true
+position = Vector2(0, 23)
+texture = ExtResource("3_uf8ba")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i82vp")
+}
+autoplay = "idle_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_t27rq")
+debug_color = Color(0, 0.6, 0.7, 0)
