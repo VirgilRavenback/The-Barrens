@@ -4,8 +4,10 @@ const PLAYER = preload("res://Player/player.tscn")
 const INVENTORY_DATA : InventoryData = preload("res://GUI/pause_menu/player_inventory/player_inventory.tres")
 
 var player : Player
+var interact_handled = true
 var player_spawned : bool = false
 
+signal camera_shook( trauma : float )
 signal interact_pressed
 
 
@@ -36,7 +38,17 @@ func set_as_parent( _p : Node2D ) -> void:
 	_p.add_child( player )
 	pass
 
+func play_audio( _audio : AudioStream ) -> void:
+	player.audio.stream = _audio
+	player.audio.play()
+
+func interact() -> void:
+	interact_handled = false
+	interact_pressed.emit()
 
 func unparent_player( _p : Node2D ) -> void:
 	_p.remove_child( player )
 	pass
+
+func shake_camera( trauma : float = 1 ) -> void:
+	camera_shook.emit( trauma )

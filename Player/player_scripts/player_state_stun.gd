@@ -7,6 +7,7 @@ extends PlayerState
 @export var invulnerable_duration : float = 1.5
 
 @onready var idle: PlayerState = $"../Idle"
+@onready var death: PlayerStateDeath = $"../Death"
 
 var hurt_box : HurtBox
 var direction : Vector2
@@ -28,6 +29,8 @@ func enter() -> void:
 	player.update_animation( "stun" )
 	player.make_invulnerable( invulnerable_duration )
 	player.effect_animation_player.play( "damaged" )
+	
+	PlayerManager.shake_camera( hurt_box.damage )
 	pass
 
 func exit() -> void:
@@ -47,9 +50,12 @@ func handle_input( _event : InputEvent ) -> PlayerState:
 
 func _player_damaged( _hurt_box : HurtBox ) -> void:
 	hurt_box = _hurt_box
-	state_machine.change_state( self )
+	if state_machine.current_state != death:
+		state_machine.change_state( self )
 	pass
 
 func _animation_finished( _newAnimName : String ) -> void:
 	next_state = idle
+	if player.current_health <= 0:
+		next_state = death
 	pass

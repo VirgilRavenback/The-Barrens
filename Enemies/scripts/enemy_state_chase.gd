@@ -38,12 +38,14 @@ func _ready() -> void:
 	pass
 
 func process( _delta: float ) -> EnemyState:
-	var new_direction : Vector2 = enemy.global_position.direction_to( PlayerManager.player.global_position )
-	_direction = lerp( _direction, new_direction, turn_rate )
+	if PlayerManager.player.current_health <= 0: #exit chase state if player dies
+		return next_state
+	var _new_direction : Vector2 = enemy.global_position.direction_to( PlayerManager.player.global_position )
+	_direction = lerp( _direction, _new_direction, turn_rate )
 	enemy.velocity = _direction * chase_speed
 	if enemy.set_direction( _direction ):
 		enemy.update_animation( anim_name )
-	
+
 	
 	if _can_see_player == false:
 		_timer -= _delta

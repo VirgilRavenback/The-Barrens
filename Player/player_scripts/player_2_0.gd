@@ -31,7 +31,6 @@ func _ready() -> void:
 	hit_box.damaged.connect( _take_damage )
 	current_health = max_health
 	update_health( 0 )
-	print("you have ", current_health, "health")
 	pass
 	
 func spawn(pos):
@@ -40,7 +39,6 @@ func spawn(pos):
 	current_health = max_health
 	$CollisionShape2D.disabled = false
 	show()
-	print("You have 5 health")
 	hit_box.damaged.connect(_take_damage)
 
 func _process(_delta: float) -> void:
@@ -48,13 +46,15 @@ func _process(_delta: float) -> void:
 	direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	direction = direction.normalized()
 	
-	if current_health == 0:
-		die()
 	pass
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed( "test" ):
+		PlayerManager.shake_camera()
 
 func set_direction() -> bool:
 	#This function returns true or false indicating whether the direction changed or not
@@ -98,23 +98,15 @@ func _take_damage ( hurt_box : HurtBox ) -> void:
 	if invlunerable == true:
 		return
 	
-	update_health( -hurt_box.damage )
-	print("You took damage")
 	if current_health > 0:
+		update_health( -hurt_box.damage )
 		player_damaged.emit( hurt_box )
-	else:
-		player_damaged.emit( hurt_box )
-		update_health( max_health )
-		print("You died!")
-		#die()
-		
-	print("Your health is", current_health)
+	
 	pass
 
 func update_health( delta : int ) -> void:
 	current_health = clampi( current_health + delta, 0, max_health )
 	PlayerHud.update_health( current_health, max_health )
-	print("Your health is", current_health)
 	pass
 
 func make_invulnerable ( _duration : float = 1.5 ) -> void:
@@ -126,8 +118,7 @@ func make_invulnerable ( _duration : float = 1.5 ) -> void:
 	invlunerable = false
 	hit_box.monitoring = true
 	pass
-
-func die() -> void:
-	call_deferred("queue_free")
-	print("you died")
 	
+func revive_player() -> void:
+	update_health( 5 )
+	player_state_machine.change_state( $PlayerStateMachine/Idle )

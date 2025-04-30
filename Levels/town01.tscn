@@ -116,6 +116,7 @@ y_sort_enabled = true
 
 [node name="Shop2" parent="Buildings" instance=ExtResource("10_kdagv")]
 y_sort_enabled = true
+position = Vector2(-256, -840)
 
 [node name="LowerFacade" parent="Buildings" instance=ExtResource("11_eieg8")]
 
@@ -139,7 +140,7 @@ item_data = ExtResource("19_g60io")
 quantity = 5
 
 [node name="Shopkeeper" parent="." instance=ExtResource("19_uhfs8")]
-position = Vector2(-144, -64)
+position = Vector2(-136, -64)
 npc_resource = ExtResource("16_n02q5")
 
 [node name="NpcBehaviorIdle" parent="Shopkeeper" instance=ExtResource("21_j8yfe")]
