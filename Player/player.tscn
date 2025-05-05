@@ -463,7 +463,7 @@ collision_mask = 45
 script = ExtResource("1_wbqjb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -27)
+position = Vector2(0, -21)
 texture = ExtResource("2_obm7c")
 hframes = 8
 vframes = 11
@@ -518,7 +518,7 @@ collision_mask = 4
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteractions/HurtBox"]
-position = Vector2(0.45353, 17.9943)
+position = Vector2(0.604707, 23.9924)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ex7wi")
 debug_color = Color(1, 0, 0.0931407, 0.42)

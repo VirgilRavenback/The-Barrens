@@ -2,15 +2,19 @@ class_name DarkWizardBoss extends Node2D
 
 
 const ENERGY_EXPLOSION_SCENE : PackedScene = preload( "res://Levels/Dungeon01/dark_wizard/energy_explosion.tscn" )
+const ENERGY_ORB_SCENE : PackedScene = preload( "res://Levels/Dungeon01/dark_wizard/energy_orb.tscn" )
 
 @export var max_hp : int = 10
 var hp : int = 10
 
 var audio_hurt : AudioStream = preload( "res://Levels/Dungeon01/dark_wizard/audio/boss_hurt.wav" )
+var audio_orb : AudioStream = preload( "res://Levels/Dungeon01/dark_wizard/audio/boss_fireball.wav" )
 
 var current_position_index : int = 0
 var positions : Array[ Vector2 ]
 var beam_attacks : Array[ EnergyBeamAttack ]
+
+var damage_count : int = 0
 
 @onready var animation_player: AnimationPlayer = $BossNode/AnimationPlayer
 @onready var audio: AudioStreamPlayer2D = $BossNode/AudioStreamPlayer2D
@@ -27,8 +31,14 @@ var beam_attacks : Array[ EnergyBeamAttack ]
 @onready var hand_02_up: Sprite2D = $BossNode/CloakSprite/Hand02_Up
 @onready var hand_01_side: Sprite2D = $BossNode/CloakSprite/Hand01_Side
 @onready var hand_02_side: Sprite2D = $BossNode/CloakSprite/Hand02_Side
+@onready var dungeon_door_block: level_tilemap = $"../Dungeon_Door_Block"
 
 func _ready() -> void:
+	persistent_data_handler.get_value()
+	if persistent_data_handler.value == true:
+		dungeon_door_block.enabled = false
+		queue_free()
+		return
 	
 	hp = max_hp
 
@@ -64,8 +74,11 @@ func teleport( _location : int ) -> void:
 	#play disappear
 	animation_player.play( "disappear" )
 	enable_hit_boxes( false )
+	damage_count = 0
 	
-	#shoot fireball
+	#shoot fireball/orb
+	if hp < max_hp:
+		energy_orb_attack()
 	
 	await get_tree().create_timer( 1 ).timeout
 	
@@ -84,13 +97,21 @@ func teleport( _location : int ) -> void:
 func idle() -> void:
 	enable_hit_boxes()
 	
-	animation_player.play( "idle" )
-	await animation_player.animation_finished
+	#increase likelihood that the boss skips idle animation as his health goes down
+	if randf() >= float(hp) / float(max_hp):
+		animation_player.play( "idle" )
+		await animation_player.animation_finished
+		if hp < 1:
+			return
 	
-	energy_beam_attack()
-	animation_player.play( "cast_spell" )
-	await animation_player.animation_finished
+	if damage_count < 1:
+		energy_beam_attack()
+		animation_player.play( "cast_spell" )
+		await animation_player.animation_finished
 	
+	if hp < 1:
+			return
+			
 	var _t : int = current_position_index
 	while _t == current_position_index:
 		_t = randi_range( 0, 3 )
@@ -155,6 +176,11 @@ func energy_beam_attack() -> void:
 		beam_attacks[ b ].attack()
 	pass
 
+func energy_orb_attack() -> void:
+	var energy_orb : Node2D = ENERGY_ORB_SCENE.instantiate()
+	energy_orb.global_position = boss_node.global_position + Vector2( 0, -34 )
+	get_parent().add_child.call_deferred( energy_orb )
+	play_audio( audio_orb )
 
 func damage_taken( _hurt_box : HurtBox ) -> void:
 	if animation_player_damaged.current_animation == "damaged" or _hurt_box.damage == 0:
@@ -162,6 +188,7 @@ func damage_taken( _hurt_box : HurtBox ) -> void:
 	
 	play_audio( audio_hurt )
 	hp = clampi( hp - _hurt_box.damage, 0, max_hp )
+	damage_count += 1
 	#update boss health bar
 	
 	animation_player_damaged.play( "damaged" )
@@ -184,6 +211,7 @@ func defeat() -> void:
 	persistent_data_handler.set_value()
 	await animation_player.animation_finished
 	#re-open the room
+	dungeon_door_block.enabled = false
 	pass
 
 func enable_hit_boxes( _value : bool = true ) -> void:
