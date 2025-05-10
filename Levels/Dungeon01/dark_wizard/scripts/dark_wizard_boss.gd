@@ -41,6 +41,7 @@ func _ready() -> void:
 		return
 	
 	hp = max_hp
+	PlayerHud.show_boss_health( "Jim the Dark Wizard" )
 
 	hit_box.damaged.connect( damage_taken )
 	
@@ -58,7 +59,7 @@ func _ready() -> void:
 
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	hand_01_up.position = hand_01.position
 	hand_01_up.frame = hand_01.frame + 4
 	hand_02_up.position = hand_01.position
@@ -190,6 +191,7 @@ func damage_taken( _hurt_box : HurtBox ) -> void:
 	hp = clampi( hp - _hurt_box.damage, 0, max_hp )
 	damage_count += 1
 	#update boss health bar
+	PlayerHud.update_boss_health( hp, max_hp )
 	
 	animation_player_damaged.play( "damaged" )
 	animation_player_damaged.seek( 0 )
@@ -212,6 +214,8 @@ func defeat() -> void:
 	await animation_player.animation_finished
 	#re-open the room
 	dungeon_door_block.enabled = false
+	PlayerHud.hide_boss_health()
+	
 	pass
 
 func enable_hit_boxes( _value : bool = true ) -> void:

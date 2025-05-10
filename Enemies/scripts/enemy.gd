@@ -93,10 +93,10 @@ func _take_damage ( hurt_box : HurtBox ) -> void:
 	audio.play()
 	
 	current_health -= hurt_box.damage
-	print("You dealt ", hurt_box.damage, "damage")
+	#print("You dealt ", hurt_box.damage, "damage")
 	if current_health > 0:
 		enemy_damaged.emit( hurt_box )
-		print("Your health is", current_health)
+		#print("Your health is", current_health)
 	else:
 		enemy_destroyed.emit( hurt_box )
 	

@@ -31,7 +31,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 		return [ "Requires at least one dialog item node" ]
 	else:
 		return []
-	pass
 
 func _check_for_dialog_items() -> bool:
 	for c in get_children():

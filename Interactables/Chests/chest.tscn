@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://00hlbiqn6hi8"]
+[gd_scene load_steps=16 format=3 uid="uid://00hlbiqn6hi8"]
 
 [ext_resource type="Script" path="res://Interactables/Chests/chest.gd" id="1_158b0"]
 [ext_resource type="Texture2D" uid="uid://x7enasblh4yr" path="res://Interactables/Chests/Ancient_Chest/AncientChest_Test_Shadow.png" id="2_kbknm"]
 [ext_resource type="Texture2D" uid="uid://da1k3ojxa0bu8" path="res://Interactables/Chests/Ancient_Chest/AncientChest_Test.png" id="3_2mejk"]
 [ext_resource type="AudioStream" uid="uid://cbepxuidsfc8n" path="res://Interactables/Chests/treasure-open.wav" id="4_lukr4"]
-[ext_resource type="Texture2D" uid="uid://de7agj3cajcv4" path="res://Interactables/Chests/Player_Interaction_Hints_E.png" id="5_be0q0"]
 [ext_resource type="Texture2D" uid="uid://buan6qjvkair8" path="res://Items/sprites/Items.png" id="6_vfa12"]
 [ext_resource type="FontFile" uid="uid://cmf71bssig313" path="res://assets/Fonts/DisposableDroidBB.ttf" id="7_jrhdv"]
 [ext_resource type="PackedScene" uid="uid://dy8ghh387sbx8" path="res://GeneralNodes/PersistentDataHandler/persistent_data_handler.tscn" id="8_o2w02"]
@@ -288,19 +287,12 @@ collision_mask = 0
 position = Vector2(-0.5, 5)
 shape = SubResource("RectangleShape2D_0lrer")
 
-[node name="Sprite2D_Interaction" type="Sprite2D" parent="."]
-visible = false
-z_index = 1
-position = Vector2(40, -17)
-scale = Vector2(3, 3)
-texture = ExtResource("5_be0q0")
-
 [node name="Sprite2D_Item" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-1, -4)
 texture = SubResource("AtlasTexture_nkc6p")
 
-[node name="Label" type="Label" parent="Sprite2D_Item"]
+[node name="ItemLabel" type="Label" parent="Sprite2D_Item"]
 offset_left = -1.0
 offset_top = -3.0
 offset_right = 39.0
@@ -311,23 +303,23 @@ text = "x1"
 horizontal_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = 17.0
-offset_top = -43.0
-offset_right = 90.0
-offset_bottom = -3.0
+offset_left = -17.0
+offset_top = -47.0
+offset_right = 56.0
+offset_bottom = -7.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
-visible = false
+[node name="InteractionLabel" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -2.0
+offset_top = 16.0
+offset_right = 38.0
+offset_bottom = 39.0
 theme_override_font_sizes/font_size = 12
+text = "E"
 horizontal_alignment = 1
 
 [node name="PersistentData_IsOpen" parent="." instance=ExtResource("8_o2w02")]

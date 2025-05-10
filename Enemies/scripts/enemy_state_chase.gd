@@ -3,7 +3,7 @@ class_name EnemyStateChase
 extends EnemyState
 
 @export var anim_name : String = "walk"
-@export var chase_speed : int
+@export var chase_speed : int = 100
 @export var turn_rate : float = 0.25
 
 @export_category("AI")
@@ -106,6 +106,7 @@ func _on_player_entered( _body : Node2D ) -> void:
 	if state_machine.current_state is EnemyStateStun:
 		return
 	state_machine.change_state( self )
+	print( "chasing player" )
 	pass
 
 func _on_player_exited( _body : Node2D ) -> void:

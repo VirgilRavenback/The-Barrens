@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://c65ru53phccxr"]
+[gd_scene load_steps=10 format=4 uid="uid://c65ru53phccxr"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_2b7t5"]
 [ext_resource type="PackedScene" uid="uid://c86874fgjy5df" path="res://Tile Maps/Canyon.tscn" id="2_govi4"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b3fbxvdpxqbg0" path="res://Enemies/BallRobot/ball_robot2.tscn" id="4_oc60m"]
 [ext_resource type="PackedScene" uid="uid://c04gioy8bjue8" path="res://Props/Plants/Bush/bush.tscn" id="5_4ac3a"]
 [ext_resource type="PackedScene" uid="uid://dbkvqyy2q81mt" path="res://Levels/player_spawn.tscn" id="6_exfyn"]
+[ext_resource type="PackedScene" uid="uid://xfj6xg727c3k" path="res://Enemies/SwarmRobot/swarm_robot.tscn" id="7_ejnh6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j22ja"]
 texture = ExtResource("3_inm0r")
@@ -198,3 +199,20 @@ position = Vector2(-112, -80)
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("6_exfyn")]
 position = Vector2(-136, -16)
+
+[node name="SwarmRobot" parent="." instance=ExtResource("7_ejnh6")]
+
+[node name="SwarmRobot2" parent="." instance=ExtResource("7_ejnh6")]
+position = Vector2(48, -32)
+
+[node name="SwarmRobot3" parent="." instance=ExtResource("7_ejnh6")]
+position = Vector2(-48, -32)
+
+[node name="SwarmRobot4" parent="." instance=ExtResource("7_ejnh6")]
+position = Vector2(30, -64)
+
+[node name="SwarmRobot5" parent="." instance=ExtResource("7_ejnh6")]
+position = Vector2(-32, -64)
+
+[node name="SwarmRobot6" parent="." instance=ExtResource("7_ejnh6")]
+position = Vector2(0, -96)

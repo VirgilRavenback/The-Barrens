@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://b2ehti5il36lb"]
+
+[ext_resource type="Texture2D" uid="uid://dhnkl4tjnnnmr" path="res://Props/fountain/FountainV2.png" id="1_lbpe0"]
+[ext_resource type="AudioStream" uid="uid://cqnnjhaqukiwg" path="res://Props/fountain/170019__wescwave__fountain-06-09-2012.wav" id="2_l3pa4"]
+
+[sub_resource type="Gradient" id="Gradient_lp2wo"]
+colors = PackedColorArray(0, 0, 0, 0.75, 0, 0, 0, 0.75)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oyqaq"]
+gradient = SubResource("Gradient_lp2wo")
+
+[sub_resource type="Animation" id="Animation_w8g2i"]
+resource_name = "falling_water"
+length = 0.7
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_p6nbc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s7cc8"]
+_data = {
+"RESET": SubResource("Animation_p6nbc"),
+"falling_water": SubResource("Animation_w8g2i")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hr1n0"]
+size = Vector2(87, 68)
+
+[node name="Fountain" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lbpe0")
+hframes = 8
+
+[node name="ShadowSprite" type="Sprite2D" parent="Sprite2D"]
+show_behind_parent = true
+position = Vector2(5, 31)
+scale = Vector2(1.36, 1.12)
+texture = SubResource("GradientTexture2D_oyqaq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s7cc8")
+}
+autoplay = "falling_water"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_l3pa4")
+pitch_scale = 2.0
+autoplay = true
+bus = &"SFX"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 30)
+shape = SubResource("RectangleShape2D_hr1n0")

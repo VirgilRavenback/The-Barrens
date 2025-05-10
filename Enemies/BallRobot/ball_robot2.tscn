@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b3fbxvdpxqbg0"]
+[gd_scene load_steps=41 format=3 uid="uid://b3fbxvdpxqbg0"]
 
 [ext_resource type="Script" path="res://Enemies/scripts/enemy.gd" id="1_y5576"]
 [ext_resource type="AudioStream" uid="uid://cjjyawilh30ke" path="res://Enemies/BallRobot/audio/hit_01.wav" id="2_bwccr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Enemies/scripts/enemy_state_machine.gd" id="3_ju1gv"]
 [ext_resource type="Script" path="res://Enemies/scripts/enemy_state_idle.gd" id="4_jys7a"]
 [ext_resource type="Script" path="res://Enemies/scripts/enemy_state_wander.gd" id="5_ir12i"]
+[ext_resource type="Texture2D" uid="uid://mfmux5gb3d0c" path="res://NPC/Sprites/Shadow.png" id="5_ls04c"]
 [ext_resource type="Script" path="res://Enemies/scripts/enemy_state_chase.gd" id="5_vj6cv"]
 [ext_resource type="Script" path="res://Enemies/scripts/enemy_state_stun.gd" id="6_jvg5u"]
 [ext_resource type="Script" path="res://Enemies/scripts/enemy_state_destroy.gd" id="7_5y67f"]
@@ -345,7 +346,6 @@ radius = 56.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_d55ud"]
 
 [node name="BallRobot_2" type="CharacterBody2D" groups=["BallRobots"]]
-position = Vector2(280, 72)
 collision_layer = 4
 collision_mask = 7
 motion_mode = 1
@@ -362,6 +362,13 @@ vframes = 20
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HurtBox"]
 shape = SubResource("CircleShape2D_wevjs")
 debug_color = Color(0.992439, 0, 0.252018, 0.42)
+
+[node name="ShadowSprite" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 0, 0.617)
+show_behind_parent = true
+position = Vector2(0, 8)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_ls04c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hhm1h")

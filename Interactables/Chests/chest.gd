@@ -7,13 +7,13 @@ class_name Chest extends Node2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var area_2d: Area2D = $Area2D
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
-@onready var label: Label = $CanvasLayer/Control/Label
-@onready var quantity_label: Label = $Sprite2D_Item/Label
+@onready var item_label: Label = $Sprite2D_Item/ItemLabel
+@onready var interaction_label: Label = $CanvasLayer/Control/InteractionLabel
 @onready var sprite_2d_chest: Sprite2D = $Sprite2D_Chest
-@onready var sprite_2d_interaction: Sprite2D = $Sprite2D_Interaction
 @onready var sprite_2d_item: Sprite2D = $Sprite2D_Item
 @onready var sprite_2d_shadow: Sprite2D = $Sprite2D_Shadow
 @onready var persistent_data_is_open: PersistentDataHandler = $PersistentData_IsOpen
+
 
 @export var item_data : ItemData : set = _set_item_data
 @export var quantity : int = 1 : set = _set_quantity
@@ -31,7 +31,6 @@ func _ready() -> void:
 	
 	area_2d.area_entered.connect( _on_area_entered )
 	area_2d.area_exited.connect( _on_area_exited )
-	sprite_2d_interaction.visible = false
 	persistent_data_is_open.data_loaded.connect( set_chest_state )
 	set_chest_state()
 	pass
@@ -44,20 +43,20 @@ func set_chest_state() -> void:
 		animation_player.play("closed")
 
 func _on_area_entered( _a : Area2D ) -> void:
-	sprite_2d_interaction.visible = true
 	PlayerManager.interact_pressed.connect( player_interact )
-	print("Player Interaction Connected")
+	#print("Player Interaction Connected")
+	interaction_label.visible = true
 	pass
 
 func _on_area_exited( _a : Area2D ) -> void:
-	sprite_2d_interaction.visible = false
 	PlayerManager.interact_pressed.disconnect( player_interact )
-	print("Player Interaction Disconnected")
+	#print("Player Interaction Disconnected")
+	interaction_label.visible = false
 	pass
 
 
 func player_interact() -> void:
-	print("Player is interacting")
+	#print("Player is interacting")
 	if is_open == true:
 		return
 	is_open = true
@@ -87,8 +86,10 @@ func _update_texture() -> void:
 		sprite_2d_item.texture = item_data.texture
 
 func _update_label() -> void: 
-	if label:
+	if item_data:
 		if quantity <= 1:
-			label.text = ""
+			item_label.text = ""
 		else:
-			label.text = "x" + str( quantity )
+			#item_label.text = "x" + str( quantity )
+			#this is throwing an error - base object is type Nil
+			return

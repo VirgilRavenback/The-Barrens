@@ -399,7 +399,7 @@ height = 64.0
 size = Vector2(22, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hollu"]
-size = Vector2(18, 27)
+size = Vector2(26.0067, 21)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_abk1t"]
 
@@ -510,6 +510,7 @@ script = ExtResource("11_w6jc7")
 exhaust_audio = ExtResource("12_rlt1l")
 
 [node name="PlayerInteractions" type="Node2D" parent="."]
+position = Vector2(0, -15)
 script = ExtResource("7_8bws6")
 
 [node name="HurtBox" parent="PlayerInteractions" groups=["Player"] instance=ExtResource("7_use68")]
@@ -540,7 +541,8 @@ monitorable = false
 script = ExtResource("12_dlkn0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteractions/PushArea"]
-position = Vector2(0, 0.5)
+position = Vector2(-0.00325257, -2.51348)
+rotation = -0.00129033
 shape = SubResource("RectangleShape2D_hollu")
 debug_color = Color(0.613892, 0.358984, 1, 0.42)
 
