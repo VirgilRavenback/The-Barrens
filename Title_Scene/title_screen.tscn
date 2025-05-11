@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=4 uid="uid://dopar8dy2nihg"]
 
-[ext_resource type="PackedScene" uid="uid://bkue3krdvfqcx" path="res://Tile Maps/canyon_v2.tscn" id="1_av328"]
+[ext_resource type="PackedScene" uid="uid://bkue3krdvfqcx" path="res://Tile Maps/canyon_ground_v2.tscn" id="1_av328"]
 [ext_resource type="Script" path="res://Title_Scene/scripts/title_scene.gd" id="1_uw2b4"]
 [ext_resource type="Texture2D" uid="uid://bwxfdrn81iqdc" path="res://Title_Scene/sprites/title.png" id="2_0a4kg"]
 [ext_resource type="AudioStream" uid="uid://b3bl4f15f4d47" path="res://Title_Scene/audio/waves.mp3" id="2_x0578"]
