@@ -118,6 +118,7 @@ func make_invulnerable ( _duration : float = 1.5 ) -> void:
 	invlunerable = false
 	hit_box.monitoring = true
 	pass
+
 	
 func revive_player() -> void:
 	update_health( 5 )

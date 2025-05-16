@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ox7sbbs0bl8l"]
+
+[ext_resource type="Texture2D" uid="uid://15oaby2ppior" path="res://Props/Rocks/Canyon_Column.png" id="1_fpfod"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v2nhu"]
+radius = 30.0
+height = 80.0
+
+[node name="CanyonColumn" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -80)
+texture = ExtResource("1_fpfod")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_v2nhu")
