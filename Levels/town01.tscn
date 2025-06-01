@@ -1,7 +1,6 @@
-[gd_scene load_steps=33 format=4 uid="uid://dcy044hvitups"]
+[gd_scene load_steps=34 format=4 uid="uid://dcy044hvitups"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_cs2aw"]
-[ext_resource type="PackedScene" uid="uid://dbkvqyy2q81mt" path="res://Levels/player_spawn.tscn" id="2_4e4c6"]
 [ext_resource type="PackedScene" uid="uid://c86874fgjy5df" path="res://Tile Maps/Canyon.tscn" id="3_xl3ot"]
 [ext_resource type="PackedScene" uid="uid://31fhp31qwtg1" path="res://Props/Boxes/gray_storage_box_large.tscn" id="4_48b80"]
 [ext_resource type="PackedScene" uid="uid://wrk8dscrynt5" path="res://Props/Boxes/gray_storage_box_large_side.tscn" id="5_ngvjy"]
@@ -32,14 +31,13 @@
 [ext_resource type="PackedScene" uid="uid://cmtimjhkl3uus" path="res://NPC/npc_behavior_patrol.tscn" id="29_lcq57"]
 [ext_resource type="PackedScene" uid="uid://c2ixk0r0dgcau" path="res://NPC/patrol_location.tscn" id="30_bfmhk"]
 [ext_resource type="PackedScene" uid="uid://b2ehti5il36lb" path="res://Props/fountain/fountain.tscn" id="31_vco7m"]
+[ext_resource type="PackedScene" uid="uid://bkfhg23f5j64x" path="res://Levels/save_point_manager.tscn" id="33_3wsc3"]
+[ext_resource type="PackedScene" uid="uid://ckrys2ky2v7mj" path="res://Levels/save_point.tscn" id="34_7744s"]
 
 [node name="level_1" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_cs2aw")
 music = ExtResource("20_nc5g8")
-
-[node name="PlayerSpawn" parent="." instance=ExtResource("2_4e4c6")]
-position = Vector2(48, -48)
 
 [node name="LevelTransition" parent="." instance=ExtResource("15_u5egu")]
 position = Vector2(-992, -192)
@@ -241,3 +239,17 @@ position = Vector2(0, 96)
 
 [node name="Fountain" parent="." instance=ExtResource("31_vco7m")]
 position = Vector2(-328, -296)
+
+[node name="SavePointManager" parent="." instance=ExtResource("33_3wsc3")]
+
+[node name="SavePoint" parent="SavePointManager" instance=ExtResource("34_7744s")]
+position = Vector2(-193, 42)
+save_name = "Save Point A"
+
+[node name="SavePoint2" parent="SavePointManager" instance=ExtResource("34_7744s")]
+position = Vector2(0, 46)
+save_name = "Save Point B"
+
+[node name="SavePoint3" parent="SavePointManager" instance=ExtResource("34_7744s")]
+position = Vector2(137, 47)
+save_name = "Save Point C"

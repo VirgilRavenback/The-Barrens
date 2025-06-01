@@ -14,7 +14,9 @@ var current_save : Dictionary = {
 		current_health = 1, 
 		max_health = 1,
 		pos_x = 0,
-		pos_y = 0
+		pos_y = 0,
+		save_pos_x = 0,
+		save_pos_y = 0
 	},
 	items = [],
 	persistence = [],
@@ -49,7 +51,10 @@ func load_game() -> void:
 	
 	await LevelManager.level_load_started
 	
-	PlayerManager.set_player_position( Vector2( current_save.player.pos_x, current_save.player.pos_y ) )
+	#spawn player at the last save point
+	PlayerManager.set_player_position( Vector2( current_save.player.save_pos_x, current_save.player.save_pos_y ) )
+	#spawn player at the player's last position
+	#PlayerManager.set_player_position( Vector2( current_save.player.pos_x, current_save.player.pos_y ) )
 	PlayerManager.set_player_health( current_save.player.current_health, current_save.player.max_health )
 	PlayerManager.INVENTORY_DATA.parse_save_data( current_save.items )
 	
@@ -64,8 +69,13 @@ func update_player_data() -> void:
 	var p : Player = PlayerManager.player
 	current_save.player.current_health = p.current_health
 	current_save.player.max_health = p.max_health
+	#position of last spawn point is currently being set in the save point manager
+	#current_save.player.save_pos_x = p.global_position.x
+	#current_save.player.save_pos_y = p.global_position.y
 	current_save.player.pos_x = p.global_position.x
 	current_save.player.pos_y = p.global_position.y
+	
+	print( str(SaveManager.current_save.player.save_pos_x) + "," + str(SaveManager.current_save.player.save_pos_y) )
 
 func update_scene_path() -> void:
 	var p : String = ""

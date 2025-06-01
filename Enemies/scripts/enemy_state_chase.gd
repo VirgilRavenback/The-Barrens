@@ -88,7 +88,7 @@ func set_movement_target():
 	target = player
 	if target:
 		navigation_agent_2D.target_position = target.global_position
-		print("target set")
+		#print("target set")
 	
 
 func exit():
@@ -106,7 +106,7 @@ func _on_player_entered( _body : Node2D ) -> void:
 	if state_machine.current_state is EnemyStateStun:
 		return
 	state_machine.change_state( self )
-	print( "chasing player" )
+	#print( "chasing player" )
 	pass
 
 func _on_player_exited( _body : Node2D ) -> void:

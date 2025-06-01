@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckrys2ky2v7mj"]
+
+[ext_resource type="Script" path="res://Levels/Scripts/save_point.gd" id="1_4y5aq"]
+[ext_resource type="Texture2D" uid="uid://dd2ssbdbhv7u5" path="res://Player/DesertChar_Full_Animations.png" id="2_ieq06"]
+[ext_resource type="PackedScene" uid="uid://dexnds1vnbeh7" path="res://GeneralNodes/hurt_box.tscn" id="3_2akbp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drcqw"]
+size = Vector2(99, 114)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dhfe3"]
+radius = 31.7805
+
+[node name="SavePoint" type="Node2D"]
+script = ExtResource("1_4y5aq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.231373, 1, 0.721569, 0.823529)
+position = Vector2(0, -20)
+texture = ExtResource("2_ieq06")
+hframes = 8
+vframes = 11
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -14)
+shape = SubResource("RectangleShape2D_drcqw")
+debug_color = Color(0, 0.639, 0.365, 0)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.0
+offset_right = 42.0
+offset_bottom = 16.0
+grow_horizontal = 2
+text = "Save Point X"
+
+[node name="FallDamageArea" parent="." instance=ExtResource("3_2akbp")]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallDamageArea"]
+shape = SubResource("CircleShape2D_dhfe3")
+debug_color = Color(0.992, 0, 0.257, 0)

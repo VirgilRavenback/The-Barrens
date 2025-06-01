@@ -54,7 +54,10 @@ func _physics_process(_delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed( "test" ):
-		PlayerManager.shake_camera()
+		
+		
+		#PlayerManager.shake_camera()
+		pass
 
 func set_direction() -> bool:
 	#This function returns true or false indicating whether the direction changed or not
@@ -95,7 +98,7 @@ func animation_direction() -> String:
 		return "side"
 		
 func _take_damage ( hurt_box : HurtBox ) -> void:
-	if invlunerable == true:
+	if invlunerable == true and player_state_machine.current_state != PlayerStateFall:
 		return
 	
 	if current_health > 0:
@@ -118,7 +121,6 @@ func make_invulnerable ( _duration : float = 1.5 ) -> void:
 	invlunerable = false
 	hit_box.monitoring = true
 	pass
-
 	
 func revive_player() -> void:
 	update_health( 5 )

@@ -1,15 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdbv0b0fr4kbh"]
+[gd_scene load_steps=5 format=3 uid="uid://kaas4ly37mwk"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/fall_hazard.gd" id="1_mq135"]
+[ext_resource type="PackedScene" uid="uid://dexnds1vnbeh7" path="res://GeneralNodes/hurt_box.tscn" id="2_wcbyj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e54om"]
 size = Vector2(24, 24)
 
-[node name="FallHazard" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gab1i"]
+size = Vector2(24, 24)
+
+[node name="FallHazard" type="Area2D"]
 script = ExtResource("1_mq135")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HurtBox" parent="." instance=ExtResource("2_wcbyj")]
+monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("RectangleShape2D_e54om")
-debug_color = Color(0.7, 0.207775, 0, 0.322)
+debug_color = Color(0.754, 0, 0.221, 0.489)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gab1i")
+debug_color = Color(0.799, 0.123, 0.967, 0)

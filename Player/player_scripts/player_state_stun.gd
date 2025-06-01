@@ -20,11 +20,12 @@ func initialize():
 	pass
 
 func enter() -> void:
+	
 	player.animation_player.animation_finished.connect( _animation_finished )
 	
-	direction = player.global_position.direction_to( hurt_box.global_position )
-	player.velocity = direction * -knockback_speed
-	player.set_direction()
+	#direction = player.global_position.direction_to( hurt_box.global_position )
+	#player.velocity = direction * -knockback_speed
+	#player.set_direction()
 	
 	player.update_animation( "stun" )
 	player.make_invulnerable( invulnerable_duration )

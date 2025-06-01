@@ -66,4 +66,4 @@ func change_state( new_state : EnemyState ) -> void:
 	previous_state = current_state
 	current_state = new_state
 	current_state.enter()
-	print("current_state is ", current_state)
+	#print("current_state is ", current_state)
