@@ -38,6 +38,8 @@ func _ready() -> void:
 	pass
 
 func process( _delta: float ) -> EnemyState:
+	if PlayerManager.player_falling == true:
+		return next_state
 	if PlayerManager.player.current_health <= 0: #exit chase state if player dies
 		return next_state
 	var _new_direction : Vector2 = enemy.global_position.direction_to( PlayerManager.player.global_position )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://c65ru53phccxr"]
+[gd_scene load_steps=14 format=4 uid="uid://c65ru53phccxr"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_2b7t5"]
 [ext_resource type="PackedScene" uid="uid://c86874fgjy5df" path="res://Tile Maps/Canyon.tscn" id="2_govi4"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://kaas4ly37mwk" path="res://Levels/fall_hazard.tscn" id="8_c3y2c"]
 [ext_resource type="PackedScene" uid="uid://ckrys2ky2v7mj" path="res://Levels/save_point.tscn" id="8_n5j6m"]
 [ext_resource type="PackedScene" uid="uid://bkfhg23f5j64x" path="res://Levels/save_point_manager.tscn" id="8_t3exd"]
+[ext_resource type="PackedScene" uid="uid://bpdscltxqx3nq" path="res://Levels/reset_point_manager.tscn" id="10_hllr0"]
+[ext_resource type="PackedScene" uid="uid://dqlbxg8lp0oal" path="res://Levels/reset_point.tscn" id="11_16vms"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j22ja"]
 texture = ExtResource("3_inm0r")
@@ -219,10 +221,28 @@ position = Vector2(106, 5)
 
 [node name="FallHazard" parent="." instance=ExtResource("8_c3y2c")]
 position = Vector2(-272, 57)
-scale = Vector2(2.7, 1.985)
+scale = Vector2(1.904, 1.4)
 
 [node name="SavePointManager" parent="." instance=ExtResource("8_t3exd")]
 
 [node name="SavePoint" parent="SavePointManager" instance=ExtResource("8_n5j6m")]
-position = Vector2(-278, -20)
+position = Vector2(-159, -113)
 save_name = "Save Point 1"
+
+[node name="ResetPointManager" parent="." instance=ExtResource("10_hllr0")]
+
+[node name="ResetPoint1" parent="ResetPointManager" instance=ExtResource("11_16vms")]
+position = Vector2(-270, -12)
+reset_point_name = "Reset Point 1"
+
+[node name="ResetPoint2" parent="ResetPointManager" instance=ExtResource("11_16vms")]
+position = Vector2(-268, 152)
+reset_point_name = "Reset Point 2"
+
+[node name="ResetPoint3" parent="ResetPointManager" instance=ExtResource("11_16vms")]
+position = Vector2(-186, 69)
+reset_point_name = "Reset Point 3"
+
+[node name="ResetPoint4" parent="ResetPointManager" instance=ExtResource("11_16vms")]
+position = Vector2(-354, 70)
+reset_point_name = "Reset Point 4"

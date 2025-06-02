@@ -4,6 +4,8 @@ var save_points : Array = []
 var current_save_point : SavePoint = null
 var current_save_position : Vector2 = Vector2.ZERO
 
+@export var fall_damage : int = 1
+
 
 func _ready() -> void:
 	
@@ -24,10 +26,10 @@ func _ready() -> void:
 	pass 
 
 func _process(delta: float) -> void:
-	if PlayerManager.player_spawned == false:
-		PlayerManager.add_player_instance()
+	
+	if PlayerManager.player_falling == true:
 		PlayerManager.set_player_position( current_save_position )
-		PlayerManager.player_spawned = true
+		
 	pass
 	
 func _on_save_activated( save_point : SavePoint , save_point_position: Vector2 ) -> void:

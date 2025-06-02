@@ -8,6 +8,7 @@ extends PlayerState
 
 @onready var idle: PlayerState = $"../Idle"
 @onready var death: PlayerStateDeath = $"../Death"
+@onready var fall: PlayerStateFall = $"../Fall"
 
 var hurt_box : HurtBox
 var direction : Vector2
@@ -52,6 +53,8 @@ func handle_input( _event : InputEvent ) -> PlayerState:
 func _player_damaged( _hurt_box : HurtBox ) -> void:
 	hurt_box = _hurt_box
 	if state_machine.current_state != death:
+		if state_machine.current_state == fall:
+			await get_tree().create_timer( 0.8 ).timeout
 		state_machine.change_state( self )
 	pass
 

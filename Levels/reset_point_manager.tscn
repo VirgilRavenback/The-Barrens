@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpdscltxqx3nq"]
+
+[ext_resource type="Script" path="res://Levels/Scripts/reset_point_manager.gd" id="1_tkukr"]
+
+[node name="ResetPointManager" type="Node2D"]
+script = ExtResource("1_tkukr")

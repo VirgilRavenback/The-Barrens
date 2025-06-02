@@ -71,9 +71,6 @@ func process( _delta : float ) -> PlayerState:
 			return walk
 		
 	
-	#if player.set_direction():
-		#player.update_animation("dash")
-	
 	return null
 
 func physics_process( _delta: float ) -> PlayerState:
