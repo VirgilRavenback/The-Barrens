@@ -16,7 +16,10 @@ func _ready() -> void:
 		if c is ResetPoint:
 			reset_points.append( c )
 			c.reset_point_activated.connect( _on_activation )
-	print( reset_points )
+		elif c is FallHazard:
+			fall_hazards.append( c )
+	#print( reset_points )
+	#print( fall_hazards )
 	
 	current_reset_point = reset_points[0]
 	current_reset_position = reset_points[0].global_position
@@ -26,6 +29,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	if PlayerManager.player_falling == true:
+		
 		PlayerManager.set_player_position( current_reset_position )
 		
 	pass

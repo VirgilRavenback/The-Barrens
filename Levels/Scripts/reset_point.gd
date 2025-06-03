@@ -24,6 +24,7 @@ func _ready() -> void:
 	reset_area.body_exited.connect( _on_body_exited )
 
 func _on_body_entered( _b : Player ) -> void:
+	
 	if _b is Player:
 		reset_point_activated.emit( self, self.global_position )
 		reset_point_active = true

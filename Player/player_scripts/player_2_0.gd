@@ -23,8 +23,6 @@ var current_health : int = 5
 var max_health : int = 5
 
 func _ready() -> void:
-	#hide()
-	#$CollisionShape2D.disabled = true
 	#setting this node equal to the player manager. Only works if the player is above enemies in the scene tree
 	PlayerManager.player = self
 	player_state_machine.initialize( self )
@@ -58,6 +56,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		#PlayerManager.shake_camera()
 		pass
+	
 
 func set_direction() -> bool:
 	#This function returns true or false indicating whether the direction changed or not

@@ -34,11 +34,11 @@ func initialize() -> void:
 
 func enter() -> void:
 	player.animation_player.animation_finished.connect( _on_animation_finished )
-
+	
+	player.set_collision_layer_value( 2, false )
+	
 	player.direction = Vector2.ZERO
-	
 	direction = Vector2.DOWN
-	
 	player.velocity = direction * gravity_speed
 	
 	player.update_animation( "fall" )
@@ -55,6 +55,7 @@ func enter() -> void:
 	pass
 
 func exit() -> void:
+	player.set_collision_layer_value( 2, true )
 	player.sprite_2d.visible = false
 	player.velocity = Vector2.ZERO
 	PlayerManager.player_falling = false

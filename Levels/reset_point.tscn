@@ -8,16 +8,16 @@ size = Vector2(99, 114)
 
 [node name="ResetPoint" type="Node2D"]
 script = ExtResource("1_jqe1l")
-reset_point_name = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.231373, 1, 0.721569, 0.823529)
+modulate = Color(0.258861, 0.722327, 1, 0.823529)
 position = Vector2(0, -20)
 texture = ExtResource("2_wa1yy")
 hframes = 8
 vframes = 11
 
 [node name="Area2D" type="Area2D" parent="."]
+z_index = 1
 collision_layer = 0
 collision_mask = 2
 monitorable = false
@@ -35,4 +35,4 @@ offset_left = -42.0
 offset_right = 42.0
 offset_bottom = 16.0
 grow_horizontal = 2
-text = "Save Point X"
+text = "Reset Point X"

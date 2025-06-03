@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0ykxx6uu45h0"]
+[gd_scene load_steps=9 format=3 uid="uid://d0ykxx6uu45h0"]
 
 [ext_resource type="Script" path="res://GUI/pause_menu/pause_menu.gd" id="1_4q0jf"]
 [ext_resource type="Texture2D" uid="uid://buan6qjvkair8" path="res://Items/sprites/Items.png" id="2_o01cg"]
 [ext_resource type="PackedScene" uid="uid://bw2te7bws6b5y" path="res://GUI/pause_menu/player_inventory/inventory_slot.tscn" id="3_bbdig"]
 [ext_resource type="Script" path="res://GUI/pause_menu/player_inventory/scripts/inventory_ui.gd" id="3_xttm1"]
 [ext_resource type="Resource" uid="uid://8fpwg3tcxu4i" path="res://GUI/pause_menu/player_inventory/player_inventory.tres" id="4_kn4cw"]
+[ext_resource type="PackedScene" uid="uid://v4jaflf50u8r" path="res://GUI/pause_menu/MapProjector/map_projector.tscn" id="6_mjfu3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5qy2v"]
 atlas = ExtResource("2_o01cg")
@@ -134,3 +135,5 @@ layout_mode = 2
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -30.0
 max_polyphony = 4
+
+[node name="MapProjector" parent="." instance=ExtResource("6_mjfu3")]

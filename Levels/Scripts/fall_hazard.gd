@@ -1,9 +1,6 @@
 class_name FallHazard extends Area2D
 
 
-@onready var hurt_box: HurtBox = $HurtBox
-
-
 
 
 func _ready() -> void:
