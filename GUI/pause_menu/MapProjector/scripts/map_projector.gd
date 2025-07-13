@@ -30,7 +30,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			pause_menu.hide_pause_menu()
 
-func _process(delta: float) -> void:
+func _process( _delta: float) -> void:
 	pass
 
 func throw_map_animation()-> void:

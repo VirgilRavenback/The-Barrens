@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1crvou2npwhd"]
+
+[ext_resource type="Texture2D" uid="uid://6wjjwa7en3rr" path="res://Levels/Starting Town/Sprites/Starting_Town_Entrance_Pillar.png" id="1_4ycfo"]
+
+[node name="Pillar" type="Node2D"]
+
+[node name="StaticBody2D_Pillar" type="StaticBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-173, -290)
+
+[node name="Sprite2D_Pillar" type="Sprite2D" parent="StaticBody2D_Pillar"]
+y_sort_enabled = true
+texture = ExtResource("1_4ycfo")
+offset = Vector2(190, 242)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D_Pillar"]
+position = Vector2(179, 285)
+polygon = PackedVector2Array(-36, 8, -28, 17, -16, 26, -2, 26, 15, 19, 33, 8, 44, -6, 37, -24, 20, -30, -1, -32, -18, -29, -28, -15, -36, -1)

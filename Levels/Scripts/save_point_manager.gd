@@ -25,7 +25,7 @@ func _ready() -> void:
 	
 	pass 
 
-func _process(delta: float) -> void:
+func _process( _delta: float) -> void:
 	
 	if PlayerManager.player_falling == true:
 		PlayerManager.set_player_position( current_save_position )

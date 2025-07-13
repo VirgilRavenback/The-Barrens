@@ -64,12 +64,15 @@ tile_map_data = PackedByteArray("AADq//b/AAABAAUAAADq//f/AAABAAUAAADq//j/AAABAAU
 y_sort_enabled = true
 
 [node name="GrayStorageBoxLarge" parent="Props" instance=ExtResource("4_48b80")]
+y_sort_enabled = true
 position = Vector2(-224, -112)
 
 [node name="GrayStorageBoxLarge2" parent="Props" instance=ExtResource("5_ngvjy")]
+y_sort_enabled = true
 position = Vector2(-240, -448)
 
 [node name="Grass" parent="Props" instance=ExtResource("6_flq1q")]
+y_sort_enabled = true
 position = Vector2(-480, -32)
 
 [node name="Grass2" parent="Props" instance=ExtResource("6_flq1q")]
@@ -98,12 +101,10 @@ position = Vector2(512, -120)
 
 [node name="SnakePlant" parent="Props" instance=ExtResource("7_xjrpo")]
 z_index = 1
-y_sort_enabled = true
 position = Vector2(24, -128)
 
 [node name="SnakePlant2" parent="Props" instance=ExtResource("7_xjrpo")]
 z_index = 1
-y_sort_enabled = true
 position = Vector2(-56, -128)
 
 [node name="Strilitzia" parent="Props" instance=ExtResource("8_jcvpm")]

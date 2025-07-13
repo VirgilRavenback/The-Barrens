@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://vyxg7rvy6gaq"]
+
+[ext_resource type="Texture2D" uid="uid://dcc143261312m" path="res://Levels/Starting Town/Sprites/Starting_Town_Entrance_Ground.png" id="1_1ux1k"]
+[ext_resource type="Texture2D" uid="uid://btfspdc1ogrdg" path="res://Levels/Starting Town/Sprites/Starting_Town_Entrance_BackWall.png" id="2_7ashc"]
+[ext_resource type="PackedScene" uid="uid://be36j081wthbe" path="res://Levels/Starting Town/Props/arch.tscn" id="3_8fqgw"]
+[ext_resource type="Texture2D" uid="uid://c6xnxtyokl6c5" path="res://Levels/Starting Town/Sprites/Starting_Town_Entrance_FrontRocks.png" id="4_p04ev"]
+[ext_resource type="PackedScene" uid="uid://b1crvou2npwhd" path="res://Levels/Starting Town/Props/pillar.tscn" id="5_og5rn"]
+[ext_resource type="PackedScene" uid="uid://crmgcgpmhr7nu" path="res://Levels/Starting Town/Props/flag.tscn" id="6_m4uf7"]
+[ext_resource type="PackedScene" uid="uid://bkfhg23f5j64x" path="res://Levels/save_point_manager.tscn" id="7_hk7op"]
+[ext_resource type="PackedScene" uid="uid://ckrys2ky2v7mj" path="res://Levels/save_point.tscn" id="8_jtcq3"]
+[ext_resource type="PackedScene" uid="uid://dwy4pip084wpt" path="res://Levels/level_transition.tscn" id="9_uud41"]
+
+[node name="StartingTownEntrance" type="Node2D"]
+
+[node name="Sprite2D_Ground" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(256, 256)
+texture = ExtResource("1_1ux1k")
+
+[node name="StaticBody2D_BackWall" type="StaticBody2D" parent="."]
+z_index = -1
+
+[node name="Sprite2D_BackWall" type="Sprite2D" parent="StaticBody2D_BackWall"]
+position = Vector2(256, 256)
+texture = ExtResource("2_7ashc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D_BackWall"]
+position = Vector2(32, 208)
+polygon = PackedVector2Array(-32, 40, 8, 24, 56, 16, 112, -8, 128, -8, 160, -24, 168, -24, 184, -32, 240, -48, 256, -48, 296, -56, 311, -60, 317, -59, 343, -65, 375, -65, 430, -78, 479, -91, 479, -207, -33, -208, -32, 39)
+
+[node name="StaticBody2D_FrontRocks" type="StaticBody2D" parent="."]
+z_index = 1
+
+[node name="Sprite2D_FrontRocks" type="Sprite2D" parent="StaticBody2D_FrontRocks"]
+position = Vector2(256, 256)
+texture = ExtResource("4_p04ev")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D_FrontRocks"]
+position = Vector2(22, 497)
+polygon = PackedVector2Array(-23, -25, 1, -35, 46, -38, 84, -23, 108, 10, 151, -1, 185, -6, 209, -13, 236, -18, 272, -14, 313, -7, 334, 5, 357, -8, 383, -31, 405, -44, 424, -63, 440, -85, 459, -108, 472, -120, 489, -124, 489, 14, -22, 15)
+
+[node name="EnvironmentalObjects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Arch" parent="EnvironmentalObjects" instance=ExtResource("3_8fqgw")]
+position = Vector2(398, 223)
+
+[node name="Pillar" parent="EnvironmentalObjects" instance=ExtResource("5_og5rn")]
+y_sort_enabled = true
+position = Vector2(169, 308)
+
+[node name="Flag" parent="EnvironmentalObjects" instance=ExtResource("6_m4uf7")]
+y_sort_enabled = true
+position = Vector2(187, 349)
+
+[node name="SavePointManager" parent="." instance=ExtResource("7_hk7op")]
+
+[node name="SavePoint" parent="SavePointManager" instance=ExtResource("8_jtcq3")]
+position = Vector2(49, 314)
+save_name = "Save Point 1"
+
+[node name="SavePoint2" parent="SavePointManager" instance=ExtResource("8_jtcq3")]
+position = Vector2(446, 201)
+save_name = "Save Point 2"
+
+[node name="LevelTransition" parent="." instance=ExtResource("9_uud41")]
+position = Vector2(16, 288)
+level = "res://Levels/test_level.tscn"
+size = 6
+
+[node name="LevelTransition2" parent="." instance=ExtResource("9_uud41")]
+position = Vector2(497, 186)
+level = "res://Levels/Starting Town/starting_town_center.tscn"
+size = 14
+side = 1

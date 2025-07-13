@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c47grdc010q04"]
+
+[ext_resource type="Texture2D" uid="uid://e6r7yanw11f4" path="res://Levels/Starting Town/Sprites/Starting_Town_SunShade.png" id="1_icewd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_drjxc"]
+radius = 3.0
+height = 20.0
+
+[node name="ShopSunShade" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_icewd")
+offset = Vector2(0, -52.145)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-77, 12)
+shape = SubResource("CapsuleShape2D_drjxc")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu17tuef6bj04"]
+
+[ext_resource type="Texture2D" uid="uid://cr1l6gfxiwwpt" path="res://Levels/Starting Town/Sprites/StartingTown_East_OutsideCrates1.png" id="1_kcqhv"]
+[ext_resource type="Texture2D" uid="uid://cl250h2fufnuc" path="res://Levels/Starting Town/Sprites/StartingTown_East_Tarp.png" id="2_7jos6"]
+
+[node name="CrateAndTarp" type="StaticBody2D"]
+
+[node name="StartingTownEastOutsideCrates1" type="Sprite2D" parent="."]
+texture = ExtResource("1_kcqhv")
+offset = Vector2(0, -30)
+
+[node name="StartingTownEastTarp" type="Sprite2D" parent="."]
+texture = ExtResource("2_7jos6")
+offset = Vector2(0, -30)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-63, 29, -44, 6, -3, 6, 10, -1, 27, -1, 36, -24, 40, -24, 49, -5, 58, 18, 56, 20, 48, 10, 30, 10, 29, 17, 10, 17, -2, 21, -44, 21, -62, 31)

@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://0b3fmchybo45"]
+
+[ext_resource type="Texture2D" uid="uid://dv3tk4ggyicuk" path="res://Levels/Starting Town/Sprites/StartingTown_East_Ground.png" id="1_5hdvm"]
+[ext_resource type="Texture2D" uid="uid://cryi7dsv5rhke" path="res://Levels/Starting Town/Sprites/StartingTown_East_BackWall.png" id="2_5jpbx"]
+[ext_resource type="Texture2D" uid="uid://cm62rk1lbdekc" path="res://Levels/Starting Town/Sprites/StartingTown_East_Shadows.png" id="3_2cquy"]
+[ext_resource type="PackedScene" uid="uid://dl1ponykv8qbk" path="res://Levels/Starting Town/Props/hangar.tscn" id="4_wjlgf"]
+[ext_resource type="Texture2D" uid="uid://6ehmkfh0cbv1" path="res://Levels/Starting Town/Sprites/StartingTown_East_FrontRocks.png" id="8_7cb1s"]
+[ext_resource type="PackedScene" uid="uid://bu17tuef6bj04" path="res://Levels/Starting Town/Props/crate_and_tarp.tscn" id="8_y7rub"]
+[ext_resource type="PackedScene" uid="uid://bkfhg23f5j64x" path="res://Levels/save_point_manager.tscn" id="9_mbo21"]
+[ext_resource type="PackedScene" uid="uid://ckrys2ky2v7mj" path="res://Levels/save_point.tscn" id="10_66ncc"]
+[ext_resource type="PackedScene" uid="uid://dwy4pip084wpt" path="res://Levels/level_transition.tscn" id="10_lgnpi"]
+
+[node name="StartingTownEast" type="Node2D"]
+
+[node name="StartingTownEastGround" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(-102, -28)
+texture = ExtResource("1_5hdvm")
+
+[node name="BackWall" type="StaticBody2D" parent="."]
+z_index = -1
+
+[node name="StartingTownEastBackWall" type="Sprite2D" parent="BackWall"]
+position = Vector2(-102, -246)
+texture = ExtResource("2_5jpbx")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BackWall"]
+position = Vector2(-102, -246)
+polygon = PackedVector2Array(-360, 132, -213, -15, -25, -10, -25, -143, -359, -139)
+
+[node name="StartingTownEastShadows" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(-101, -23)
+texture = ExtResource("3_2cquy")
+
+[node name="Hangar" parent="." instance=ExtResource("4_wjlgf")]
+position = Vector2(0, -126)
+
+[node name="FrontRocks" type="StaticBody2D" parent="."]
+
+[node name="StartingTownEastFrontRocks" type="Sprite2D" parent="FrontRocks"]
+position = Vector2(-103, -31)
+texture = ExtResource("8_7cb1s")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FrontRocks"]
+position = Vector2(47, 249)
+polygon = PackedVector2Array(208, -155, 154, -122, 104, -69, 40, -24, -26, 10, -70, 47, -93, 73, -118, 63, -176, 54, -227, 56, -270, 74, -299, 68, -322, 56, -379, 38, -422, 18, -475, 2, -508, -11, -509, 81, 208, 77)
+
+[node name="SavePointManager" parent="." instance=ExtResource("9_mbo21")]
+
+[node name="SavePoint" parent="SavePointManager" instance=ExtResource("10_66ncc")]
+position = Vector2(-413, -16)
+
+[node name="EnvironmentObjects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="CrateAndTarp" parent="EnvironmentObjects" instance=ExtResource("8_y7rub")]
+position = Vector2(-217, -201)
+
+[node name="LevelTransition" parent="." instance=ExtResource("10_lgnpi")]
+position = Vector2(-446, -31)
+level = "res://Levels/Starting Town/starting_town_center.tscn"
+target_transition_area = "LevelTransition2"
+size = 11

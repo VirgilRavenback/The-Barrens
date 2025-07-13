@@ -26,7 +26,7 @@ func _ready() -> void:
 	target = patrol_locations[ 0 ]
 	print( target )
 
-func _process( delta : float ) -> void:
+func _process( _delta : float ) -> void:
 	if Engine.is_editor_hint():
 		return
 	if npc.global_position.distance_to( target.target_position ) < 1:

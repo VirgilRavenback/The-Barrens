@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://crmgcgpmhr7nu"]
+
+[ext_resource type="Texture2D" uid="uid://c4hwku0nbjocv" path="res://Levels/Starting Town/Sprites/Starting_Town_Entrance_Flag.png" id="1_c1gqx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l2m76"]
+radius = 2.0
+height = 10.0
+
+[node name="Flag" type="Node2D"]
+
+[node name="StaticBody2D_Flag" type="StaticBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-190, -345)
+
+[node name="Sprite2D_Flag" type="Sprite2D" parent="StaticBody2D_Flag"]
+position = Vector2(190, 345)
+texture = ExtResource("1_c1gqx")
+offset = Vector2(7, -54)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D_Flag"]
+position = Vector2(191, 341)
+shape = SubResource("CapsuleShape2D_l2m76")

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://doj7le3yqaxsf"]
+
+[ext_resource type="Texture2D" uid="uid://718to0wwnc4k" path="res://Levels/Starting Town/Sprites/StartingTown_WaterTower.png" id="1_t4bam"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42hji"]
+size = Vector2(41, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brgw0"]
+size = Vector2(68, 46)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1gx4x"]
+radius = 11.0
+
+[node name="WaterTower" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("1_t4bam")
+offset = Vector2(0, -73.16)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-241, 80)
+shape = SubResource("RectangleShape2D_42hji")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(215.5, 80)
+shape = SubResource("RectangleShape2D_42hji")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(-12, 239)
+shape = SubResource("RectangleShape2D_brgw0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-1, 49)
+polygon = PackedVector2Array(-34, 27, -99, 13, -141, -15, -183, -65, -124, -92, -54, -101, 30, -101, 96, -86, 151, -62, 115, -16, 64, 15, 14, 27)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-134, 145)
+shape = SubResource("CircleShape2D_1gx4x")

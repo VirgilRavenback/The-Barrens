@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://c65ru53phccxr"]
+[gd_scene load_steps=17 format=4 uid="uid://c65ru53phccxr"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_2b7t5"]
 [ext_resource type="PackedScene" uid="uid://c86874fgjy5df" path="res://Tile Maps/Canyon.tscn" id="2_govi4"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bkfhg23f5j64x" path="res://Levels/save_point_manager.tscn" id="8_t3exd"]
 [ext_resource type="PackedScene" uid="uid://bpdscltxqx3nq" path="res://Levels/reset_point_manager.tscn" id="10_hllr0"]
 [ext_resource type="PackedScene" uid="uid://dqlbxg8lp0oal" path="res://Levels/reset_point.tscn" id="11_16vms"]
+[ext_resource type="PackedScene" uid="uid://dwy4pip084wpt" path="res://Levels/level_transition.tscn" id="14_do4r1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j22ja"]
 texture = ExtResource("3_inm0r")
@@ -240,8 +241,12 @@ position = Vector2(106, 5)
 [node name="SavePointManager" parent="." instance=ExtResource("8_t3exd")]
 
 [node name="SavePoint" parent="SavePointManager" instance=ExtResource("8_n5j6m")]
-position = Vector2(-159, -113)
+position = Vector2(463, -109)
 save_name = "Save Point 1"
+
+[node name="SavePoint2" parent="SavePointManager" instance=ExtResource("8_n5j6m")]
+position = Vector2(-159, -113)
+save_name = "Save Point 2"
 
 [node name="ResetPointManager" parent="." instance=ExtResource("10_hllr0")]
 
@@ -264,3 +269,9 @@ reset_point_name = "Reset Point 4"
 [node name="FallHazard1" parent="ResetPointManager" instance=ExtResource("8_c3y2c")]
 position = Vector2(-272, 57)
 scale = Vector2(1.904, 1.4)
+
+[node name="LevelTransition" parent="." instance=ExtResource("14_do4r1")]
+position = Vector2(496, -130)
+level = "res://Levels/Starting Town/starting_town_entrance.tscn"
+size = 5
+side = 1

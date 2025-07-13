@@ -1,0 +1,196 @@
+[gd_scene load_steps=20 format=3 uid="uid://babe6sy6myvy1"]
+
+[ext_resource type="Texture2D" uid="uid://cjmassf7cfffu" path="res://Levels/Starting Town/Sprites/Starting_Town_OutsideGround.png" id="1_scu4h"]
+[ext_resource type="Texture2D" uid="uid://blfb510fqvgf5" path="res://Levels/Starting Town/Sprites/Starting_Town_LowerFacade.png" id="2_of2dd"]
+[ext_resource type="Texture2D" uid="uid://dekt55d2d3pu4" path="res://Levels/Starting Town/Sprites/Starting_Town_Left-RightStairs.png" id="2_sm6n3"]
+[ext_resource type="Texture2D" uid="uid://bokvo30kigcsh" path="res://Levels/Starting Town/Sprites/Starting_Town_InteriorGround_Upper.png" id="3_egcwa"]
+[ext_resource type="Texture2D" uid="uid://pn4rf5esd3cb" path="res://Levels/Starting Town/Sprites/Starting_Town_Up-DownStairs.png" id="4_i6t4b"]
+[ext_resource type="Texture2D" uid="uid://cxljvqa7ur237" path="res://Levels/Starting Town/Sprites/Starting_Town_InteriorGround_Lower.png" id="5_3g518"]
+[ext_resource type="PackedScene" uid="uid://bjhv4gf1dyf81" path="res://Levels/Starting Town/Props/shop_counter.tscn" id="7_fe18n"]
+[ext_resource type="Texture2D" uid="uid://bfjar8npprqqa" path="res://Levels/Starting Town/Sprites/Starting_Town_InteriorWalls.png" id="7_mliac"]
+[ext_resource type="Texture2D" uid="uid://daknmuwufraj5" path="res://Levels/Starting Town/Sprites/Starting_Town_FrontRocksTent.png" id="8_km242"]
+[ext_resource type="PackedScene" uid="uid://c47grdc010q04" path="res://Levels/Starting Town/Props/shop_sun_shade.tscn" id="8_op4xi"]
+[ext_resource type="PackedScene" uid="uid://bkfhg23f5j64x" path="res://Levels/save_point_manager.tscn" id="10_j2ctr"]
+[ext_resource type="PackedScene" uid="uid://ckrys2ky2v7mj" path="res://Levels/save_point.tscn" id="11_ikw7d"]
+[ext_resource type="PackedScene" uid="uid://dwy4pip084wpt" path="res://Levels/level_transition.tscn" id="12_4nbrm"]
+[ext_resource type="PackedScene" uid="uid://doj7le3yqaxsf" path="res://Levels/Starting Town/Props/water_tower.tscn" id="13_x0vi7"]
+[ext_resource type="PackedScene" uid="uid://cdwwg0b4312ee" path="res://Levels/Starting Town/Props/water_barrel.tscn" id="16_v38ve"]
+[ext_resource type="PackedScene" uid="uid://bmrkc57bm8jow" path="res://Levels/facade_control.tscn" id="17_rde22"]
+[ext_resource type="PackedScene" uid="uid://bm1lxo7imtx36" path="res://Levels/Starting Town/Props/tech_shop_boxes.tscn" id="17_tdgg8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytu0r"]
+size = Vector2(34, 509)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jgi1"]
+size = Vector2(8, 254)
+
+[node name="StartingTownCenter" type="Node2D"]
+
+[node name="GroundNodes" type="Node2D" parent="."]
+
+[node name="StartingTownOutsideGround" type="Sprite2D" parent="GroundNodes"]
+z_index = -3
+position = Vector2(-2, -3)
+texture = ExtResource("1_scu4h")
+
+[node name="StartingTownLeft-rightStairs" type="Sprite2D" parent="GroundNodes"]
+z_index = -2
+position = Vector2(-754, -428)
+texture = ExtResource("2_sm6n3")
+
+[node name="StartingTownInteriorGroundUpper" type="Sprite2D" parent="GroundNodes"]
+z_index = -1
+position = Vector2(-1, 1)
+texture = ExtResource("3_egcwa")
+
+[node name="StartingTownUp-downStairs" type="Sprite2D" parent="GroundNodes"]
+z_index = -2
+position = Vector2(-804, -328)
+texture = ExtResource("4_i6t4b")
+
+[node name="StartingTownInteriorGroundLower" type="Sprite2D" parent="GroundNodes"]
+z_index = -2
+position = Vector2(-1, 1)
+texture = ExtResource("5_3g518")
+
+[node name="WallNodes" type="Node2D" parent="."]
+
+[node name="LowerFacade" type="StaticBody2D" parent="WallNodes"]
+
+[node name="Sprite2D" type="Sprite2D" parent="WallNodes/LowerFacade"]
+z_index = -1
+position = Vector2(-1, 0)
+texture = ExtResource("2_of2dd")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WallNodes/LowerFacade"]
+visible = false
+position = Vector2(-12, -27)
+polygon = PackedVector2Array(-867, 27, -866, -100, -834, -101, -834, -6, -815, -6, -815, 27)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="WallNodes/LowerFacade"]
+visible = false
+position = Vector2(84, -27)
+polygon = PackedVector2Array(-867, 27, -866, -8, -853, -8, -853, -111, -231, -112, 90.7772, -109.19, 227, -108, 367, -109, 495, 15, 624, 146, 634, 156, 793, 156, 792, 283, 623, 284, 607, 268, 608, 158, 474, 56, 548, 113, 474, 112.332, 474, 125, 466, 125, 367, 26, 128, 26, 128, -53, 47, -52, 47, 27, -210, 27, -211, -45, -222, -52, -241, -52, -256, -45, -255, 27)
+
+[node name="EnvironmentPropsInside" type="Node2D" parent="WallNodes"]
+y_sort_enabled = true
+
+[node name="WaterBarrel6" parent="WallNodes/EnvironmentPropsInside" instance=ExtResource("16_v38ve")]
+y_sort_enabled = true
+position = Vector2(684, 67)
+
+[node name="WaterBarrel7" parent="WallNodes/EnvironmentPropsInside" instance=ExtResource("16_v38ve")]
+y_sort_enabled = true
+position = Vector2(686, 88)
+
+[node name="WaterBarrel8" parent="WallNodes/EnvironmentPropsInside" instance=ExtResource("16_v38ve")]
+y_sort_enabled = true
+position = Vector2(712, 87)
+
+[node name="InteriorWalls" type="StaticBody2D" parent="WallNodes"]
+z_index = -2
+
+[node name="Sprite2D" type="Sprite2D" parent="WallNodes/InteriorWalls"]
+texture = ExtResource("7_mliac")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WallNodes/InteriorWalls"]
+visible = false
+position = Vector2(214, -183)
+polygon = PackedVector2Array(-869, 27, -869, -328, -406, -329, -404, -66, -421, -66, -421, 10, -405, 10, -405, 26, -806.23, 26.8685, -806, -45, -822, -52, -836, -52, -851, -45, -850.501, 26.9643)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="WallNodes/InteriorWalls"]
+visible = false
+position = Vector2(357, -187)
+polygon = PackedVector2Array(-212, -326, 114, -323, 522, -324, 521, 15, 524, 267, 348, 266, 108, 27, 47, 27, -213, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallNodes/InteriorWalls"]
+visible = false
+position = Vector2(-862, -257.5)
+shape = SubResource("RectangleShape2D_ytu0r")
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="WallNodes/InteriorWalls"]
+visible = false
+position = Vector2(1, -536)
+polygon = PackedVector2Array(-883, 0, -882, 22, -845.306, 21.9468, -846, 107, -778, 107, -705, 69, -684, 73, -656, 73, -192, 21, -192, 74, 142, 73, 143, 22, 143, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WallNodes/InteriorWalls"]
+visible = false
+position = Vector2(-763, -256)
+shape = SubResource("RectangleShape2D_2jgi1")
+
+[node name="FrontRocks" type="StaticBody2D" parent="WallNodes"]
+
+[node name="StartingTownFrontRocksTent" type="Sprite2D" parent="WallNodes/FrontRocks"]
+position = Vector2(-2, -2)
+texture = ExtResource("8_km242")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="WallNodes/FrontRocks"]
+position = Vector2(351, 240)
+polygon = PackedVector2Array(-1232, 118, -1140, 118, -1059, 156, -995, 228, -981, 261, -895, 253, -865, 203, -849, 204, -878, 256, -750, 260, -718, 233, -653, 223, -595, 199, -503, 172, -414, 179, -310, 210, -269, 224, -258, 205, -229, 172, -155, 171, -76, 205, -27, 267, 44, 247, 113, 260, 143, 258, 198, 233, 288, 212, 370, 235, 424, 254, 465, 216, 522, 191, 524, 267, 122, 271, -262, 267, -681, 270, -1229, 270)
+
+[node name="SavePointManager" parent="." instance=ExtResource("10_j2ctr")]
+
+[node name="SavePoint" parent="SavePointManager" instance=ExtResource("11_ikw7d")]
+position = Vector2(-830, 118)
+save_name = "Save Point 1"
+
+[node name="SavePoint2" parent="SavePointManager" instance=ExtResource("11_ikw7d")]
+position = Vector2(823, 347)
+save_name = "Save Point 2"
+
+[node name="FacadeControl" parent="." instance=ExtResource("17_rde22")]
+visible = false
+
+[node name="LevelTransition" parent="." instance=ExtResource("12_4nbrm")]
+position = Vector2(-864, 119)
+level = "res://Levels/Starting Town/starting_town_entrance.tscn"
+target_transition_area = "LevelTransition2"
+size = 15
+
+[node name="LevelTransition2" parent="." instance=ExtResource("12_4nbrm")]
+position = Vector2(860, 351)
+level = "res://Levels/Starting Town/starting_town_east.tscn"
+size = 12
+side = 1
+
+[node name="EnvironmentPropsOutside" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="WaterBarrel" parent="EnvironmentPropsOutside" instance=ExtResource("16_v38ve")]
+y_sort_enabled = true
+position = Vector2(-576, 301)
+
+[node name="WaterBarrel2" parent="EnvironmentPropsOutside" instance=ExtResource("16_v38ve")]
+y_sort_enabled = true
+position = Vector2(282, 9)
+
+[node name="WaterBarrel5" parent="EnvironmentPropsOutside" instance=ExtResource("16_v38ve")]
+y_sort_enabled = true
+position = Vector2(-585, 327)
+
+[node name="WaterTower" parent="EnvironmentPropsOutside" instance=ExtResource("13_x0vi7")]
+y_sort_enabled = true
+position = Vector2(-320, 105)
+
+[node name="WaterBarrel4" parent="EnvironmentPropsOutside" instance=ExtResource("16_v38ve")]
+y_sort_enabled = true
+position = Vector2(-606, 309)
+
+[node name="TechShopBoxes" parent="EnvironmentPropsOutside" instance=ExtResource("17_tdgg8")]
+y_sort_enabled = true
+position = Vector2(-8, 23)
+
+[node name="WaterBarrel3" parent="EnvironmentPropsOutside" instance=ExtResource("16_v38ve")]
+y_sort_enabled = true
+position = Vector2(-502, 351)
+
+[node name="WaterBarrel6" parent="EnvironmentPropsOutside" instance=ExtResource("16_v38ve")]
+y_sort_enabled = true
+position = Vector2(-542, 305)
+
+[node name="ShopSunShade" parent="EnvironmentPropsOutside" instance=ExtResource("8_op4xi")]
+position = Vector2(550, 116)
+
+[node name="Shop" parent="EnvironmentPropsOutside" instance=ExtResource("7_fe18n")]
+z_index = -1
+position = Vector2(595, 143)

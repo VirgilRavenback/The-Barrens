@@ -20,13 +20,13 @@ func _ready() -> void:
 	area_2d.body_exited.connect( _on_body_exited )
 	off_rect = sprite_2d.region_rect
 
-func _on_body_entered( b : Node2D ) -> void:
+func _on_body_entered( _b : Node2D ) -> void:
 	bodies += 1
 	check_is_activated()
 	play_audio( audio_activate )
 	pass
 	
-func _on_body_exited( b : Node2D ) -> void:
+func _on_body_exited( _b : Node2D ) -> void:
 	bodies -= 1
 	check_is_activated()
 	play_audio( audio_deactivate )

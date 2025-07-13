@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmrkc57bm8jow"]
+
+[ext_resource type="Script" path="res://Levels/Scripts/facade_control.gd" id="1_yl2a5"]
+[ext_resource type="Texture2D" uid="uid://destuf06vv6g8" path="res://Levels/Starting Town/Sprites/Starting_Town_UpperFacade.png" id="2_a0d8m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjkvl"]
+size = Vector2(72, 34)
+
+[node name="FacadeControl" type="Node2D"]
+script = ExtResource("1_yl2a5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_a0d8m")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-816, -24)
+shape = SubResource("RectangleShape2D_rjkvl")
