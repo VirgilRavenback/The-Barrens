@@ -96,6 +96,10 @@ position = Vector2(528, -40)
 [node name="Grass8" parent="Props" instance=ExtResource("6_flq1q")]
 position = Vector2(512, -120)
 
+[node name="SnakePlant3" parent="Props" instance=ExtResource("7_xjrpo")]
+y_sort_enabled = true
+position = Vector2(-11, -79)
+
 [node name="SnakePlant" parent="Props" instance=ExtResource("7_xjrpo")]
 z_index = 1
 y_sort_enabled = true
