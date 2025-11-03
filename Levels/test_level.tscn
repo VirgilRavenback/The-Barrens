@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_2b7t5"]
 [ext_resource type="PackedScene" uid="uid://c86874fgjy5df" path="res://Tile Maps/Canyon.tscn" id="2_govi4"]
 [ext_resource type="Texture2D" uid="uid://nddwc8b2mcox" path="res://Tile Maps/sprites/Barrens_CanyonWallsTileset.png" id="3_inm0r"]
-[ext_resource type="PackedScene" path="res://Tile Maps/canyon_v4.tscn" id="4_4c2o1"]
+[ext_resource type="PackedScene" uid="uid://crtlba51yn8ke" path="res://Tile Maps/canyon_v4.tscn" id="4_4c2o1"]
 [ext_resource type="PackedScene" uid="uid://b3fbxvdpxqbg0" path="res://Enemies/BallRobot/ball_robot2.tscn" id="4_oc60m"]
 [ext_resource type="PackedScene" uid="uid://c04gioy8bjue8" path="res://Props/Plants/Bush/bush.tscn" id="5_4ac3a"]
 [ext_resource type="PackedScene" uid="uid://ox7sbbs0bl8l" path="res://Props/Rocks/canyon_column.tscn" id="7_2mb8y"]
