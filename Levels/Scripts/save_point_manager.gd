@@ -11,7 +11,7 @@ func _ready() -> void:
 	
 	
 	for c in get_children():
-		if c is SavePoint:
+		if c is SavePoint or WaterSource:
 			save_points.append( c )
 			c.save_activated.connect( _on_save_activated )
 	print( save_points )
