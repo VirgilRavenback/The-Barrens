@@ -725,10 +725,6 @@ script = ExtResource("5_3la3b")
 script = ExtResource("7_xqess")
 next_state = NodePath("../Wander")
 
-[node name="Wander" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
-script = ExtResource("8_bglk7")
-next_state = NodePath("../Idle")
-
 [node name="Chase" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state", "vision_area")]
 script = ExtResource("9_kpjfy")
 anim_name = "chase"
@@ -740,6 +736,10 @@ vision_area = NodePath("../../VisionArea")
 script = ExtResource("10_nyet8")
 
 [node name="Stun" type="Node" parent="EnemyStateMachine"]
+
+[node name="Wander" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("8_bglk7")
+next_state = NodePath("../Idle")
 
 [node name="VisionArea" parent="." instance=ExtResource("11_ng0ns")]
 visible = false

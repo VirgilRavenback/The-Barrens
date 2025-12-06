@@ -19,8 +19,14 @@ signal direction_changed( new_direction : Vector2 )
 signal player_damaged( hurt_box : HurtBox )
 
 var invlunerable : bool = false
-var current_health : int = 5
-var max_health : int = 5
+
+@export_category("Health")
+@export var current_health : int = 5
+@export var max_health : int = 5
+
+@export_category("Healing")
+@export var current_healing_charges : int = 0
+@export var max_healing_charges : int = 3
 
 func _ready() -> void:
 	#setting this node equal to the player manager. Only works if the player is above enemies in the scene tree
@@ -29,6 +35,7 @@ func _ready() -> void:
 	hit_box.damaged.connect( _take_damage )
 	current_health = max_health
 	update_health( 0 )
+	current_healing_charges = max_healing_charges
 	pass
 	
 func spawn(pos):

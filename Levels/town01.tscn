@@ -64,15 +64,12 @@ tile_map_data = PackedByteArray("AADq//b/AAABAAUAAADq//f/AAABAAUAAADq//j/AAABAAU
 y_sort_enabled = true
 
 [node name="GrayStorageBoxLarge" parent="Props" instance=ExtResource("4_48b80")]
-y_sort_enabled = true
 position = Vector2(-224, -112)
 
 [node name="GrayStorageBoxLarge2" parent="Props" instance=ExtResource("5_ngvjy")]
-y_sort_enabled = true
 position = Vector2(-240, -448)
 
 [node name="Grass" parent="Props" instance=ExtResource("6_flq1q")]
-y_sort_enabled = true
 position = Vector2(-480, -32)
 
 [node name="Grass2" parent="Props" instance=ExtResource("6_flq1q")]
@@ -99,12 +96,13 @@ position = Vector2(528, -40)
 [node name="Grass8" parent="Props" instance=ExtResource("6_flq1q")]
 position = Vector2(512, -120)
 
+[node name="SnakePlant3" parent="Props" instance=ExtResource("7_xjrpo")]
+position = Vector2(-11, -79)
+
 [node name="SnakePlant" parent="Props" instance=ExtResource("7_xjrpo")]
-z_index = 1
 position = Vector2(24, -128)
 
 [node name="SnakePlant2" parent="Props" instance=ExtResource("7_xjrpo")]
-z_index = 1
 position = Vector2(-56, -128)
 
 [node name="Strilitzia" parent="Props" instance=ExtResource("8_jcvpm")]
@@ -117,13 +115,12 @@ position = Vector2(400, -200)
 y_sort_enabled = true
 
 [node name="Shop2" parent="Buildings" instance=ExtResource("10_kdagv")]
-y_sort_enabled = true
-position = Vector2(-256, -840)
+position = Vector2(-82, -158)
 
 [node name="LowerFacade" parent="Buildings" instance=ExtResource("11_eieg8")]
 
 [node name="FountainShop" parent="Buildings" instance=ExtResource("12_jfqej")]
-z_index = -1
+y_sort_enabled = false
 
 [node name="Interactions" type="Node2D" parent="."]
 
@@ -144,7 +141,7 @@ item_data = ExtResource("19_g60io")
 quantity = 5
 
 [node name="Shopkeeper" parent="." instance=ExtResource("19_uhfs8")]
-position = Vector2(-188.429, -56.1947)
+position = Vector2(-222.059, -408.025)
 npc_resource = ExtResource("16_n02q5")
 
 [node name="NpcBehaviorIdle" parent="Shopkeeper" instance=ExtResource("21_j8yfe")]

@@ -24,7 +24,7 @@ signal direction_changed ( new_direction : Vector2 )
 signal enemy_damaged( hurt_box : HurtBox )
 signal enemy_destroyed( hurt_box : HurtBox )
 #signal ready_to_attack()
-
+ 
 func _ready() -> void:
 	enemy_state_machine.initialize( self )
 	player = PlayerManager.player

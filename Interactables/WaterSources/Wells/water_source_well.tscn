@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://dag4fbma6s10p"]
+
+[ext_resource type="Texture2D" uid="uid://botbejuxea43g" path="res://Interactables/WaterSources/Wells/sprites/Well.png" id="1_jr62e"]
+[ext_resource type="Script" path="res://Interactables/WaterSources/Wells/water_source.gd" id="1_oynwo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7jjgb"]
+radius = 29.5169
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wvliw"]
+radius = 13.0
+height = 32.0
+
+[node name="WaterSourceWell" type="Node2D"]
+script = ExtResource("1_oynwo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jr62e")
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="Sprite2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 9)
+shape = SubResource("CircleShape2D_7jjgb")
+debug_color = Color(0.661638, 0.513808, 0, 0.42)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 15.0
+offset_top = -22.0
+offset_right = 30.0
+offset_bottom = -6.0
+text = "E"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 11)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_wvliw")

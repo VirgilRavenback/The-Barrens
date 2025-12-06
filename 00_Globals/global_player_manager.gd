@@ -29,6 +29,10 @@ func set_player_health( current_health : int, max_health : int ) -> void:
 	player.current_health = current_health
 	player.update_health( 0 )
 
+func set_player_healing_charges( current_heal_charges : int, max_healing_charges : int ) -> void:
+	player.max_healing_charges = max_healing_charges
+	player.current_healing_charges = current_heal_charges
+
 func set_player_position( _new_pos : Vector2 ) -> void:
 	player.global_position = _new_pos
 	pass

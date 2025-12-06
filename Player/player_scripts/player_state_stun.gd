@@ -6,7 +6,7 @@ extends PlayerState
 @export var decelerate_speed : float = 10.0
 @export var invulnerable_duration : float = 1.5
 
-@onready var idle: PlayerState = $"../Idle"
+@onready var idle: PlayerStateIdle = $"../Idle"
 @onready var death: PlayerStateDeath = $"../Death"
 @onready var fall: PlayerStateFall = $"../Fall"
 

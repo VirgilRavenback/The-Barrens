@@ -16,7 +16,9 @@ var current_save : Dictionary = {
 		pos_x = 0,
 		pos_y = 0,
 		save_pos_x = 0,
-		save_pos_y = 0
+		save_pos_y = 0,
+		current_healing_charges = 0,
+		max_healing_charges = 0
 	},
 	items = [],
 	persistence = [],
@@ -56,6 +58,7 @@ func load_game() -> void:
 	#spawn player at the player's last position
 	#PlayerManager.set_player_position( Vector2( current_save.player.pos_x, current_save.player.pos_y ) )
 	PlayerManager.set_player_health( current_save.player.current_health, current_save.player.max_health )
+	PlayerManager.set_player_healing_charges( current_save.player.current_healing_charges, current_save.player.max_healing_charges )
 	PlayerManager.INVENTORY_DATA.parse_save_data( current_save.items )
 	
 	await LevelManager.level_loaded
@@ -69,6 +72,8 @@ func update_player_data() -> void:
 	var p : Player = PlayerManager.player
 	current_save.player.current_health = p.current_health
 	current_save.player.max_health = p.max_health
+	current_save.player.current_healing_charges = p.current_healing_charges
+	current_save.player.max_healing_charges = p.max_healing_charges
 	#position of last spawn point is currently being set in the save point manager
 	#current_save.player.save_pos_x = p.global_position.x
 	#current_save.player.save_pos_y = p.global_position.y

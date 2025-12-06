@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dxsmf1boy48yc"]
+[gd_scene load_steps=58 format=3 uid="uid://dxsmf1boy48yc"]
 
 [ext_resource type="Script" path="res://Player/player_scripts/player_2_0.gd" id="1_wbqjb"]
 [ext_resource type="Texture2D" uid="uid://dd2ssbdbhv7u5" path="res://Player/DesertChar_Full_Animations.png" id="2_obm7c"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://Player/player_scripts/player_state_death.gd" id="11_w6jc7"]
 [ext_resource type="Script" path="res://Player/player_scripts/push_area.gd" id="12_dlkn0"]
 [ext_resource type="AudioStream" uid="uid://c50okrah5kyjh" path="res://Player/audio/exhausted.wav" id="12_rlt1l"]
+[ext_resource type="Script" path="res://Player/player_scripts/player_state_heal.gd" id="14_yxk20"]
 [ext_resource type="Script" path="res://Player/player_scripts/ground_detection.gd" id="19_s48hb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pgw3e"]
@@ -384,6 +385,54 @@ tracks/3/keys = {
 "values": [false, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_tl4l7"]
+resource_name = "heal_down"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [80, 81, 82, 83, 84, 85]
+}
+
+[sub_resource type="Animation" id="Animation_oa5py"]
+resource_name = "heal_side"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [8, 8, 8]
+}
+
+[sub_resource type="Animation" id="Animation_ceoap"]
+resource_name = "heal_up"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [24, 24, 24]
+}
+
 [sub_resource type="Animation" id="Animation_fscdi"]
 resource_name = "idle_down"
 length = 0.4
@@ -598,6 +647,9 @@ _data = {
 "fall_down": SubResource("Animation_eiwh8"),
 "fall_side": SubResource("Animation_iydjk"),
 "fall_up": SubResource("Animation_fhnfb"),
+"heal_down": SubResource("Animation_tl4l7"),
+"heal_side": SubResource("Animation_oa5py"),
+"heal_up": SubResource("Animation_ceoap"),
 "idle_down": SubResource("Animation_fscdi"),
 "idle_side": SubResource("Animation_1bpbl"),
 "idle_up": SubResource("Animation_tj411"),
@@ -680,23 +732,22 @@ _data = {
 size = Vector2(11, 2.75)
 
 [node name="Player2_0" type="CharacterBody2D" groups=["Player"]]
-y_sort_enabled = true
+z_as_relative = false
 collision_layer = 2
 collision_mask = 45
 script = ExtResource("1_wbqjb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-y_sort_enabled = true
+position = Vector2(0, -21)
 texture = ExtResource("2_obm7c")
-offset = Vector2(0, -21)
 hframes = 8
 vframes = 11
 
 [node name="ShadowSprite" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0, 0, 0, 0.7)
 show_behind_parent = true
+position = Vector2(0, 29)
 texture = ExtResource("3_3jhyp")
-offset = Vector2(0, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)
@@ -735,6 +786,12 @@ script = ExtResource("9_fmtq6")
 [node name="Death" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("11_w6jc7")
 exhaust_audio = ExtResource("12_rlt1l")
+
+[node name="Heal" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("idle", "walk", "death")]
+script = ExtResource("14_yxk20")
+idle = NodePath("../Idle")
+walk = NodePath("../Walk")
+death = NodePath("../Death")
 
 [node name="PlayerInteractions" type="Node2D" parent="."]
 position = Vector2(0, -15)

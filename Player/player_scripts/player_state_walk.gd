@@ -6,6 +6,7 @@ extends PlayerState
 @onready var idle: PlayerState = $"../Idle"
 @onready var attack: PlayerState = $"../Attack"
 @onready var dash: PlayerState = $"../Dash"
+@onready var heal: PlayerState = $"../Heal"
 
 
 func enter() -> void:
@@ -38,4 +39,7 @@ func handle_input( _event : InputEvent ) -> PlayerState:
 		print("player is trying to interact")
 	if _event.is_action_pressed("dash"):
 		return dash
+	if _event.is_action_pressed("heal"):
+		return heal
+	
 	return null
