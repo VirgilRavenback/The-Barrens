@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5sojd8lhgust"]
+
+[ext_resource type="Texture2D" uid="uid://bgmub2xas5ufi" path="res://Levels/Starting Town/Sprites/Starting_Town_TechShop.png" id="1_612sm"]
+
+[node name="TechShop" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_612sm")
+offset = Vector2(0, -60)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-92, -28, -81, -20, -83, -4, -72, 5, -61, 15, -57, 11, -57, 11, -26, 11, -25, -7, -10, -8, 20, -10, 25, -4, 58, -4, 62, -16, 76, -14, 83, -29, 83, -58, 27, -68, -7, -69, -60, -71, -92, -48)

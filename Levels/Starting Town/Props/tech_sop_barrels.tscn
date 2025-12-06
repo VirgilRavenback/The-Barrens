@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dutx4ankldu2c"]
+
+[ext_resource type="Texture2D" uid="uid://dglhcrag3pb2n" path="res://Levels/Starting Town/Sprites/Starting_Town_TechShop_Barrels.png" id="1_vvdjn"]
+
+[node name="TechSopBarrels" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vvdjn")
+offset = Vector2(0, -14.825)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-19, 9, -32, 9, -39, 3, -34, -8, -28, -21, -4, -22, 14, -12, 11, -2, -5, 0)
