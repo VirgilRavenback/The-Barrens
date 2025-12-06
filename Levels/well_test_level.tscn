@@ -242,9 +242,13 @@ position = Vector2(-409, 155)
 position = Vector2(-377, 123)
 
 [node name="SavePointManager" parent="." instance=ExtResource("9_ebjwa")]
+y_sort_enabled = true
 
 [node name="SavePoint" parent="SavePointManager" instance=ExtResource("10_5irfb")]
 position = Vector2(416, 20)
+
+[node name="WaterSourceWell" parent="SavePointManager" instance=ExtResource("13_jfca7")]
+position = Vector2(392, -22)
 
 [node name="ResetPointManager" parent="." instance=ExtResource("11_kqhk7")]
 
@@ -265,8 +269,6 @@ position = Vector2(-368, 72)
 reset_point_name = "Reset Point 4"
 
 [node name="FallHazard1" parent="ResetPointManager" instance=ExtResource("13_q2vkn")]
+z_index = -2
 position = Vector2(-272, 57)
 scale = Vector2(1.904, 1.4)
-
-[node name="WaterSourceWell" parent="." instance=ExtResource("13_jfca7")]
-position = Vector2(392, -22)
