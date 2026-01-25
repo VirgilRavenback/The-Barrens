@@ -671,12 +671,12 @@ _data = {
 size = Vector2(10, 8)
 
 [node name="SwarmRobot" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_0kwcn")
 current_health = 1
 take_damage_sound = ExtResource("11_6ira7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_hjhmh")
 debug_color = Color(0, 0.6, 0.7, 0)
 
@@ -694,9 +694,9 @@ texture = ExtResource("4_ihwl6")
 region_rect = Rect2(11, 268, 10, 8)
 
 [node name="HurtBox" parent="Sprite2D" instance=ExtResource("4_a58dr")]
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HurtBox"]
-position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_upnil")
 debug_color = Color(0.7, 0.084, 0, 0)
 
@@ -707,12 +707,10 @@ libraries = {
 autoplay = "idle_down"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-avoidance_enabled = true
 
 [node name="hit_box" parent="." instance=ExtResource("3_bmje4")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
-position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_imnxo")
 debug_color = Color(0.423, 0.158, 0, 0)
 
@@ -731,15 +729,16 @@ anim_name = "chase"
 chase_speed = 75
 next_state = NodePath("../Idle")
 vision_area = NodePath("../../VisionArea")
-
-[node name="Destroy" type="Node" parent="EnemyStateMachine"]
-script = ExtResource("10_nyet8")
+state_aggro_duration = 5.0
 
 [node name="Stun" type="Node" parent="EnemyStateMachine"]
 
 [node name="Wander" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_bglk7")
 next_state = NodePath("../Idle")
+
+[node name="Destroy" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("10_nyet8")
 
 [node name="VisionArea" parent="." instance=ExtResource("11_ng0ns")]
 visible = false

@@ -2,6 +2,8 @@ class_name EnemyStateChase
 
 extends EnemyState
 
+const PATHFINDER : PackedScene = preload("res://Enemies/pathfinder.tscn")
+
 @export var anim_name : String = "walk"
 @export var chase_speed : int = 100
 @export var turn_rate : float = 0.25
@@ -14,11 +16,15 @@ extends EnemyState
 @export var state_aggro_duration : float = 0.5
 @export var attack_distance : float = 100.0
 
+var pathfinder : Pathfinder
+
 var target: CharacterBody2D
 var player: CharacterBody2D
 var _can_see_player : bool = false
 var _direction : Vector2
 var _timer : float = 0.0
+
+var colliders : Array[ Node2D ]
 
 @onready var character_body_2D: Enemy = $"../.."
 @onready var sprite_2d: Sprite2D = $"../../Sprite2D"
@@ -34,7 +40,7 @@ func initialize() -> void:
 	pass
 
 func _ready() -> void:
-		
+	
 	pass
 
 func process( _delta: float ) -> EnemyState:
@@ -42,9 +48,12 @@ func process( _delta: float ) -> EnemyState:
 		return next_state
 	if PlayerManager.player.current_health <= 0: #exit chase state if player dies
 		return next_state
-	var _new_direction : Vector2 = enemy.global_position.direction_to( PlayerManager.player.global_position )
-	_direction = lerp( _direction, _new_direction, turn_rate )
+		
+	#var _new_direction : Vector2 = enemy.global_position.direction_to( PlayerManager.player.global_position )
+	#_direction = lerp( _direction, _new_direction, turn_rate )
+	_direction = lerp( _direction, pathfinder.move_dir, turn_rate )
 	enemy.velocity = _direction * chase_speed
+	
 	if enemy.set_direction( _direction ):
 		enemy.update_animation( anim_name )
 
@@ -80,6 +89,9 @@ func _on_physics_process( _delta: float ) -> EnemyState:
 	return null
 	
 func enter():
+	pathfinder = PATHFINDER.instantiate() as Pathfinder
+	enemy.add_child( pathfinder )
+	
 	_timer = state_aggro_duration
 	#set_movement_target()
 	enemy.update_animation( anim_name )
@@ -94,6 +106,8 @@ func set_movement_target():
 	
 
 func exit():
+	pathfinder.queue_free()
+	
 	target = null
 	_can_see_player = false
 	#need to figure out how to end navigation on exiting the state

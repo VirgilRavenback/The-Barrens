@@ -33,7 +33,7 @@ func initialize() -> void:
 	pass
 
 func enter() -> void:
-	print("player is dashing")
+	#print("player is dashing")
 	dashing = true
 	player.update_animation( "dash" )
 	#animation_player.animation_finished.connect( end_attack )
@@ -57,7 +57,7 @@ func exit() -> void:
 	dashing = false
 	timer_timeout = false
 	next_state = null
-	print("end dash")
+	#print("end dash")
 	pass
 
 func process( _delta : float ) -> PlayerState:

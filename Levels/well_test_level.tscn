@@ -224,22 +224,22 @@ position = Vector2(476, 142)
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="SwarmRobot" parent="." instance=ExtResource("8_tfnxe")]
-position = Vector2(-377, 219)
+position = Vector2(-57, 119)
 
 [node name="SwarmRobot2" parent="." instance=ExtResource("8_tfnxe")]
-position = Vector2(-329, 187)
+position = Vector2(-9, 87)
 
 [node name="SwarmRobot3" parent="." instance=ExtResource("8_tfnxe")]
-position = Vector2(-425, 187)
+position = Vector2(-105, 87)
 
 [node name="SwarmRobot4" parent="." instance=ExtResource("8_tfnxe")]
-position = Vector2(-347, 155)
+position = Vector2(-27, 55)
 
 [node name="SwarmRobot5" parent="." instance=ExtResource("8_tfnxe")]
-position = Vector2(-409, 155)
+position = Vector2(-89, 55)
 
 [node name="SwarmRobot6" parent="." instance=ExtResource("8_tfnxe")]
-position = Vector2(-377, 123)
+position = Vector2(-57, 23)
 
 [node name="SavePointManager" parent="." instance=ExtResource("9_ebjwa")]
 y_sort_enabled = true

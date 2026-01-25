@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://dcy044hvitups"]
+[gd_scene load_steps=34 format=4 uid="uid://c6r8b1pa0i8kc"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_cs2aw"]
 [ext_resource type="PackedScene" uid="uid://c86874fgjy5df" path="res://Tile Maps/Canyon.tscn" id="3_xl3ot"]

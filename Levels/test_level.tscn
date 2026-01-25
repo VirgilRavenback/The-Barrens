@@ -230,21 +230,6 @@ position = Vector2(-57, 212)
 [node name="SwarmRobot" parent="." instance=ExtResource("7_ejnh6")]
 position = Vector2(106, 101)
 
-[node name="SwarmRobot2" parent="." instance=ExtResource("7_ejnh6")]
-position = Vector2(154, 69)
-
-[node name="SwarmRobot3" parent="." instance=ExtResource("7_ejnh6")]
-position = Vector2(58, 69)
-
-[node name="SwarmRobot4" parent="." instance=ExtResource("7_ejnh6")]
-position = Vector2(136, 37)
-
-[node name="SwarmRobot5" parent="." instance=ExtResource("7_ejnh6")]
-position = Vector2(74, 37)
-
-[node name="SwarmRobot6" parent="." instance=ExtResource("7_ejnh6")]
-position = Vector2(106, 5)
-
 [node name="SavePointManager" parent="." instance=ExtResource("8_t3exd")]
 
 [node name="SavePoint" parent="SavePointManager" instance=ExtResource("8_n5j6m")]

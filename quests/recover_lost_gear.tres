@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=7 format=3 uid="uid://benbt17xymjk2"]
+
+[ext_resource type="Script" path="res://quests/scripts/quest_reward_item.gd" id="1_biicd"]
+[ext_resource type="Resource" uid="uid://dwskt4pelo4w8" path="res://Items/blue_potion.tres" id="2_2cwpa"]
+[ext_resource type="Script" path="res://quests/scripts/quest_resource.gd" id="2_wrdau"]
+[ext_resource type="Resource" uid="uid://cmlvkngp7ceig" path="res://Items/credit.tres" id="3_w4mxe"]
+
+[sub_resource type="Resource" id="Resource_1bt33"]
+script = ExtResource("1_biicd")
+item = ExtResource("2_2cwpa")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_3p5vm"]
+script = ExtResource("1_biicd")
+item = ExtResource("3_w4mxe")
+quantity = 10
+
+[resource]
+script = ExtResource("2_wrdau")
+title = "Recover Lost Gear"
+description = "The shopkeeper has asked the player to retrieve his lost gear from the cave in the canyon."
+steps = Array[String](["Find the gear", "Return the gear to the shopkeeper"])
+reward_xp = 0
+reward_items = Array[ExtResource("1_biicd")]([SubResource("Resource_1bt33"), SubResource("Resource_3p5vm")])

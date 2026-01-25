@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=5 format=3 uid="uid://vcatcr6h6t1d"]
+
+[ext_resource type="Script" path="res://quests/scripts/quest_reward_item.gd" id="1_qe8gr"]
+[ext_resource type="Script" path="res://quests/scripts/quest_resource.gd" id="2_df6ig"]
+[ext_resource type="Resource" uid="uid://cmlvkngp7ceig" path="res://Items/credit.tres" id="2_pidxt"]
+
+[sub_resource type="Resource" id="Resource_e8ocj"]
+script = ExtResource("1_qe8gr")
+item = ExtResource("2_pidxt")
+quantity = 3
+
+[resource]
+script = ExtResource("2_df6ig")
+title = "Long Quest"
+description = "A long quest with multiple steps"
+steps = Array[String](["Step 1", "Step 2", "Step 3", "Step 4", "Step 5"])
+reward_xp = 50
+reward_items = Array[ExtResource("1_qe8gr")]([SubResource("Resource_e8ocj")])
