@@ -6,10 +6,7 @@ signal quest_updated( q )
 const QUEST_DATA_LOCATION : String = "res://quests/"
 
 var quests : Array[ Quest ] # all quests in the game
-var current_quests : Array = [
-	{ title = "Recover Lost Gear", is_complete = false, completed_steps = [ '' ] }, 
-	{ title = "Long Quest", is_complete = false, completed_steps = [ '' ] } 
-	]
+var current_quests : Array = []
 # { title = "not found", is_complete = false, completed_steps = [ '' ] }
 
 
@@ -25,14 +22,14 @@ func _unhandled_input( event: InputEvent ) -> void:
 		#print( "get_quest_index_by_title: ", get_quest_index_by_title( "Recover Lost Gear" ) )
 		#print( "get_quest_index_by_title: ", get_quest_index_by_title( "short quest" ) )
 		
-		print( "before: ", current_quests )
+		#print( "before: ", current_quests )
 
-		update_quest( "short quest" ) # starts the quest
-		#update_quest( "Recover Lost Gear", "Find the gear" ) # completes a step
-		#update_quest( "Recover Lost Gear", "", true ) #completes quest
-		#update_quest( "long quest", "", true ) # completes the quest and does not update any steps
-		print( "after: ", current_quests )
-		print( "====================================================================" )
+		update_quest( "short quest", "", true ) # starts the quest
+		update_quest( "Recover Lost Gear", "Find the gear") # completes a step
+		update_quest( "Recover Lost Gear", "", true ) #completes quest
+		update_quest( "Recover Lost Gear", "", true ) # completes the quest and does not update any steps
+		print( "current quests: ", current_quests )
+		#print( "====================================================================" )
 		
 		pass
 
@@ -77,11 +74,17 @@ func update_quest( _title : String, _completed_step : String = "", _is_complete 
 		
 		quest_updated.emit( q )
 		#display notification if quest was updated
+		if q.is_complete == true:
+			deliver_quest_rewards( find_quest_by_title( _title ) )
 pass
 
 
-func deliver_quest_rewards() -> void:
+func deliver_quest_rewards( _q : Quest ) -> void:
 	#give xp and item rewards to player
+	PlayerManager.reward_xp( _q.reward_xp )
+	
+	for i in _q.reward_items:
+		PlayerManager.INVENTORY_DATA.add_item( i.item, i.quantity )
 	pass
 
 #provide a quest and return the current quest data associated with it

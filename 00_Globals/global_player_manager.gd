@@ -11,6 +11,8 @@ var player_falling : bool = false
 signal camera_shook( trauma : float )
 signal interact_pressed
 
+var xp : int = 0
+
 
 func _ready() -> void:
 	add_player_instance()
@@ -28,6 +30,11 @@ func set_player_health( current_health : int, max_health : int ) -> void:
 	player.max_health = max_health
 	player.current_health = current_health
 	player.update_health( 0 )
+
+func reward_xp( _xp : int ) -> void:
+	xp += _xp
+	print( "XP = ", str( xp ) )
+	pass
 
 func set_player_healing_charges( current_heal_charges : int, max_healing_charges : int ) -> void:
 	player.max_healing_charges = max_healing_charges

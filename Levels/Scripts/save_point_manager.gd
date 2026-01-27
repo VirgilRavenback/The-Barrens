@@ -14,14 +14,12 @@ func _ready() -> void:
 		if c is SavePoint or WaterSource:
 			save_points.append( c )
 			c.save_activated.connect( _on_save_activated )
-	print( save_points )
+	#print( save_points )
 	
 	current_save_point = save_points[0]
 	current_save_position = save_points[0].global_position
 	
-	if PlayerManager.player_spawned == false:
-		PlayerManager.set_player_position( current_save_position )
-		PlayerManager.player_spawned = true
+	_reset_player()
 	
 	pass 
 
@@ -38,6 +36,7 @@ func _on_save_activated( save_point : SavePoint , save_point_position: Vector2 )
 	
 	print( str(current_save_point) + " activated" )
 	print( current_save_position )
+	print( QuestManager.current_quests )
 	
 	update_saved_data()
 	
