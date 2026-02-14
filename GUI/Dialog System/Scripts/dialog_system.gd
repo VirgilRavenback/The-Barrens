@@ -130,10 +130,10 @@ func set_dialog_choice( _d : DialogChoice ) -> void:
 		
 	for i in _d.dialog_branches.size():
 		var _new_choice : Button = Button.new()
-		choice_options.add_child( _new_choice )
 		_new_choice.text = _d.dialog_branches[ i ].text
 		_new_choice.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		_new_choice.pressed.connect( _dialog_choice_selected.bind( _d.dialog_branches[ i ] ) )
+		choice_options.add_child( _new_choice )
 	
 	if Engine.is_editor_hint():
 		return
@@ -145,6 +145,7 @@ func set_dialog_choice( _d : DialogChoice ) -> void:
 
 func _dialog_choice_selected( _d : DialogBranch ) -> void:
 	choice_options.visible = false
+	_d.selected.emit()
 	show_dialog( _d.dialog_items )
 	pass
 

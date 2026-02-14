@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://hndbnpcn5lx3"]
+[gd_scene load_steps=4 format=3 uid="uid://hndbnpcn5lx3"]
 
+[ext_resource type="Script" path="res://GUI/pause_menu/quests/quest_item.gd" id="1_1gmtd"]
 [ext_resource type="FontFile" uid="uid://cowjcfj0ttly3" path="res://GUI/Fonts/fonts/Abaddon Bold.ttf" id="1_gmar2"]
 [ext_resource type="FontFile" uid="uid://cp03ns43yl8oc" path="res://GUI/Fonts/fonts/m5x7.ttf" id="2_pxfug"]
 
 [node name="QuestItem" type="Button"]
 custom_minimum_size = Vector2(200, 45)
+script = ExtResource("1_1gmtd")
 
 [node name="TitleLabel" type="Label" parent="."]
 layout_mode = 0

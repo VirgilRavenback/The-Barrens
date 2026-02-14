@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bl7yst70oaxd7"]
+[gd_scene load_steps=19 format=4 uid="uid://bl7yst70oaxd7"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_ja47j"]
 [ext_resource type="PackedScene" uid="uid://c86874fgjy5df" path="res://Tile Maps/Canyon.tscn" id="2_4wjo5"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://dqlbxg8lp0oal" path="res://Levels/reset_point.tscn" id="12_j0wjm"]
 [ext_resource type="PackedScene" uid="uid://dag4fbma6s10p" path="res://Interactables/WaterSources/Wells/water_source_well.tscn" id="13_jfca7"]
 [ext_resource type="PackedScene" uid="uid://kaas4ly37mwk" path="res://Levels/fall_hazard.tscn" id="13_q2vkn"]
+[ext_resource type="Script" path="res://quests/utility_nodes/quest_node.gd" id="15_a37ak"]
+[ext_resource type="Resource" uid="uid://benbt17xymjk2" path="res://quests/recover_lost_gear.tres" id="16_xany1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j22ja"]
 texture = ExtResource("3_4pvxc")
@@ -272,3 +274,11 @@ reset_point_name = "Reset Point 4"
 z_index = -2
 position = Vector2(-272, 57)
 scale = Vector2(1.904, 1.4)
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("15_a37ak")
+linked_quest = ExtResource("16_xany1")
+settings_summary = "UPDATE QUEST:
+Quest: Recover Lost Gear
+Step: 0 - N/A
+Complete: false"

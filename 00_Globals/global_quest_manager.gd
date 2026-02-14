@@ -24,10 +24,10 @@ func _unhandled_input( event: InputEvent ) -> void:
 		
 		#print( "before: ", current_quests )
 
-		update_quest( "short quest", "", true ) # starts the quest
-		update_quest( "Recover Lost Gear", "Find the gear") # completes a step
-		update_quest( "Recover Lost Gear", "", true ) #completes quest
-		update_quest( "Recover Lost Gear", "", true ) # completes the quest and does not update any steps
+		#update_quest( "short quest", "", false ) # starts the quest
+		#update_quest( "Recover Lost Gear", "Find the gear") # completes a step
+		#update_quest( "Recover Lost Gear", "", true ) #completes quest
+		#update_quest( "long quest", "step 1", false ) # completes the quest and does not update any steps
 		print( "current quests: ", current_quests )
 		#print( "====================================================================" )
 		
@@ -108,7 +108,26 @@ func get_quest_index_by_title( _title : String ) -> int:
 			return i
 	#if we didn't find a matching title, return -1
 	return -1
-	
+
+# sort quests by completed or not completed and alphabetically	
 func sort_quests() -> void:
-	# sort quests by completed or not completed and alphabetically
+	var active_quests : Array = []
+	var completed_quests : Array = []
+	for q in current_quests:
+		if q.is_complete:
+			completed_quests.append( q )
+		else:
+			active_quests.append( q )
+	
+	active_quests.sort_custom( sort_quests_ascending )
+	completed_quests.sort_custom( sort_quests_ascending )
+	
+	current_quests = active_quests
+	current_quests.append_array( completed_quests )
+	
 	pass
+
+func sort_quests_ascending( a, b ):
+	if a.title < b.title:
+		return true
+	return false

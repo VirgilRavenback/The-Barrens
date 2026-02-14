@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Enemies/scripts/enemy.gd" id="1_y5576"]
 [ext_resource type="AudioStream" uid="uid://cjjyawilh30ke" path="res://Enemies/BallRobot/audio/hit_01.wav" id="2_bwccr"]
-[ext_resource type="Texture2D" uid="uid://dudytjg0dwm6c" path="res://assets/Sprites/BallRobot_SpriteSheet.png" id="2_by5on"]
+[ext_resource type="Texture2D" uid="uid://fe6m07s44srn" path="res://Enemies/BallRobot/BallRobot_SpriteSheet.png" id="3_3i7am"]
 [ext_resource type="Script" path="res://Enemies/scripts/enemy_state_machine.gd" id="3_ju1gv"]
 [ext_resource type="Script" path="res://Enemies/scripts/enemy_state_idle.gd" id="4_jys7a"]
 [ext_resource type="Script" path="res://Enemies/scripts/enemy_state_wander.gd" id="5_ir12i"]
@@ -353,7 +353,7 @@ script = ExtResource("1_y5576")
 take_damage_sound = ExtResource("2_bwccr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_by5on")
+texture = ExtResource("3_3i7am")
 hframes = 16
 vframes = 20
 

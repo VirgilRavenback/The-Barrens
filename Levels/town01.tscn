@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://c6r8b1pa0i8kc"]
+[gd_scene load_steps=39 format=4 uid="uid://c6r8b1pa0i8kc"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_cs2aw"]
 [ext_resource type="PackedScene" uid="uid://c86874fgjy5df" path="res://Tile Maps/Canyon.tscn" id="3_xl3ot"]
@@ -30,9 +30,14 @@
 [ext_resource type="PackedScene" uid="uid://dd6yxjidq3vxj" path="res://Interactables/Dialog/dialog_choice.tscn" id="28_1rw7u"]
 [ext_resource type="PackedScene" uid="uid://cmtimjhkl3uus" path="res://NPC/npc_behavior_patrol.tscn" id="29_lcq57"]
 [ext_resource type="PackedScene" uid="uid://c2ixk0r0dgcau" path="res://NPC/patrol_location.tscn" id="30_bfmhk"]
+[ext_resource type="Resource" uid="uid://benbt17xymjk2" path="res://quests/recover_lost_gear.tres" id="30_f4g5r"]
 [ext_resource type="PackedScene" uid="uid://b2ehti5il36lb" path="res://Props/fountain/fountain.tscn" id="31_vco7m"]
 [ext_resource type="PackedScene" uid="uid://bkfhg23f5j64x" path="res://Levels/save_point_manager.tscn" id="33_3wsc3"]
 [ext_resource type="PackedScene" uid="uid://ckrys2ky2v7mj" path="res://Levels/save_point.tscn" id="34_7744s"]
+[ext_resource type="PackedScene" uid="uid://dwwk62diikm2c" path="res://Interactables/dungeon/pressure_plate.tscn" id="34_qmdvr"]
+[ext_resource type="PackedScene" uid="uid://emrtsgh7lo1l" path="res://quests/utility_nodes/quest_advance_trigger.tscn" id="35_l8e76"]
+[ext_resource type="Resource" uid="uid://vcatcr6h6t1d" path="res://quests/long_quest.tres" id="36_n01kc"]
+[ext_resource type="PackedScene" uid="uid://da4inmkacytmb" path="res://quests/utility_nodes/quest_activated_switch.tscn" id="38_4fbsu"]
 
 [node name="level_1" type="Node2D"]
 y_sort_enabled = true
@@ -183,7 +188,7 @@ npc_resource = ExtResource("24_fomi7")
 [node name="DialogInteraction" parent="Tinkerer" instance=ExtResource("22_sa3ua")]
 
 [node name="DialogText" parent="Tinkerer/DialogInteraction" instance=ExtResource("27_ork4k")]
-text = "Hi! Will you help me find artifacts in the canyon?"
+text = "Hi! Will you help me find the gear I lost in the canyon?"
 npc_info = ExtResource("24_fomi7")
 
 [node name="DialogChoice" parent="Tinkerer/DialogInteraction" instance=ExtResource("28_1rw7u")]
@@ -193,6 +198,14 @@ npc_info = ExtResource("24_fomi7")
 script = ExtResource("26_t82q4")
 text = "Count on it!"
 npc_info = ExtResource("24_fomi7")
+
+[node name="QuestAdvanceTrigger" parent="Tinkerer/DialogInteraction/DialogChoice/DialogBranch3" instance=ExtResource("35_l8e76")]
+signal_name = "selected"
+linked_quest = ExtResource("30_f4g5r")
+settings_summary = "UPDATE QUEST:
+Quest: Recover Lost Gear
+Step: 0 - N/A
+Complete: false"
 
 [node name="DialogText" type="Node" parent="Tinkerer/DialogInteraction/DialogChoice/DialogBranch3"]
 script = ExtResource("23_dqoyl")
@@ -251,3 +264,47 @@ save_name = "Save Point B"
 [node name="SavePoint3" parent="SavePointManager" instance=ExtResource("34_7744s")]
 position = Vector2(137, 47)
 save_name = "Save Point C"
+
+[node name="PressurePlate" parent="." instance=ExtResource("34_qmdvr")]
+position = Vector2(448, 0)
+
+[node name="QuestAdvanceTrigger" parent="PressurePlate" instance=ExtResource("35_l8e76")]
+signal_name = "activated"
+linked_quest = ExtResource("36_n01kc")
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Step: 0 - N/A
+Complete: false"
+
+[node name="PressurePlate3" parent="." instance=ExtResource("34_qmdvr")]
+position = Vector2(448, 88)
+
+[node name="QuestAdvanceTrigger" parent="PressurePlate3" instance=ExtResource("35_l8e76")]
+signal_name = "activated"
+linked_quest = ExtResource("36_n01kc")
+quest_step = 2
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Step: 2 - Step 2
+Complete: false"
+
+[node name="QuestActivatedSwitch" parent="." instance=ExtResource("38_4fbsu")]
+check_type = 2
+remove_when_activated = false
+react_to_global_signal = false
+linked_quest = ExtResource("36_n01kc")
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Checking if on step: N/A"
+
+[node name="PressurePlate2" parent="QuestActivatedSwitch" instance=ExtResource("34_qmdvr")]
+position = Vector2(448, 40)
+
+[node name="QuestAdvanceTrigger" parent="QuestActivatedSwitch/PressurePlate2" instance=ExtResource("35_l8e76")]
+signal_name = "activated"
+linked_quest = ExtResource("36_n01kc")
+quest_step = 1
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Step: 1 - Step 1
+Complete: false"

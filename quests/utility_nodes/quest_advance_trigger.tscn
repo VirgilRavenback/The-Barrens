@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://emrtsgh7lo1l"]
+
+[ext_resource type="Script" path="res://quests/utility_nodes/quest_advance_trigger.gd" id="1_vko0f"]
+[ext_resource type="Texture2D" uid="uid://b6e458ixkh7cy" path="res://quests/utility_nodes/icon/quest_advance.png" id="2_ktvab"]
+
+[node name="QuestAdvanceTrigger" type="Node2D"]
+script = ExtResource("1_vko0f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9, -17)
+texture = ExtResource("2_ktvab")

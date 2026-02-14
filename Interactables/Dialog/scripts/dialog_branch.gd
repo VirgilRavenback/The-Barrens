@@ -4,6 +4,7 @@
 
 class_name DialogBranch extends DialogItem
 
+signal selected
 
 @export var text : String = "ok..." : set = _set_text
 
