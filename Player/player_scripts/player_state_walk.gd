@@ -31,7 +31,7 @@ func process( _delta : float ) -> PlayerState:
 		
 	player.velocity = player.direction * lerpf(0, movement_speed, 
 	clampf( time_moving / time_to_movement_speed, 0, 1 ) )
-	print(player.velocity)
+	#print(player.velocity)
 	
 	if player.set_direction():
 		player.update_animation("walk")
