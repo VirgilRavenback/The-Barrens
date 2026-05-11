@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dd2ssbdbhv7u5" path="res://Player/DesertChar_Full_Animations.png" id="2_obm7c"]
 [ext_resource type="Texture2D" uid="uid://mfmux5gb3d0c" path="res://NPC/Sprites/Shadow.png" id="3_3jhyp"]
 [ext_resource type="Script" path="res://Player/player_scripts/player_state_machine.gd" id="3_auwaa"]
+[ext_resource type="Script" path="res://Player/player_scripts/weapon_manager.gd" id="4_mff32"]
 [ext_resource type="Script" path="res://Player/player_scripts/player_state_idle.gd" id="4_vmvh3"]
 [ext_resource type="Script" path="res://Player/player_scripts/player_state_walk.gd" id="5_18ixt"]
 [ext_resource type="AudioStream" uid="uid://ebshwtotvn5q" path="res://Player/audio/SwordSwoosh.wav" id="6_e16kl"]
@@ -20,7 +21,6 @@
 [ext_resource type="AudioStream" uid="uid://c50okrah5kyjh" path="res://Player/audio/exhausted.wav" id="12_rlt1l"]
 [ext_resource type="Script" path="res://Player/player_scripts/player_state_heal.gd" id="14_yxk20"]
 [ext_resource type="Script" path="res://Player/player_scripts/ground_detection.gd" id="19_s48hb"]
-[ext_resource type="Script" path="res://Player/player_scripts/player_color.gd" id="22_0bir0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pgw3e"]
 radius = 8.0
@@ -759,8 +759,8 @@ libraries = {
 "": SubResource("AnimationLibrary_ggpjp")
 }
 
-[node name="ColorComponent" type="Node" parent="."]
-script = ExtResource("22_0bir0")
+[node name="WeaponManager" type="Node" parent="."]
+script = ExtResource("4_mff32")
 
 [node name="PlayerStateMachine" type="Node" parent="."]
 script = ExtResource("3_auwaa")
@@ -802,6 +802,7 @@ position = Vector2(0, -15)
 script = ExtResource("7_8bws6")
 
 [node name="HurtBox" parent="PlayerInteractions" groups=["Player"] instance=ExtResource("7_use68")]
+visible = false
 rotation = 0.0251988
 collision_mask = 4
 monitoring = false
@@ -836,6 +837,7 @@ shape = SubResource("RectangleShape2D_hollu")
 debug_color = Color(0.613892, 0.358984, 1, 0.42)
 
 [node name="hit_box" parent="." instance=ExtResource("9_goudb")]
+visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]

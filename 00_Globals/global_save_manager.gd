@@ -21,9 +21,10 @@ var current_save : Dictionary = {
 		max_healing_charges = 0
 	},
 	items = [],
+	available_weapons = [],
 	persistence = [],
 	quests = [
-		#{ title = "not found", is_complete = false, completed_steps = [ '' ] }
+		{ title = "not found", is_complete = false, completed_steps = [ '' ] }
 	],
 }
 
