@@ -102,6 +102,7 @@ func find_quest( _quest : Quest ) -> Dictionary:
 			return q
 	return { title = "not found", is_complete = false, completed_steps = [ '' ] }
 
+
 #take title and find associated quest resource
 func find_quest_by_title( _title : String ) -> Quest:
 	for q in quests:

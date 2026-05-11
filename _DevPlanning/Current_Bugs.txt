@@ -1,0 +1,12 @@
+Level transition bug
+- currently player gets stuck when transitioning into a few new levels, specifically dungeon 05 (Boss room) and dungeon 03 (side room)
+- the player does not appear on the screen when they enter the room, or they are under the tileset for some reason
+- the player cannot move
+- this makes the boss unplayable
+- this may not actually be an issue with the level transition node
+
+Quest Building Dialog Bug
+- tinkerer is not consistently giving the correct dialog when you talk to him without the quest.
+- sometimes it will give you the correct opening line
+- if you refuse the quest and don't get the quest, he still switches to the new dialog afterward for some reason, 
+even though the quest isn't active in the menu

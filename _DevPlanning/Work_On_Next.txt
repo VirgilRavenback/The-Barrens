@@ -1,0 +1,16 @@
+Things to work on next:
+	1. build a quest with the quest system
+		This is currently stuck b/c of the dialog bug
+		I could try building new dialog from scratch and see if the bug pops up again
+	2. Build out weapon and color system
+		Start building out the structure
+		Watch videos on Resources
+		Build a weapon Resource
+		Create a weapon sprite sheet
+		Finish building out the structure and see if it works
+	3. Update my canyon tile set so it's usable
+		Specifically the side tiles and the top tiles
+	4. Update the canyon cave tile set so it's usable
+		Make it repeating
+		Make corners and side and bottom walls so I can actually make a cave
+	5. Go through Michael's weapon tutorial

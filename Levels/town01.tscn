@@ -280,16 +280,8 @@ position = Vector2(-328, -296)
 [node name="SavePointManager" parent="." instance=ExtResource("33_3wsc3")]
 
 [node name="SavePoint" parent="SavePointManager" instance=ExtResource("34_7744s")]
-position = Vector2(-193, 42)
+position = Vector2(368, -104)
 save_name = "Save Point A"
-
-[node name="SavePoint2" parent="SavePointManager" instance=ExtResource("34_7744s")]
-position = Vector2(0, 46)
-save_name = "Save Point B"
-
-[node name="SavePoint3" parent="SavePointManager" instance=ExtResource("34_7744s")]
-position = Vector2(137, 47)
-save_name = "Save Point C"
 
 [node name="PressurePlate" parent="." instance=ExtResource("34_qmdvr")]
 position = Vector2(448, 0)
