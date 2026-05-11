@@ -2,6 +2,18 @@ class_name Player
 
 extends CharacterBody2D
 
+enum LIGHT_TYPES { BLUE, YELLOW, RED, BLACK }
+var current_light_type : LIGHT_TYPES = LIGHT_TYPES.BLUE : 
+	set(set_light_type):
+		if current_light_type == LIGHT_TYPES.BLUE:
+			hurt_box.current_light_type = "Blue"
+		elif current_light_type == LIGHT_TYPES.YELLOW:
+			hurt_box.current_light_type = "yellow"
+		elif current_light_type == LIGHT_TYPES.RED:
+			hurt_box.current_light_type = "red"
+		elif current_light_type == LIGHT_TYPES.BLACK:
+			hurt_box.current_light_type = "black"
+
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 var player_alive : bool = false
@@ -17,6 +29,7 @@ var player_alive : bool = false
 
 signal direction_changed( new_direction : Vector2 )
 signal player_damaged( hurt_box : HurtBox )
+signal light_type_changed( current_light_type )
 
 var invlunerable : bool = false
 
@@ -131,3 +144,15 @@ func make_invulnerable ( _duration : float = 1.5 ) -> void:
 func revive_player() -> void:
 	update_health( 5 )
 	player_state_machine.change_state( $PlayerStateMachine/Idle )
+
+func _set_current_light_type() -> void:
+	#if #current weaopn == blue sword:
+		#current_light_type = LIGHT_TYPES.BLUE
+	#elif #current weapon == yellow sword:
+		#current_light_type = LIGHT_TYPES.YELLOW
+	#elif #current weapon == red sword:
+		#current_light_type = LIGHT_TYPES.RED
+	#elif #current weapon == black sword:
+		#current_light_type = LIGHT_TYPES.BLACK
+		
+	pass

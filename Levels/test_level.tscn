@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://c65ru53phccxr"]
+[gd_scene load_steps=19 format=4 uid="uid://c65ru53phccxr"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_2b7t5"]
 [ext_resource type="PackedScene" uid="uid://c86874fgjy5df" path="res://Tile Maps/Canyon.tscn" id="2_govi4"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bpdscltxqx3nq" path="res://Levels/reset_point_manager.tscn" id="10_hllr0"]
 [ext_resource type="PackedScene" uid="uid://dqlbxg8lp0oal" path="res://Levels/reset_point.tscn" id="11_16vms"]
 [ext_resource type="PackedScene" uid="uid://dwy4pip084wpt" path="res://Levels/level_transition.tscn" id="14_do4r1"]
+[ext_resource type="PackedScene" uid="uid://dlema7fdv8seo" path="res://Interactables/dungeon/light_orb.tscn" id="16_kj4kb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j22ja"]
 texture = ExtResource("3_inm0r")
@@ -267,3 +268,6 @@ position = Vector2(496, -130)
 level = "res://Levels/Starting Town/starting_town_entrance.tscn"
 size = 5
 side = 1
+
+[node name="LightOrb" parent="." instance=ExtResource("16_kj4kb")]
+position = Vector2(8, -130)

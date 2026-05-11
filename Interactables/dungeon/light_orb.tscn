@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlema7fdv8seo"]
+
+[ext_resource type="Script" path="res://Interactables/dungeon/scripts/light_orb.gd" id="1_nkh6n"]
+[ext_resource type="PackedScene" uid="uid://b4mk5kg8yrmmk" path="res://GeneralNodes/hit_box.tscn" id="2_lr55d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3bx7w"]
+radius = 14.0357
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qmk5b"]
+radius = 14.0357
+
+[node name="BlueLightOrb" type="StaticBody2D"]
+script = ExtResource("1_nkh6n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+modulate = Color(0, 0.392157, 1, 1)
+position = Vector2(0.693696, -0.693695)
+scale = Vector2(0.242978, 0.239329)
+polygon = PackedVector2Array(-42.5934, -43.2427, -3, -59, 37.5824, -41.9709, 58.8791, 6.35922, 41.3407, 48.3301, -1.25275, 63.5922, -43.8462, 48.3301, -62.6374, 7.63107)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3bx7w")
+
+[node name="hit_box" parent="." instance=ExtResource("2_lr55d")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
+shape = SubResource("CircleShape2D_qmk5b")
+debug_color = Color(0.7, 0, 0.0284826, 0.42)
