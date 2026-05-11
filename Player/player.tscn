@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dxsmf1boy48yc"]
+[gd_scene load_steps=59 format=3 uid="uid://dxsmf1boy48yc"]
 
 [ext_resource type="Script" path="res://Player/player_scripts/player_2_0.gd" id="1_wbqjb"]
 [ext_resource type="Texture2D" uid="uid://dd2ssbdbhv7u5" path="res://Player/DesertChar_Full_Animations.png" id="2_obm7c"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://c50okrah5kyjh" path="res://Player/audio/exhausted.wav" id="12_rlt1l"]
 [ext_resource type="Script" path="res://Player/player_scripts/player_state_heal.gd" id="14_yxk20"]
 [ext_resource type="Script" path="res://Player/player_scripts/ground_detection.gd" id="19_s48hb"]
+[ext_resource type="Script" path="res://Player/player_scripts/player_color.gd" id="22_0bir0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pgw3e"]
 radius = 8.0
@@ -672,7 +673,7 @@ height = 64.0
 size = Vector2(22, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hollu"]
-size = Vector2(26.0067, 21)
+size = Vector2(18, 18)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_abk1t"]
 
@@ -758,6 +759,9 @@ libraries = {
 "": SubResource("AnimationLibrary_ggpjp")
 }
 
+[node name="ColorComponent" type="Node" parent="."]
+script = ExtResource("22_0bir0")
+
 [node name="PlayerStateMachine" type="Node" parent="."]
 script = ExtResource("3_auwaa")
 
@@ -778,7 +782,7 @@ script = ExtResource("9_krbk6")
 
 [node name="Walk" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("5_18ixt")
-movement_speed = 300.0
+movement_speed = 250.0
 
 [node name="Dash" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("9_fmtq6")
@@ -821,14 +825,13 @@ shape = SubResource("RectangleShape2D_dmph0")
 debug_color = Color(0.21623, 0.639404, 0, 0.42)
 
 [node name="PushArea" type="Area2D" parent="PlayerInteractions"]
-visible = false
 collision_layer = 0
 collision_mask = 16
 monitorable = false
 script = ExtResource("12_dlkn0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteractions/PushArea"]
-position = Vector2(-0.00325257, -2.51348)
+position = Vector2(-5.96046e-08, 10)
 rotation = -0.00129033
 shape = SubResource("RectangleShape2D_hollu")
 debug_color = Color(0.613892, 0.358984, 1, 0.42)

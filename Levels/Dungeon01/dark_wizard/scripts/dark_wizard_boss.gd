@@ -31,7 +31,8 @@ var damage_count : int = 0
 @onready var hand_02_up: Sprite2D = $BossNode/CloakSprite/Hand02_Up
 @onready var hand_01_side: Sprite2D = $BossNode/CloakSprite/Hand01_Side
 @onready var hand_02_side: Sprite2D = $BossNode/CloakSprite/Hand02_Side
-@onready var dungeon_door_block: level_tilemap = $"../Dungeon_Door_Block"
+@onready var dungeon_door_block: TileMapLayer = $"../DoorBlock"
+
 
 func _ready() -> void:
 	persistent_data_handler.get_value()

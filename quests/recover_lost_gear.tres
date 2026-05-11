@@ -19,6 +19,6 @@ quantity = 10
 script = ExtResource("2_wrdau")
 title = "Recover Lost Gear"
 description = "The shopkeeper has asked the player to retrieve his lost gear from the cave in the canyon."
-steps = Array[String](["Find the gear", "Return the gear to the shopkeeper"])
+steps = Array[String](["Find the cave", "Find the gear", "Return the gear to the shopkeeper"])
 reward_xp = 0
 reward_items = Array[ExtResource("1_biicd")]([SubResource("Resource_1bt33"), SubResource("Resource_3p5vm")])

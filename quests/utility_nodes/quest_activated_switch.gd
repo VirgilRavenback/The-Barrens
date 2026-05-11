@@ -18,6 +18,8 @@ var is_activated : bool = false
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
+	if has_node("Sprite2D"):
+		$Sprite2D.queue_free()
 	if react_to_global_signal == true:
 		QuestManager.quest_updated.connect( _on_quest_updated )
 	check_is_activated()
@@ -33,9 +35,13 @@ func check_is_activated() -> void:
 			set_is_activated( true )
 		
 		elif check_type == CheckType.QUEST_COMPLETED:
-			set_is_activated( quest_complete == _q.is_complete )
+			var is_complete : bool = false
+			if _q.is_complete is bool:
+				is_complete = _q.is_complete
+			set_is_activated( is_complete )
 		
 		elif check_type == CheckType.QUEST_STEP_COMPLETE:
+			
 			if quest_step > 0:
 				if _q.completed_steps.has( get_step() ) == true:
 					set_is_activated( true )
@@ -44,6 +50,25 @@ func check_is_activated() -> void:
 			else:
 				set_is_activated( false )
 		
+		elif check_type == CheckType.ON_CURRENT_QUEST_STEP:
+			var step : String = get_step()
+			if step == "N/A":
+				set_is_activated( false )
+				pass
+				
+			else:
+				if _q.completed_steps.has( step ):
+					set_is_activated( false )
+				else:
+					var prev_step : String = get_prev_step()
+					if prev_step == "N/A":
+						set_is_activated( true )
+					
+					elif _q.completed_steps.has( prev_step.to_lower() ):
+						set_is_activated( true )
+					else:
+						set_is_activated( false )
+			pass
 	else:
 		set_is_activated( false )
 	pass
@@ -81,6 +106,9 @@ func _on_quest_updated( _q : Dictionary ) -> void:
 	pass
 
 func update_summary() -> void:
+	if linked_quest == null:
+		settings_summary = "Select a quest"
+		return
 	settings_summary = "UPDATE QUEST:\nQuest: " + linked_quest.title + "\n"
 	if check_type == CheckType.HAS_QUEST:
 		settings_summary += "Checking if player has quest"

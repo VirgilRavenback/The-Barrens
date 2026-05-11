@@ -146,7 +146,7 @@ item_data = ExtResource("19_g60io")
 quantity = 5
 
 [node name="Shopkeeper" parent="." instance=ExtResource("19_uhfs8")]
-position = Vector2(-222.059, -408.025)
+position = Vector2(-152, -88)
 npc_resource = ExtResource("16_n02q5")
 
 [node name="NpcBehaviorIdle" parent="Shopkeeper" instance=ExtResource("21_j8yfe")]
@@ -185,48 +185,6 @@ npc_info = ExtResource("16_n02q5")
 position = Vector2(432, -168)
 npc_resource = ExtResource("24_fomi7")
 
-[node name="DialogInteraction" parent="Tinkerer" instance=ExtResource("22_sa3ua")]
-
-[node name="DialogText" parent="Tinkerer/DialogInteraction" instance=ExtResource("27_ork4k")]
-text = "Hi! Will you help me find the gear I lost in the canyon?"
-npc_info = ExtResource("24_fomi7")
-
-[node name="DialogChoice" parent="Tinkerer/DialogInteraction" instance=ExtResource("28_1rw7u")]
-npc_info = ExtResource("24_fomi7")
-
-[node name="DialogBranch3" type="Node" parent="Tinkerer/DialogInteraction/DialogChoice"]
-script = ExtResource("26_t82q4")
-text = "Count on it!"
-npc_info = ExtResource("24_fomi7")
-
-[node name="QuestAdvanceTrigger" parent="Tinkerer/DialogInteraction/DialogChoice/DialogBranch3" instance=ExtResource("35_l8e76")]
-signal_name = "selected"
-linked_quest = ExtResource("30_f4g5r")
-settings_summary = "UPDATE QUEST:
-Quest: Recover Lost Gear
-Step: 0 - N/A
-Complete: false"
-
-[node name="DialogText" type="Node" parent="Tinkerer/DialogInteraction/DialogChoice/DialogBranch3"]
-script = ExtResource("23_dqoyl")
-text = "Thanks you rock!"
-npc_info = ExtResource("24_fomi7")
-
-[node name="DialogText2" type="Node" parent="Tinkerer/DialogInteraction/DialogChoice/DialogBranch3"]
-script = ExtResource("23_dqoyl")
-text = "Be careful, it's dangerous to go alone!"
-npc_info = ExtResource("24_fomi7")
-
-[node name="DialogBranch4" type="Node" parent="Tinkerer/DialogInteraction/DialogChoice"]
-script = ExtResource("26_t82q4")
-text = "Who are you?"
-npc_info = ExtResource("24_fomi7")
-
-[node name="DialogText" type="Node" parent="Tinkerer/DialogInteraction/DialogChoice/DialogBranch4"]
-script = ExtResource("23_dqoyl")
-text = "Just your friendly neighborhood tinkerer!"
-npc_info = ExtResource("24_fomi7")
-
 [node name="NpcBehaviorPatrol" parent="Tinkerer" instance=ExtResource("29_lcq57")]
 
 [node name="PatrolLocation" parent="Tinkerer/NpcBehaviorPatrol" instance=ExtResource("30_bfmhk")]
@@ -247,6 +205,74 @@ position = Vector2(-80, 104)
 [node name="PatrolLocation5" parent="Tinkerer/NpcBehaviorPatrol" instance=ExtResource("30_bfmhk")]
 modulate = Color(0, 0, 1, 1)
 position = Vector2(0, 96)
+
+[node name="QuestActivatedSwitch_Start" parent="Tinkerer" instance=ExtResource("38_4fbsu")]
+position = Vector2(-8, -32)
+remove_when_activated = true
+react_to_global_signal = true
+linked_quest = ExtResource("30_f4g5r")
+settings_summary = "UPDATE QUEST:
+Quest: Recover Lost Gear
+Checking if player has quest"
+
+[node name="DialogInteraction" parent="Tinkerer/QuestActivatedSwitch_Start" instance=ExtResource("22_sa3ua")]
+position = Vector2(8, 32)
+
+[node name="DialogText" parent="Tinkerer/QuestActivatedSwitch_Start/DialogInteraction" instance=ExtResource("27_ork4k")]
+text = "Hi! Will you help me find the gear I lost in the canyon?"
+npc_info = ExtResource("24_fomi7")
+
+[node name="DialogChoice" parent="Tinkerer/QuestActivatedSwitch_Start/DialogInteraction" instance=ExtResource("28_1rw7u")]
+npc_info = ExtResource("24_fomi7")
+
+[node name="DialogBranch3" type="Node" parent="Tinkerer/QuestActivatedSwitch_Start/DialogInteraction/DialogChoice"]
+script = ExtResource("26_t82q4")
+text = "Count on it!"
+npc_info = ExtResource("24_fomi7")
+
+[node name="QuestAdvanceTrigger" parent="Tinkerer/QuestActivatedSwitch_Start/DialogInteraction/DialogChoice/DialogBranch3" instance=ExtResource("35_l8e76")]
+position = Vector2(440, -200)
+signal_name = "selected"
+linked_quest = ExtResource("30_f4g5r")
+settings_summary = "UPDATE QUEST:
+Quest: Recover Lost Gear
+Step: 0 - N/A
+Complete: false"
+
+[node name="DialogText" type="Node" parent="Tinkerer/QuestActivatedSwitch_Start/DialogInteraction/DialogChoice/DialogBranch3"]
+script = ExtResource("23_dqoyl")
+text = "Thanks you rock!"
+npc_info = ExtResource("24_fomi7")
+
+[node name="DialogText2" type="Node" parent="Tinkerer/QuestActivatedSwitch_Start/DialogInteraction/DialogChoice/DialogBranch3"]
+script = ExtResource("23_dqoyl")
+text = "Be careful, it's dangerous to go alone!"
+npc_info = ExtResource("24_fomi7")
+
+[node name="DialogBranch4" type="Node" parent="Tinkerer/QuestActivatedSwitch_Start/DialogInteraction/DialogChoice"]
+script = ExtResource("26_t82q4")
+text = "Who are you?"
+npc_info = ExtResource("24_fomi7")
+
+[node name="DialogText" type="Node" parent="Tinkerer/QuestActivatedSwitch_Start/DialogInteraction/DialogChoice/DialogBranch4"]
+script = ExtResource("23_dqoyl")
+text = "Just your friendly neighborhood tinkerer!"
+npc_info = ExtResource("24_fomi7")
+
+[node name="QuestActivatedSwitch2_Step1" parent="Tinkerer" instance=ExtResource("38_4fbsu")]
+position = Vector2(-8, -8)
+react_to_global_signal = true
+linked_quest = ExtResource("30_f4g5r")
+settings_summary = "UPDATE QUEST:
+Quest: Recover Lost Gear
+Checking if player has quest"
+
+[node name="DialogInteraction" parent="Tinkerer/QuestActivatedSwitch2_Step1" instance=ExtResource("22_sa3ua")]
+
+[node name="DialogText" type="Node" parent="Tinkerer/QuestActivatedSwitch2_Step1/DialogInteraction"]
+script = ExtResource("23_dqoyl")
+text = "Thank you, Hero! I lost my gear in a cave west of here."
+npc_info = ExtResource("24_fomi7")
 
 [node name="Fountain" parent="." instance=ExtResource("31_vco7m")]
 position = Vector2(-328, -296)
@@ -276,29 +302,15 @@ Quest: Long Quest
 Step: 0 - N/A
 Complete: false"
 
-[node name="PressurePlate3" parent="." instance=ExtResource("34_qmdvr")]
-position = Vector2(448, 88)
-
-[node name="QuestAdvanceTrigger" parent="PressurePlate3" instance=ExtResource("35_l8e76")]
-signal_name = "activated"
-linked_quest = ExtResource("36_n01kc")
-quest_step = 2
-settings_summary = "UPDATE QUEST:
-Quest: Long Quest
-Step: 2 - Step 2
-Complete: false"
-
 [node name="QuestActivatedSwitch" parent="." instance=ExtResource("38_4fbsu")]
-check_type = 2
-remove_when_activated = false
-react_to_global_signal = false
+position = Vector2(448, 48)
+react_to_global_signal = true
 linked_quest = ExtResource("36_n01kc")
 settings_summary = "UPDATE QUEST:
 Quest: Long Quest
 Checking if on step: N/A"
 
 [node name="PressurePlate2" parent="QuestActivatedSwitch" instance=ExtResource("34_qmdvr")]
-position = Vector2(448, 40)
 
 [node name="QuestAdvanceTrigger" parent="QuestActivatedSwitch/PressurePlate2" instance=ExtResource("35_l8e76")]
 signal_name = "activated"
@@ -308,3 +320,37 @@ settings_summary = "UPDATE QUEST:
 Quest: Long Quest
 Step: 1 - Step 1
 Complete: false"
+
+[node name="QuestActivatedSwitch2" parent="." instance=ExtResource("38_4fbsu")]
+position = Vector2(448, 96)
+check_type = 2
+react_to_global_signal = true
+linked_quest = ExtResource("36_n01kc")
+quest_step = 2
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Checking if on step: step 2"
+
+[node name="PressurePlate3" parent="QuestActivatedSwitch2" instance=ExtResource("34_qmdvr")]
+
+[node name="QuestAdvanceTrigger" parent="QuestActivatedSwitch2/PressurePlate3" instance=ExtResource("35_l8e76")]
+signal_name = "activated"
+linked_quest = ExtResource("36_n01kc")
+quest_step = 2
+quest_complete = true
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Step: 2 - step 2
+Complete: true"
+
+[node name="QuestActivatedSwitch3" parent="." instance=ExtResource("38_4fbsu")]
+position = Vector2(256, 48)
+check_type = 3
+react_to_global_signal = true
+linked_quest = ExtResource("36_n01kc")
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Checking if quest is complete"
+
+[node name="Grass" parent="QuestActivatedSwitch3" instance=ExtResource("6_flq1q")]
+position = Vector2(8, 0)

@@ -9,7 +9,6 @@ extends CanvasLayer
 @onready var button_load: Button = $Control/TabContainer/System/VBoxContainer/Button_Load
 @onready var button_quit: Button = $Control/TabContainer/System/VBoxContainer/Button_Quit
 
-@onready var map_projector: Node2D = $MapProjector
 
 var is_paused : bool = false
 
@@ -19,7 +18,6 @@ signal hidden
 
 func _ready() -> void:
 	
-	map_projector.open_map.connect( _open_menu )
 	hide_pause_menu()
 	button_save.pressed.connect( _on_save_pressed )
 	button_load.pressed.connect( _on_load_pressed )

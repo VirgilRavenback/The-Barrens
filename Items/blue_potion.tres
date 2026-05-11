@@ -18,7 +18,7 @@ region = Rect2(32, 0, 32, 32)
 
 [resource]
 script = ExtResource("2_dyisx")
-name = ""
+name = "Blue Potion"
 description = ""
 texture = SubResource("AtlasTexture_a83j1")
 effects = Array[ExtResource("1_08l62")]([SubResource("Resource_okxeh")])

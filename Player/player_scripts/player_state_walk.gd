@@ -22,16 +22,17 @@ func exit() -> void:
 
 func process( _delta : float ) -> PlayerState:
 	if player.direction == Vector2.ZERO:
-		time_moving = 0
+		#time_moving = 0
 		return idle
 		
-		
+	player.velocity = player.direction * movement_speed
+	
 	#calculate the acceleration value
-	time_moving += 0.3 * _delta
+	#time_moving += 0.3 * _delta
 		
-	player.velocity = player.direction * lerpf(0, movement_speed, 
-	clampf( time_moving / time_to_movement_speed, 0, 1 ) )
-	print(player.velocity)
+	#player.velocity = player.direction * lerpf(0, movement_speed, 
+	#clampf( time_moving / time_to_movement_speed, 0, 1 ) )
+	#print(player.velocity)
 	
 	if player.set_direction():
 		player.update_animation("walk")

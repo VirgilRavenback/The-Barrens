@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://c0bvqb1okm57y" path="res://Interactables/dungeon/push_stone.wav" id="3_t155v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_awibm"]
-size = Vector2(31, 12)
+size = Vector2(27, 15)
 
 [node name="PushableStatue" type="RigidBody2D"]
 collision_layer = 17
@@ -15,7 +15,7 @@ lock_rotation = true
 script = ExtResource("1_70ufh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 2)
+position = Vector2(0.5, -7.5)
 shape = SubResource("RectangleShape2D_awibm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

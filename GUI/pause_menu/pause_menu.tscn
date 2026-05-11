@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0ykxx6uu45h0"]
+[gd_scene load_steps=13 format=3 uid="uid://d0ykxx6uu45h0"]
 
 [ext_resource type="Script" path="res://GUI/pause_menu/pause_menu.gd" id="1_4q0jf"]
 [ext_resource type="Texture2D" uid="uid://buan6qjvkair8" path="res://Items/sprites/Items.png" id="2_o01cg"]
@@ -7,7 +7,6 @@
 [ext_resource type="Resource" uid="uid://8fpwg3tcxu4i" path="res://GUI/pause_menu/player_inventory/player_inventory.tres" id="4_kn4cw"]
 [ext_resource type="PackedScene" uid="uid://hndbnpcn5lx3" path="res://GUI/pause_menu/quests/quest_item.tscn" id="6_2webw"]
 [ext_resource type="Script" path="res://GUI/pause_menu/questsUI.gd" id="6_361wy"]
-[ext_resource type="PackedScene" uid="uid://v4jaflf50u8r" path="res://GUI/pause_menu/MapProjector/map_projector.tscn" id="6_mjfu3"]
 [ext_resource type="FontFile" uid="uid://cowjcfj0ttly3" path="res://GUI/Fonts/fonts/Abaddon Bold.ttf" id="9_wua2r"]
 [ext_resource type="FontFile" uid="uid://cp03ns43yl8oc" path="res://GUI/Fonts/fonts/m5x7.ttf" id="10_fckxo"]
 [ext_resource type="PackedScene" uid="uid://bll5g544eyhx5" path="res://GUI/pause_menu/quests/quest_step_item.tscn" id="11_57gu2"]
@@ -74,10 +73,9 @@ offset_top = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 
 [node name="Inventory" type="Control" parent="Control/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -131,11 +129,13 @@ theme_override_font_sizes/font_size = 10
 autowrap_mode = 2
 
 [node name="Quests" type="Control" parent="Control/TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("6_361wy")
 metadata/_tab_index = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/Quests"]
+visible = false
 layout_mode = 0
 offset_left = 14.0
 offset_top = 14.0
@@ -243,5 +243,3 @@ text = "Quit
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -30.0
 max_polyphony = 4
-
-[node name="MapProjector" parent="." instance=ExtResource("6_mjfu3")]

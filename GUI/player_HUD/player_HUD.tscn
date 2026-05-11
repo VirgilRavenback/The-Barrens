@@ -1,10 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://dogng57v3nkbb"]
+[gd_scene load_steps=21 format=3 uid="uid://dogng57v3nkbb"]
 
 [ext_resource type="Script" path="res://GUI/player_HUD/player_hud.gd" id="1_2s5at"]
 [ext_resource type="PackedScene" uid="uid://bxpabwbxqgib8" path="res://GUI/player_HUD/heart_gui.tscn" id="2_frend"]
 [ext_resource type="FontFile" uid="uid://cri2nqfcwi7js" path="res://assets/Fonts/DisposableDroidBB_bld.ttf" id="3_7xtv8"]
 [ext_resource type="Texture2D" uid="uid://dd31ihai5coxu" path="res://GUI/player_HUD/boss-hp.png" id="4_0hptn"]
 [ext_resource type="FontFile" uid="uid://cowjcfj0ttly3" path="res://GUI/Fonts/fonts/Abaddon Bold.ttf" id="5_c6sff"]
+[ext_resource type="Script" path="res://GUI/player_HUD/notification.gd" id="6_0qgxl"]
+[ext_resource type="Texture2D" uid="uid://cv7aqn1t680mf" path="res://GUI/player_HUD/panel_notification.png" id="6_ldqnt"]
+[ext_resource type="FontFile" uid="uid://cp03ns43yl8oc" path="res://GUI/Fonts/fonts/m5x7.ttf" id="7_e3e0b"]
+[ext_resource type="AudioStream" uid="uid://q3jaepe0t5n3" path="res://GUI/player_HUD/notification.wav" id="8_6lx0h"]
 
 [sub_resource type="FontVariation" id="FontVariation_t4y50"]
 base_font = ExtResource("3_7xtv8")
@@ -253,6 +257,120 @@ region = Rect2(9, 40, 14, 15)
 atlas = ExtResource("4_0hptn")
 region = Rect2(40, 40, 15, 15)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_07vo2"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+texture = ExtResource("6_ldqnt")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="Animation" id="Animation_wcg44"]
+resource_name = "show_notification"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(5, 0), Vector2(5, 5), Vector2(5, 5), Vector2(5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_6lx0h")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
+
+[sub_resource type="Animation" id="Animation_1f47x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e7gia"]
+_data = {
+"RESET": SubResource("Animation_1f47x"),
+"show_notification": SubResource("Animation_wcg44")
+}
+
 [node name="PlayerHud" type="CanvasLayer"]
 layer = 2
 script = ExtResource("1_2s5at")
@@ -425,6 +543,46 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("5_c6sff")
 theme_override_font_sizes/font_size = 16
 text = "Boss Name"
+
+[node name="Notification" type="Control" parent="Control"]
+process_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("6_0qgxl")
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/Notification"]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 249.0
+offset_bottom = 48.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_07vo2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Notification/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/Notification/PanelContainer/VBoxContainer"]
+modulate = Color(1, 0.858824, 0.552941, 1)
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_e3e0b")
+text = "Notification Type"
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="Control/Notification/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_e3e0b")
+text = "Notification Message"
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Notification"]
+libraries = {
+"": SubResource("AnimationLibrary_e7gia")
+}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"
