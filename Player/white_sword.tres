@@ -1,12 +1,11 @@
 [gd_resource type="Resource" script_class="WeaponResource" load_steps=2 format=3 uid="uid://cpwwwk1av13hy"]
 
-[ext_resource type="Script" path="res://Player/player_scripts/weapon_resource.gd" id="1_m65g2"]
+[ext_resource type="Script" path="res://Player/player_scripts/weapon_resource.gd" id="1_jttsl"]
 
 [resource]
-script = ExtResource("1_m65g2")
-weapon_name = ""
+script = ExtResource("1_jttsl")
+weapon_name = "White Sword"
 damage = 5.0
 cooldown = 0.2
 color = 0
 is_ranged = false
-is_available = false

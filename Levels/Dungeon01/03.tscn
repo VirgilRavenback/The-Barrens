@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=4 uid="uid://wkyxfx2umwg5"]
+[gd_scene load_steps=11 format=4 uid="uid://wkyxfx2umwg5"]
 
+[ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_h1guu"]
 [ext_resource type="PackedScene" uid="uid://deo5j65y3rrmn" path="res://Tile Maps/Dungeon_01_TileMap.tscn" id="1_yevwt"]
 [ext_resource type="PackedScene" uid="uid://dwy4pip084wpt" path="res://Levels/level_transition.tscn" id="2_6gsfq"]
 [ext_resource type="PackedScene" uid="uid://dbkvqyy2q81mt" path="res://Levels/player_spawn.tscn" id="3_171ld"]
+[ext_resource type="PackedScene" uid="uid://d315l1rsmlhxu" path="res://GeneralNodes/EnemyCounter/enemy_counter.tscn" id="5_gkmd4"]
+[ext_resource type="PackedScene" uid="uid://b3fbxvdpxqbg0" path="res://Enemies/BallRobot/ball_robot2.tscn" id="6_bxwn5"]
+[ext_resource type="PackedScene" uid="uid://dflumoed2i1ft" path="res://GeneralNodes/ItemDropper/item_dropper.tscn" id="7_rl2u1"]
+[ext_resource type="Resource" uid="uid://djkadd6c11g1c" path="res://Items/key_dungeon.tres" id="8_6f547"]
+[ext_resource type="PackedScene" uid="uid://emrtsgh7lo1l" path="res://quests/utility_nodes/quest_advance_trigger.tscn" id="9_vdl05"]
+[ext_resource type="Resource" uid="uid://benbt17xymjk2" path="res://quests/recover_lost_gear.tres" id="10_40mlb"]
 
-[node name="03" type="Node2D"]
+[node name="Dungeon03" type="Node2D"]
+script = ExtResource("1_h1guu")
 
 [node name="Dungeon_01_TileLayer" parent="." instance=ExtResource("1_yevwt")]
 z_index = -1
@@ -14,9 +22,28 @@ tile_map_data = PackedByteArray("AAAEAAgAAAAAAAAAAAAEAAkAAAAAAAEAAAAEAAoAAAAAAAI
 [node name="PlayerSpawn" parent="." instance=ExtResource("3_171ld")]
 position = Vector2(256, 176)
 
-[node name="LevelTransition1" parent="." instance=ExtResource("2_6gsfq")]
+[node name="LevelTransition" parent="." instance=ExtResource("2_6gsfq")]
 position = Vector2(80, 200)
 level = "res://Levels/Dungeon01/02.tscn"
 target_transition_area = "LevelTransition3"
-center_player = true
 size = 3
+
+[node name="EnemyCounter" parent="." instance=ExtResource("5_gkmd4")]
+
+[node name="BallRobot_2" parent="EnemyCounter" instance=ExtResource("6_bxwn5")]
+position = Vector2(520, 104)
+
+[node name="BallRobot_3" parent="EnemyCounter" instance=ExtResource("6_bxwn5")]
+position = Vector2(264, 328)
+
+[node name="ItemDropper" parent="." instance=ExtResource("7_rl2u1")]
+position = Vector2(256, 216)
+item_data = ExtResource("8_6f547")
+
+[node name="QuestAdvanceTrigger" parent="ItemDropper" instance=ExtResource("9_vdl05")]
+linked_quest = ExtResource("10_40mlb")
+quest_step = 2
+settings_summary = "UPDATE QUEST:
+Quest: Recover Lost Gear
+Step: 2 - find the gear
+Complete: false"

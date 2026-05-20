@@ -12,4 +12,3 @@ enum COLORS { WHITE, RED, BLUE, GREEN, YELLOW, BLACK  }
 @export var projectile_scene : PackedScene
 
 @export var is_ranged : bool = false
-@export var is_available : bool = false

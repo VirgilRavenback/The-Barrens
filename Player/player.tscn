@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dxsmf1boy48yc"]
+[gd_scene load_steps=61 format=3 uid="uid://dxsmf1boy48yc"]
 
 [ext_resource type="Script" path="res://Player/player_scripts/player_2_0.gd" id="1_wbqjb"]
 [ext_resource type="Texture2D" uid="uid://dd2ssbdbhv7u5" path="res://Player/DesertChar_Full_Animations.png" id="2_obm7c"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://Player/player_scripts/weapon_manager.gd" id="4_mff32"]
 [ext_resource type="Script" path="res://Player/player_scripts/player_state_idle.gd" id="4_vmvh3"]
 [ext_resource type="Script" path="res://Player/player_scripts/player_state_walk.gd" id="5_18ixt"]
+[ext_resource type="Script" path="res://Player/player_scripts/weapon.gd" id="5_hvl7h"]
+[ext_resource type="Resource" uid="uid://cpwwwk1av13hy" path="res://Player/white_sword.tres" id="6_bx62u"]
 [ext_resource type="AudioStream" uid="uid://ebshwtotvn5q" path="res://Player/audio/SwordSwoosh.wav" id="6_e16kl"]
 [ext_resource type="Script" path="res://Player/player_scripts/player_state_attack.gd" id="6_hmj8d"]
 [ext_resource type="Script" path="res://Player/player_scripts/player_state_stun.gd" id="6_x0i4s"]
@@ -761,6 +763,11 @@ libraries = {
 
 [node name="WeaponManager" type="Node" parent="."]
 script = ExtResource("4_mff32")
+
+[node name="WhiteSword" type="Node2D" parent="WeaponManager"]
+script = ExtResource("5_hvl7h")
+weapon_stats = ExtResource("6_bx62u")
+is_available = true
 
 [node name="PlayerStateMachine" type="Node" parent="."]
 script = ExtResource("3_auwaa")

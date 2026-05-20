@@ -38,7 +38,17 @@ func save_game() -> void:
 	var save_json = JSON.stringify( current_save )
 	file.store_line( save_json )
 	game_saved.emit()
+	
+	pass
 
+#trigger a save for persistent values only so key events can be saved without affecting the
+#rest of the save file (player position, etc.)
+func save_persistence() -> void:
+	var file := FileAccess.open( SAVE_PATH + "save.sav", FileAccess.WRITE )
+	var save_json = JSON.stringify( current_save.persistence )
+	file.store_line( save_json ) #how do I update just the line above within the save
+	#dictionary without overwriting anything else? Currently I think this is overwriting
+	#the whole save file with just the persistence array
 	
 	pass
 
@@ -103,6 +113,14 @@ func update_quest_data() -> void:
 func add_persistent_value( value : String ) -> void:
 	if check_persistent_value( value ) == false:
 		current_save.persistence.append( value )
+		#save the persistent value and write to the save file - add this back in once
+		#I fix the function
+		#save_persistence()
+	pass
+
+func remove_persistent_value( value : String ) -> void:
+	var p = current_save.persistence as Array
+	p.erase( value )
 	pass
 
 func check_persistent_value( value : String ) -> bool:

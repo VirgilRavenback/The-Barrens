@@ -8,7 +8,7 @@ func _ready() -> void:
 	available_weapons = []
 	
 	#grab the weapon save data from the Save Manager and add those to a dictionary
-	available_weapons = SaveManager.available_weapons
+	#available_weapons = SaveManager.available_weapons
 	#grab the weapons/children and add them to a dictionary
 	for c in get_children():
 		weapons.append( c )
@@ -25,5 +25,5 @@ func _ready() -> void:
 
 
 
-func _process(delta: float) -> void:
+func _process( _delta: float ) -> void:
 	pass

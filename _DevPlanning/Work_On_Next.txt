@@ -1,0 +1,5 @@
+Work on next
+1. Rebuild starting town scene with updated tileset
+2. Finish canyon tileset so it has side wall tiles, back wall tiles, and top/ground tiles
+3. Do second pass on slot canyon/canyon cave tileset so I can build a quest in it.
+4. Work on weapon and color system

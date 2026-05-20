@@ -73,9 +73,10 @@ offset_top = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 
 [node name="Inventory" type="Control" parent="Control/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -129,13 +130,11 @@ theme_override_font_sizes/font_size = 10
 autowrap_mode = 2
 
 [node name="Quests" type="Control" parent="Control/TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("6_361wy")
 metadata/_tab_index = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/Quests"]
-visible = false
 layout_mode = 0
 offset_left = 14.0
 offset_top = 14.0

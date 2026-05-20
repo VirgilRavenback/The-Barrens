@@ -16,17 +16,17 @@ func _ready() -> void:
 	pass
 
 
-func _process(delta: float) -> void:
+func _process( _delta: float ) -> void:
 	pass
 
 
-func _on_area_entered( a : Area2D ) -> void:
+func _on_area_entered( _a : Area2D ) -> void:
 	label.visible = true
 	PlayerManager.interact_pressed.connect( player_interact )
 	
 	pass
 	
-func _on_area_exited( a : Area2D ) -> void:
+func _on_area_exited( _a : Area2D ) -> void:
 	PlayerManager.interact_pressed.disconnect( player_interact )
 	label.visible = false
 	
