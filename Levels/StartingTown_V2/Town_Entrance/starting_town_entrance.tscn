@@ -1,17 +1,19 @@
-[gd_scene load_steps=11 format=4 uid="uid://vyxg7rvy6gaq"]
+[gd_scene load_steps=12 format=4 uid="uid://vyxg7rvy6gaq"]
 
 [ext_resource type="Texture2D" uid="uid://dcc143261312m" path="res://Levels/Starting Town/Sprites/Starting_Town_Entrance_Ground.png" id="1_1ux1k"]
+[ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_5xaor"]
 [ext_resource type="Texture2D" uid="uid://btfspdc1ogrdg" path="res://Levels/Starting Town/Sprites/Starting_Town_Entrance_BackWall.png" id="2_7ashc"]
 [ext_resource type="PackedScene" uid="uid://crtlba51yn8ke" path="res://Tile Maps/canyon_v4.tscn" id="2_yrp41"]
-[ext_resource type="PackedScene" uid="uid://be36j081wthbe" path="res://Levels/Starting Town/Props/arch.tscn" id="3_8fqgw"]
+[ext_resource type="PackedScene" uid="uid://be36j081wthbe" path="res://Levels/StartingTown_V2/Props/arch.tscn" id="3_8fqgw"]
 [ext_resource type="Texture2D" uid="uid://c6xnxtyokl6c5" path="res://Levels/Starting Town/Sprites/Starting_Town_Entrance_FrontRocks.png" id="4_p04ev"]
-[ext_resource type="PackedScene" uid="uid://b1crvou2npwhd" path="res://Levels/Starting Town/Props/pillar.tscn" id="5_og5rn"]
-[ext_resource type="PackedScene" uid="uid://crmgcgpmhr7nu" path="res://Levels/Starting Town/Props/flag.tscn" id="6_m4uf7"]
+[ext_resource type="PackedScene" uid="uid://b1crvou2npwhd" path="res://Levels/StartingTown_V2/Props/pillar.tscn" id="5_og5rn"]
+[ext_resource type="PackedScene" uid="uid://crmgcgpmhr7nu" path="res://Levels/StartingTown_V2/Props/flag.tscn" id="6_m4uf7"]
 [ext_resource type="PackedScene" uid="uid://bkfhg23f5j64x" path="res://Levels/save_point_manager.tscn" id="7_hk7op"]
 [ext_resource type="PackedScene" uid="uid://ckrys2ky2v7mj" path="res://Levels/save_point.tscn" id="8_jtcq3"]
 [ext_resource type="PackedScene" uid="uid://dwy4pip084wpt" path="res://Levels/level_transition.tscn" id="9_uud41"]
 
 [node name="StartingTownEntrance" type="Node2D"]
+script = ExtResource("1_5xaor")
 
 [node name="Sprite2D_Ground" type="Sprite2D" parent="."]
 z_index = -2
@@ -74,13 +76,14 @@ save_name = "Save Point 1"
 position = Vector2(446, 201)
 save_name = "Save Point 2"
 
-[node name="LevelTransition" parent="." instance=ExtResource("9_uud41")]
-position = Vector2(16, 285)
+[node name="LevelTransition_West" parent="." instance=ExtResource("9_uud41")]
+position = Vector2(16, 259)
 level = "res://Levels/test_level.tscn"
-size = 4
+size = 15
 
-[node name="LevelTransition2" parent="." instance=ExtResource("9_uud41")]
+[node name="LevelTransition_East" parent="." instance=ExtResource("9_uud41")]
 position = Vector2(497, 186)
-level = "res://Levels/Starting Town/starting_town_center.tscn"
+level = "res://Levels/StartingTown_V2/Town_Center/Town_Center.tscn"
+target_transition_area = "LevelTransition_West"
 size = 14
 side = 1

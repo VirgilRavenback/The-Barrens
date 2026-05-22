@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daknmuwufraj5"
-path="res://.godot/imported/Starting_Town_FrontRocksTent.png-f14074cc1df6cd3925a3d1bbad907389.ctex"
+uid="uid://bdqjbi7brlsvr"
+path="res://.godot/imported/Barrens_CanyonWallTile_PaintOver.png-378e0ad92732f944c9342a6b36461813.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Starting Town/Sprites/Starting_Town_FrontRocksTent.png"
-dest_files=["res://.godot/imported/Starting_Town_FrontRocksTent.png-f14074cc1df6cd3925a3d1bbad907389.ctex"]
+source_file="res://Levels/StartingTown_V2/Tilesets/Barrens_CanyonWallTile_PaintOver.png"
+dest_files=["res://.godot/imported/Barrens_CanyonWallTile_PaintOver.png-378e0ad92732f944c9342a6b36461813.ctex"]
 
 [params]
 
