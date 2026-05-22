@@ -1688,7 +1688,6 @@ position = Vector2(112, 280)
 [node name="DarkWizardBoss" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("5_ew7rh")
-max_hp = 1
 
 [node name="PersistentDataHandler" parent="DarkWizardBoss" instance=ExtResource("5_nv5me")]
 
