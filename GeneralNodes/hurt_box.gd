@@ -21,15 +21,4 @@ func _on_area_entered( area_2D : Area2D) -> void:
 	if area_2D is HitBox:
 		did_damage.emit()
 		area_2D.take_damage( self )
-
-#func _set_current_light_type() -> void:
-	##if #current weaopn == blue sword:
-		##current_light_type = LIGHT_TYPES.BLUE
-	##elif #current weapon == yellow sword:
-		##current_light_type = LIGHT_TYPES.YELLOW
-	##elif #current weapon == red sword:
-		##current_light_type = LIGHT_TYPES.RED
-	##elif #current weapon == black sword:
-		##current_light_type = LIGHT_TYPES.BLACK
-		#
-	#pass
+		#print( current_light_type )

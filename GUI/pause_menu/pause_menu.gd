@@ -76,6 +76,15 @@ func _on_load_pressed() -> void:
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 
+func focused_item_changed( slot : SlotData ) -> void:
+	if slot:
+		if slot.item_data:
+			update_item_description( slot.item_data.description )
+			#update stats
+	else:
+		update_item_description( "" )
+		#update stats
+
 func update_item_description( new_text : String ) -> void:
 	item_description.text = new_text
 

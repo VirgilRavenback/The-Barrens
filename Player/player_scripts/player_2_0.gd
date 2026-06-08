@@ -2,18 +2,6 @@ class_name Player
 
 extends CharacterBody2D
 
-enum LIGHT_TYPES { BLUE, YELLOW, RED, BLACK }
-var current_light_type : LIGHT_TYPES = LIGHT_TYPES.BLUE : 
-	set(set_light_type):
-		if current_light_type == LIGHT_TYPES.BLUE:
-			hurt_box.current_light_type = "Blue"
-		elif current_light_type == LIGHT_TYPES.YELLOW:
-			hurt_box.current_light_type = "yellow"
-		elif current_light_type == LIGHT_TYPES.RED:
-			hurt_box.current_light_type = "red"
-		elif current_light_type == LIGHT_TYPES.BLACK:
-			hurt_box.current_light_type = "black"
-
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 var player_alive : bool = false
@@ -22,15 +10,16 @@ var player_alive : bool = false
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var effect_animation_player : AnimationPlayer = $EffectAnimationPlayer
 @onready var hit_box : HitBox = $hit_box
-@onready var hurt_box : HurtBox = $PlayerInteractions/HurtBox
+@onready var attack_hurt_box: HurtBox = %AttackHurtBox
 @onready var player_state_machine : PlayerStateMachine = $PlayerStateMachine
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 
 signal direction_changed( new_direction : Vector2 )
-signal player_damaged( hurt_box : HurtBox )
+signal player_damaged( attack_hurt_box : HurtBox )
 signal light_type_changed( current_light_type )
 
+var current_light_type : String
 var invlunerable : bool = false
 
 @export_category("Health")
@@ -49,6 +38,9 @@ func _ready() -> void:
 	current_health = max_health
 	update_health( 0 )
 	current_healing_charges = max_healing_charges
+	PlayerManager.INVENTORY_DATA.equipment_changed.connect( _on_equipment_changed )
+	update_damage_values()
+	update_light_type()
 	pass
 	
 func spawn(pos):
@@ -116,13 +108,13 @@ func animation_direction() -> String:
 	else:
 		return "side"
 		
-func _take_damage ( hurt_box : HurtBox ) -> void:
+func _take_damage ( attack_hurt_box : HurtBox ) -> void:
 	if invlunerable == true and player_state_machine.current_state != PlayerStateFall:
 		return
 	
 	if current_health > 0:
-		update_health( -hurt_box.damage )
-		player_damaged.emit( hurt_box )
+		update_health( -attack_hurt_box.damage )
+		player_damaged.emit( attack_hurt_box )
 	
 	pass
 
@@ -145,14 +137,23 @@ func revive_player() -> void:
 	update_health( 5 )
 	player_state_machine.change_state( $PlayerStateMachine/Idle )
 
-func _set_current_light_type() -> void:
-	#if #current weaopn == blue sword:
-		#current_light_type = LIGHT_TYPES.BLUE
-	#elif #current weapon == yellow sword:
-		#current_light_type = LIGHT_TYPES.YELLOW
-	#elif #current weapon == red sword:
-		#current_light_type = LIGHT_TYPES.RED
-	#elif #current weapon == black sword:
-		#current_light_type = LIGHT_TYPES.BLACK
-		
+
+func update_damage_values() -> void:
+	var damage_value : int = PlayerManager.INVENTORY_DATA.get_item_attack() 
+	%AttackHurtBox.damage = damage_value
+	print( %AttackHurtBox.damage )
+	pass
+
+
+func update_light_type() -> void:
+	current_light_type= PlayerManager.INVENTORY_DATA.get_item_color()
+	%AttackHurtBox.current_light_type = current_light_type
+	print( %AttackHurtBox.current_light_type )
+	pass
+	
+
+func _on_equipment_changed() -> void:
+	update_damage_values()
+	update_light_type()
+	light_type_changed.emit( current_light_type )
 	pass

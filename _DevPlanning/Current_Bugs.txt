@@ -1,4 +1,6 @@
 Current Bugs
 1. Save system overwrites saved file every time I load into the game. This is an issue with the save point's design,
 not an issue with malfunctioning code
+Solution: save the autosaves in a separate file
 2.Quest UI isn't showing active quests anymore (or anything)
+This is fixed in my new starting town

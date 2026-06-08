@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://c1me30se2f32"]
+[gd_scene load_steps=14 format=4 uid="uid://c1me30se2f32"]
 
 [ext_resource type="Script" path="res://Levels/Scripts/level.gd" id="1_eta2u"]
 [ext_resource type="AudioStream" uid="uid://dxu54oyw4o8ey" path="res://Levels/Music/example_music_01.ogg" id="2_5tgr5"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://chaogky7cqh5g" path="res://Interactables/dungeon/pushable_statue.tscn" id="7_a4o1a"]
 [ext_resource type="PackedScene" uid="uid://bkfhg23f5j64x" path="res://Levels/save_point_manager.tscn" id="8_op3x5"]
 [ext_resource type="PackedScene" uid="uid://ckrys2ky2v7mj" path="res://Levels/save_point.tscn" id="9_j332d"]
+[ext_resource type="PackedScene" uid="uid://dlema7fdv8seo" path="res://Interactables/dungeon/light_orb.tscn" id="13_8kqxh"]
 
 [node name="Dungeon01" type="Node2D"]
 script = ExtResource("1_eta2u")
@@ -71,6 +72,11 @@ push_speed = 20.0
 position = Vector2(192, 184)
 save_name = "Save Point A"
 
+[node name="WhiteLightOrb" parent="." instance=ExtResource("13_8kqxh")]
+position = Vector2(136, 112)
+orb_color = "White"
+
 [connection signal="entered_from_here" from="LevelTransition" to="LevelTransition/QuestActivatedSwitch/QuestAdvanceTrigger" method="advance_quest"]
 [connection signal="activated" from="PressurePlate" to="BarredDoor" method="open_door"]
 [connection signal="deactivated" from="PressurePlate" to="BarredDoor" method="close_door"]
+[connection signal="switch_flipped" from="WhiteLightOrb" to="BarredDoor" method="_on_blue_light_orb_switch_flipped"]
