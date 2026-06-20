@@ -41,6 +41,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="The Barrens"
 
+[global_group]
+
+tilemaps="Tilemaps with foostep sounds"
+
 [gui]
 
 theme/custom_font="res://assets/Fonts/DisposableDroidBB.ttf"
