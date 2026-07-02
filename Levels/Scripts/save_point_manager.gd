@@ -35,8 +35,9 @@ func _on_save_activated( save_point : SavePoint , save_point_position: Vector2 )
 	current_save_position = save_point_position
 	
 	print( str(current_save_point) + " activated" )
-	print( current_save_position )
+	#print( current_save_position )
 	print( QuestManager.current_quests )
+	print( SaveManager.current_save.persistence )
 	
 	update_saved_data()
 	

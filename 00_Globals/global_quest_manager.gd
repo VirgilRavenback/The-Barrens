@@ -7,7 +7,6 @@ const QUEST_DATA_LOCATION : String = "res://quests/"
 
 var quests : Array[ Quest ] # all quests in the game
 var current_quests : Array = []
-# { title = "not found", is_complete = false, completed_steps = [ '' ] }
 
 
 func _ready() -> void:
@@ -28,6 +27,7 @@ func _unhandled_input( event: InputEvent ) -> void:
 		#update_quest( "Recover Lost Gear", "Find the gear") # completes a step
 		#update_quest( "Recover Lost Gear", "", true ) #completes quest
 		#update_quest( "long quest", "step 1", false ) # completes the quest and does not update any steps
+		current_quests = []
 		print( "current quests: ", current_quests )
 		#print( "====================================================================" )
 		
@@ -39,8 +39,7 @@ func gather_quest_data() -> void:
 	quests.clear()
 	for q in quest_files:
 		quests.append( load( QUEST_DATA_LOCATION + "/" + q ) as Quest )
-	pass
-	print( "quest count: ", quests.size() )
+		pass
 
 	pass
 

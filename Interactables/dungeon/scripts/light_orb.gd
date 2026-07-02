@@ -1,9 +1,15 @@
-class_name BLueLightOrb extends StaticBody2D
+class_name LightOrb extends StaticBody2D
 
 @onready var hit_box: HitBox = $hit_box
 @onready var polygon_2d: Polygon2D = $Polygon2D
 
+@onready var switch_on_data: PersistentDataHandler = $PersistentDataHandler
+
+
 var switch_on : bool = true
+@export var orb_color : String = ""
+
+signal switch_flipped( switch_on : bool )
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,13 +33,16 @@ func turn_off() -> void:
 	pass
 
 func _on_hit( hurt_box : HurtBox ) -> void:
-	if not hurt_box.current_light_type == "blue":
-		return
+	if hurt_box.current_light_type:
+		if hurt_box.current_light_type.to_lower() == orb_color.to_lower():
+			flip_switch()
+	pass
+
+func flip_switch() -> void:
+	if switch_on == true:
+		turn_off()
 	else:
-		if switch_on == true:
-			turn_off()
-		else:
-			turn_on()
-		print( "switch is", switch_on )
-		
+		turn_on()
+	switch_flipped.emit( switch_on )
+	print( "switch is ", switch_on )
 	pass

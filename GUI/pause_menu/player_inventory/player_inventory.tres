@@ -1,8 +1,20 @@
-[gd_resource type="Resource" script_class="InventoryData" load_steps=3 format=3 uid="uid://8fpwg3tcxu4i"]
+[gd_resource type="Resource" script_class="InventoryData" load_steps=7 format=3 uid="uid://8fpwg3tcxu4i"]
 
 [ext_resource type="Script" path="res://GUI/pause_menu/player_inventory/scripts/inventory_data.gd" id="1_cvd8p"]
 [ext_resource type="Script" path="res://GUI/pause_menu/player_inventory/scripts/slot_data.gd" id="2_rfq2r"]
+[ext_resource type="Resource" uid="uid://d3j7jldp66cf" path="res://Items/weapons/a_tunic.tres" id="3_dh6d6"]
+[ext_resource type="Resource" uid="uid://rf2pix20x080" path="res://Items/weapons/w_white_sword.tres" id="4_23epw"]
+
+[sub_resource type="Resource" id="Resource_u3kka"]
+script = ExtResource("2_rfq2r")
+item_data = ExtResource("3_dh6d6")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_elwdt"]
+script = ExtResource("2_rfq2r")
+item_data = ExtResource("4_23epw")
+quantity = 1
 
 [resource]
 script = ExtResource("1_cvd8p")
-slots = Array[ExtResource("2_rfq2r")]([null, null, null, null, null, null, null, null, null, null])
+slots = Array[ExtResource("2_rfq2r")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, SubResource("Resource_u3kka"), SubResource("Resource_elwdt"), null, null])

@@ -47,7 +47,7 @@ func handle_input( _event : InputEvent ) -> PlayerState:
 		return attack
 	if _event.is_action_pressed("interact"):
 		PlayerManager.interact_pressed.emit()
-		print("player is trying to interact")
+		#print("player is trying to interact")
 	if _event.is_action_pressed("dash"):
 		return dash
 	if _event.is_action_pressed("heal"):

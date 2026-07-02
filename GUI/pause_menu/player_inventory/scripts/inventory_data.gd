@@ -1,12 +1,22 @@
 class_name InventoryData extends Resource
 
-@export var slots : Array[ SlotData ]
+signal equipment_changed
 
+@export var slots : Array[ SlotData ]
+var equipment_slot_count : int = 4
 
 
 func _init() -> void:
 	connect_slots()
 	pass
+	
+func inventory_slots() -> Array[ SlotData ]:
+	
+	return slots.slice( 0, -equipment_slot_count )
+
+func equipment_slots() -> Array[ SlotData ]:
+	
+	return slots.slice( -equipment_slot_count, slots.size() )
 
 func add_item( item : ItemData, count : int = 1 ) -> bool:
 	for s in slots:
@@ -14,7 +24,8 @@ func add_item( item : ItemData, count : int = 1 ) -> bool:
 			if s.item_data == item:
 				s.quantity += count
 				return true
-	for i in slots.size():
+
+	for i in inventory_slots().size():
 		if slots[ i ] == null:
 			var new = SlotData.new()
 			new.item_data = item
@@ -25,6 +36,7 @@ func add_item( item : ItemData, count : int = 1 ) -> bool:
 	
 	print("inventory was full!")
 	return false
+	
 
 func connect_slots() -> void:
 	for s in slots:
@@ -83,3 +95,76 @@ func use_item( item : ItemData, count : int = 1 ) -> bool:
 				s.quantity -= count
 				return true
 	return false
+
+func equip_item( slot : SlotData ) -> void:
+	if slot == null or not slot.item_data is EquippableItemData:
+		return
+	
+	var item : EquippableItemData = slot.item_data
+	var slot_index : int = slots.find( slot )
+	var equipment_index : int = slots.size() - equipment_slot_count #index of 20
+	
+	match item.type:
+		EquippableItemData.ItemType.ARMOR:
+			equipment_index += 0
+		EquippableItemData.ItemType.WEAPON:
+			equipment_index += 1 #21
+		EquippableItemData.ItemType.AMULET:
+			equipment_index += 2 #22
+		EquippableItemData.ItemType.RING:
+			equipment_index += 3 #23
+	var unequipped_slot : SlotData = slots[ equipment_index ]
+	
+	slots[ slot_index ] = unequipped_slot
+	slots[ equipment_index ] = slot
+	
+	equipment_changed.emit()
+	PauseMenu.focused_item_changed( unequipped_slot )
+	
+	pass
+
+func get_item_attack() -> int:
+	return get_equipment_bonus( EquippableItemModifier.ModifierType.ATTACK )
+	pass
+
+func get_equipment_bonus( modifier_type : EquippableItemModifier.ModifierType ) -> int:
+	var modifier : int = 1
+	
+	for s in equipment_slots():
+		if s == null:
+			continue
+		var e : EquippableItemData = s.item_data
+		for m in e.modifiers:
+			if m.modifier_type == modifier_type:
+				modifier = m.value
+	return modifier
+
+func get_item_color() -> String:
+	var current_color : String = ""
+	
+	for s in equipment_slots():
+		if s == null:
+			continue
+		var e : EquippableItemData = s.item_data
+		for m in e.modifiers:
+			if m.modifier_type == EquippableItemModifier.ModifierType.COLOR:
+				current_color = convert_color( m.color_type )
+	return current_color
+
+func convert_color( c : EquippableItemModifier.ColorType ) -> String:
+	if c == 0:
+		return "null"
+	elif c == 1:
+		return "white"
+	elif c == 2:
+		return "yellow"
+	elif c == 3:
+		return "red"
+	elif c == 4:
+		return "blue"
+	elif c == 5:
+		return "green"
+	elif c == 6:
+		return "black"
+	else:
+		return "null"

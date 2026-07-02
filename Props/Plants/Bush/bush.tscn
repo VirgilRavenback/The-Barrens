@@ -10,7 +10,7 @@ size = Vector2(35, 20)
 [sub_resource type="CircleShape2D" id="CircleShape2D_e8fa3"]
 radius = 13.0
 
-[node name="Grass" type="Node2D"]
+[node name="Bush" type="Node2D"]
 position = Vector2(0, -8)
 script = ExtResource("1_2dsfk")
 

@@ -10,6 +10,7 @@ signal is_activated_changed( v : bool )
 
 @export var check_type : CheckType = CheckType.HAS_QUEST : set = _set_check_type
 @export var remove_when_activated : bool = false
+@export var free_when_removed : bool = false
 @export var react_to_global_signal : bool = false
 
 var is_activated : bool = false
@@ -98,7 +99,9 @@ func hide_children() -> void:
 	for c in get_children():
 		#setting deferred to avoid an error caused by waiting for the signal
 		c.set_deferred( "visible", false )
-		c.set_deferred( "process mode", PROCESS_MODE_DISABLED )
+		c.set_deferred( "process_mode", PROCESS_MODE_DISABLED )
+		if free_when_removed:
+			c.queue_free()
 	pass
 
 func _on_quest_updated( _q : Dictionary ) -> void:

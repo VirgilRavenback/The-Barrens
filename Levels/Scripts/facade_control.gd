@@ -19,7 +19,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func _on_body_entered( _b : Node2D ) -> void:
+func _on_body_entered( _b : Player ) -> void:
 	if _b is Player:
 		if facade_visible == true:
 			sprite_2d.visible = false

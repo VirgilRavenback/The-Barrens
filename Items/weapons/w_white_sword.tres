@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="EquippableItemData" load_steps=8 format=3 uid="uid://rf2pix20x080"]
+
+[ext_resource type="Script" path="res://Items/item_effects/item_effect.gd" id="1_7er84"]
+[ext_resource type="Script" path="res://Items/scripts/equippable_item_modifiers.gd" id="2_t378x"]
+[ext_resource type="Script" path="res://Items/scripts/equippable_item_data.gd" id="3_j3qme"]
+[ext_resource type="Texture2D" uid="uid://do2mu6xd5px2r" path="res://Items/sprites/gear.png" id="4_r5dva"]
+
+[sub_resource type="Resource" id="Resource_g17s3"]
+script = ExtResource("2_t378x")
+modifier_type = 1
+value = 1
+color_type = 0
+
+[sub_resource type="Resource" id="Resource_jts07"]
+script = ExtResource("2_t378x")
+modifier_type = 4
+value = 0
+color_type = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5dmr"]
+atlas = ExtResource("4_r5dva")
+region = Rect2(32, 0, 32, 32)
+
+[resource]
+script = ExtResource("3_j3qme")
+type = 0
+modifiers = Array[ExtResource("2_t378x")]([SubResource("Resource_g17s3"), SubResource("Resource_jts07")])
+name = "White Sword"
+description = "A white sword"
+texture = SubResource("AtlasTexture_i5dmr")
+effects = Array[ExtResource("1_7er84")]([])

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daknmuwufraj5"
-path="res://.godot/imported/Starting_Town_FrontRocksTent.png-f14074cc1df6cd3925a3d1bbad907389.ctex"
+uid="uid://do2mu6xd5px2r"
+path="res://.godot/imported/gear.png-05ec228c6bd652f530ec253f570f43fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Starting Town/Sprites/Starting_Town_FrontRocksTent.png"
-dest_files=["res://.godot/imported/Starting_Town_FrontRocksTent.png-f14074cc1df6cd3925a3d1bbad907389.ctex"]
+source_file="res://Items/sprites/gear.png"
+dest_files=["res://.godot/imported/gear.png-05ec228c6bd652f530ec253f570f43fb.ctex"]
 
 [params]
 

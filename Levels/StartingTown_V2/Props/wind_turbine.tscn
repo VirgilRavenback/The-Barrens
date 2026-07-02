@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://crb5lige2fmkb"]
+
+[ext_resource type="Texture2D" uid="uid://0jdblrvqjcgy" path="res://Levels/Starting Town/Sprites/StartingTown_WindTurbine.png" id="1_jtgv4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6n1ad"]
+radius = 17.0
+height = 86.0
+
+[node name="WindTurbine" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-40, -376)
+texture = ExtResource("1_jtgv4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6n1ad")

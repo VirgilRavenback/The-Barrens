@@ -18,12 +18,21 @@ var current_save : Dictionary = {
 		save_pos_x = 0,
 		save_pos_y = 0,
 		current_healing_charges = 0,
-		max_healing_charges = 0
+		max_healing_charges = 0,
+		current_weapon = ""
 	},
 	items = [],
+	available_weapons = {
+		white_sword = 1,
+		red_sword = 0,
+		blue_sword = 0,
+		green_sword = 0,
+		yellow_sword = 0,
+		black_sword = 0,
+	},
 	persistence = [],
 	quests = [
-		#{ title = "not found", is_complete = false, completed_steps = [ '' ] }
+		{ title = "not found", is_complete = false, completed_steps = [ '' ] }
 	],
 }
 
@@ -33,11 +42,22 @@ func save_game() -> void:
 	update_scene_path()
 	update_inventory_data()
 	update_quest_data()
+	update_available_weapons()
 	var file := FileAccess.open( SAVE_PATH + "save.sav", FileAccess.WRITE )
 	var save_json = JSON.stringify( current_save )
 	file.store_line( save_json )
 	game_saved.emit()
+	
+	pass
 
+#trigger a save for persistent values only so key events can be saved without affecting the
+#rest of the save file (player position, etc.)
+func save_persistence() -> void:
+	var file := FileAccess.open( SAVE_PATH + "save.sav", FileAccess.WRITE )
+	var save_json = JSON.stringify( current_save.persistence )
+	file.store_line( save_json ) #how do I update just the line above within the save
+	#dictionary without overwriting anything else? Currently I think this is overwriting
+	#the whole save file with just the persistence array
 	
 	pass
 
@@ -102,8 +122,21 @@ func update_quest_data() -> void:
 func add_persistent_value( value : String ) -> void:
 	if check_persistent_value( value ) == false:
 		current_save.persistence.append( value )
+		#save the persistent value and write to the save file - add this back in once
+		#I fix the function
+		#save_persistence()
+	pass
+
+func remove_persistent_value( value : String ) -> void:
+	var p = current_save.persistence as Array
+	p.erase( value )
 	pass
 
 func check_persistent_value( value : String ) -> bool:
 	var p = current_save.persistence as Array
 	return p.has( value )
+
+func update_available_weapons() -> void:
+	#set the saved available weapons equal to the available weapons for the player
+	current_save.available_weapons = PlayerManager.player
+	pass

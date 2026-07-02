@@ -211,13 +211,16 @@ func play_audio( _a : AudioStream ) -> void:
 func defeat() -> void:
 	animation_player.play( "destroy" )
 	enable_hit_boxes( false )
-	persistent_data_handler.set_value()
-	await animation_player.animation_finished
-	#re-open the room
-	dungeon_door_block.enabled = false
 	PlayerHud.hide_boss_health()
-	
+	await animation_player.animation_finished
+	$ItemDropper.position = boss_node.position
+	$ItemDropper.drop_item()
+	$ItemDropper.drop_collected.connect( complete_boss )
 	pass
+
+func complete_boss() -> void:
+	persistent_data_handler.set_value()
+	dungeon_door_block.enabled = false
 
 func enable_hit_boxes( _value : bool = true ) -> void:
 	hit_box.set_deferred("monitorable", _value)

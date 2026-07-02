@@ -18,6 +18,10 @@ func get_value() -> void:
 	data_loaded.emit( value )
 	pass
 
+func remove_value() -> void:
+	SaveManager.remove_persistent_value( _get_name() )
+	pass
+
 func _get_name() -> String:
 	#returning the file path of the current scene and 
 	# adding the parent name and the name of this node on the end
